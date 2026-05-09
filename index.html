@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanada-Reise · 1.–22. August 2025</title>
+<style>
+:root{
+  --montreal:#d62828;
+  --quebec:#003049;
+  --mauricie:#386641;
+  --ottawa:#7209b7;
+  --toronto:#0077b6;
+  --bg:#f7f5f0;
+  --card:#ffffff;
+  --text:#1d1d1f;
+  --muted:#6b6b70;
+  --border:#e5e3dc;
+  --accent:#d62828;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+header.hero{
+  background:linear-gradient(135deg,#d62828 0%,#003049 50%,#0077b6 100%);
+  color:#fff;padding:3rem 1.5rem;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+header.hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:.5rem}
+header.hero p{font-size:1.1rem;opacity:.95}
+header.hero .meta{margin-top:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.95rem}
+header.hero .meta span{background:rgba(255,255,255,.18);padding:.4rem 1rem;border-radius:999px;backdrop-filter:blur(8px)}
+
+nav.cities{
+  position:sticky;top:0;z-index:100;background:#fff;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+nav.cities .inner{max-width:1200px;margin:0 auto;padding:.75rem 1rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+nav.cities .inner::-webkit-scrollbar{display:none}
+nav.cities button{
+  border:none;background:#f0ede5;color:var(--text);padding:.55rem 1.1rem;
+  border-radius:999px;font-size:.9rem;font-weight:500;cursor:pointer;white-space:nowrap;
+  transition:all .2s;
+}
+nav.cities button:hover{background:#e5e1d5}
+nav.cities button.active{background:var(--text);color:#fff}
+
+main{max-width:1200px;margin:0 auto;padding:2rem 1rem 4rem}
+
+.overview{
+  background:#fff;border-radius:16px;padding:1.5rem;margin-bottom:2rem;
+  border:1px solid var(--border);
+}
+.overview h2{font-size:1.3rem;margin-bottom:1rem}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem}
+.overview-card{
+  padding:1rem;border-radius:12px;color:#fff;
+}
+.overview-card h3{font-size:1rem;margin-bottom:.25rem}
+.overview-card p{font-size:.85rem;opacity:.9}
+.bg-mtl{background:var(--montreal)}
+.bg-qbc{background:var(--quebec)}
+.bg-mau{background:var(--mauricie)}
+.bg-ott{background:var(--ottawa)}
+.bg-tor{background:var(--toronto)}
+
+.day{
+  background:var(--card);border-radius:16px;margin-bottom:1.25rem;
+  border:1px solid var(--border);overflow:hidden;
+  transition:box-shadow .2s;
+}
+.day:hover{box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.day.hidden{display:none}
+
+.day-header{
+  padding:1.25rem 1.5rem;cursor:pointer;display:flex;align-items:center;
+  gap:1rem;user-select:none;
+}
+.day-num{
+  flex-shrink:0;width:54px;height:54px;border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;
+}
+.day-num .n{font-size:1.4rem;line-height:1}
+.day-num .l{font-size:.65rem;opacity:.85;text-transform:uppercase;letter-spacing:.5px}
+.day-info{flex:1;min-width:0}
+.day-info h3{font-size:1.1rem;margin-bottom:.15rem}
+.day-info .sub{font-size:.85rem;color:var(--muted)}
+.day-toggle{
+  flex-shrink:0;width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#f0ede5;font-size:1.1rem;transition:transform .2s;
+}
+.day.open .day-toggle{transform:rotate(180deg)}
+
+.day-body{display:none;padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.day.open .day-body{display:block}
+
+.section{margin-top:1.25rem}
+.section h4{
+  font-size:.8rem;text-transform:uppercase;letter-spacing:1px;
+  color:var(--muted);margin-bottom:.6rem;font-weight:600;
+}
+.block{
+  background:#faf8f3;border-radius:10px;padding:.9rem 1rem;margin-bottom:.6rem;
+  border-left:3px solid var(--accent);
+}
+.block strong{color:var(--text)}
+.block .muted{color:var(--muted);font-size:.88rem}
+.block ul{list-style:none;margin-top:.4rem}
+.block ul li{padding-left:1rem;position:relative;font-size:.92rem;margin:.2rem 0}
+.block ul li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
+
+.timeslot{display:grid;grid-template-columns:90px 1fr;gap:.75rem;margin-bottom:.5rem;align-items:start}
+.timeslot .time{
+  font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+  color:#fff;padding:.3rem .55rem;border-radius:6px;text-align:center;
+  background:var(--accent);
+}
+.timeslot .time.morning{background:#f4a261}
+.timeslot .time.lunch{background:#e76f51}
+.timeslot .time.afternoon{background:#2a9d8f}
+.timeslot .time.evening{background:#264653}
+.timeslot .time.gem{background:#9d4edd}
+
+.gem-block{background:linear-gradient(135deg,#fff5f7,#f0e6ff);border-left-color:#9d4edd}
+
+.transport{
+  background:linear-gradient(135deg,#003049,#0077b6);color:#fff;
+  border-radius:10px;padding:.9rem 1rem;margin-bottom:.6rem;border-left:none;
+}
+.transport h5{font-size:.95rem;margin-bottom:.3rem}
+.transport ul li::before{color:#90e0ef}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}
+.info-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.88rem}
+.info-card strong{display:block;margin-bottom:.2rem}
+
+footer{
+  max-width:1200px;margin:2rem auto 0;padding:2rem 1rem;
+  border-top:1px solid var(--border);
+}
+footer h2{font-size:1.4rem;margin-bottom:1rem}
+footer .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+footer .info-card h4{font-size:1rem;margin-bottom:.4rem;color:var(--accent)}
+footer .info-card ul{list-style:none}
+footer .info-card li{padding:.15rem 0;font-size:.9rem}
+footer .copyright{text-align:center;margin-top:2rem;color:var(--muted);font-size:.85rem}
+
+@media (max-width:600px){
+  header.hero{padding:2rem 1rem}
+  .timeslot{grid-template-columns:1fr;gap:.3rem}
+  .timeslot .time{justify-self:start;padding:.2rem .5rem}
+  .day-header{padding:1rem}
+  .day-body{padding:0 1rem 1rem}
+}
+
+.controls{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.controls button{
+  background:#fff;border:1px solid var(--border);color:var(--text);
+  padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-size:.85rem;
+}
+.controls button:hover{background:#f0ede5}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Kanada-Reise 2025</h1>
+  <p>Detaillierter Reiseplan · 21 Tage durch den Osten Kanadas</p>
+  <div class="meta">
+    <span>📅 1.–22. August 2025</span>
+    <span>🏙️ 5 Stationen</span>
+    <span>🚂 Zug · 🚗 Mietwagen</span>
+  </div>
+</header>
+
+<nav class="cities">
+  <div class="inner" id="cityNav">
+    <button class="active" data-city="all">Alle Tage</button>
+    <button data-city="montreal">Montreal</button>
+    <button data-city="quebec">Quebec City</button>
+    <button data-city="mauricie">La Mauricie</button>
+    <button data-city="ottawa">Ottawa</button>
+    <button data-city="toronto">Toronto</button>
+  </div>
+</nav>
+
+<main>
+  <section class="overview">
+    <h2>Reise-Überblick</h2>
+    <div class="overview-grid">
+      <div class="overview-card bg-mtl"><h3>Montreal</h3><p>1.–5. August · 5 Nächte</p></div>
+      <div class="overview-card bg-qbc"><h3>Quebec City</h3><p>6.–9. August · 4 Nächte</p></div>
+      <div class="overview-card bg-mau"><h3>La Mauricie NP</h3><p>10.–12. August · 3 Nächte</p></div>
+      <div class="overview-card bg-ott"><h3>Ottawa</h3><p>13.–16. August · 4 Nächte</p></div>
+      <div class="overview-card bg-tor"><h3>Toronto</h3><p>17.–22. August · 5 Nächte</p></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button onclick="toggleAll(true)">Alle aufklappen</button>
+    <button onclick="toggleAll(false)">Alle einklappen</button>
+  </div>
+
+  <div id="days"></div>
+</main>
+
+<footer>
+  <h2>Nützliche Informationen</h2>
+  <div class="footer-grid">
+    <div class="info-card">
+      <h4>🚨 Notfallnummern</h4>
+      <ul>
+        <li><strong>Notruf:</strong> 911</li>
+        <li>Montreal: 514-280-2222</li>
+        <li>Quebec City: 418-641-2447</li>
+        <li>Ottawa: 613-236-1222</li>
+        <li>Toronto: 416-808-2222</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🏥 Krankenhäuser</h4>
+      <ul>
+        <li>Montreal General Hospital</li>
+        <li>Hôpital de l'Enfant-Jésus, Quebec</li>
+        <li>The Ottawa Hospital</li>
+        <li>Toronto General Hospital</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>💰 Währung & Bezahlung</h4>
+      <ul>
+        <li>Kanadischer Dollar (CAD)</li>
+        <li>Visa/Mastercard fast überall</li>
+        <li>Trinkgeld: 15–20% in Restaurants</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🌤️ Wetter im August</h4>
+      <ul>
+        <li>Durchschnitt: 15–27°C</li>
+        <li>Leichte Sommerkleidung</li>
+        <li>Leichte Jacke für Abende</li>
+        <li>Kompakter Regenschirm empfohlen</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🚆 Transport</h4>
+      <ul>
+        <li>VIA Rail: viarail.ca</li>
+        <li>Mietwagen: Enterprise, Avis, Budget, Hertz</li>
+        <li>Montreal: STM · Quebec: RTC</li>
+        <li>Ottawa: OC Transpo · Toronto: TTC</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📱 Nützliche Apps</h4>
+      <ul>
+        <li>Google Maps · Transit</li>
+        <li>Uber / Lyft</li>
+        <li>Weather Network</li>
+        <li>TripAdvisor</li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">Kanada-Reiseplan · 1.–22. August 2025</p>
+</footer>
+
+<script>
+const days = [
+  // MONTREAL
+  {n:1,date:"Fr, 1. August",title:"Ankunft in Montreal",city:"montreal",cityLabel:"Montreal",
+    hotel:{name:"Courtyard Montreal Downtown (Marriott)",addr:"380 René-Lévesque Boulevard West, Montreal, QC",price:"250–320 CAD/Nacht",note:"Zentrale Lage, Zugang zum unterirdischen Stadtnetz, Innenpool"},
+    grocery:"IGA Louise Ménard – 150 Saint-Catherine St W (5–10 Min zu Fuß)",
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Ankunft am Flughafen Montreal","Transfer zum Hotel (Taxi oder 747 Airport Express Bus)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Check-in im Hotel","Erkundung: Place des Arts, Quartier des Spectacles, Untergrundstadt (RÉSO)"]},
+      {t:"evening",label:"Abend",items:["Abendessen: L'Express, Boris Bistro oder Le Cartet"]},
+      {t:"gem",label:"Versteckte Perle",items:["Big in Japan Bar – Speakeasy mit exzellenten Cocktails"]}
+    ],
+    info:[["ÖPNV","STM: Einzelfahrt 3,75 CAD · 24h-Pass 11 CAD · 3-Tage-Pass 21 CAD"]]
+  },
+  {n:2,date:"Sa, 2. August",title:"Altstadt Montreal & Märkte",city:"montreal",cityLabel:"Montreal",
+    hotel:{name:"Courtyard Montreal Downtown",addr:"–",price:"–"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Frühstück","Jean-Talon Markt – einer der größten Freiluftmärkte Nordamerikas (Metro Orange Line)"]},
+      {t:"lunch",label:"Mittagessen",items:["La Panthère Verte – Bio-Falafel, 2153 MacKay St (15 Min)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Old Montreal Food & Drink Tour (3 Std.) – Treffpunkt Place Jacques-Cartier"]},
+      {t:"evening",label:"Abend",items:["Spaziergang am Alten Hafen","Abendessen in der Altstadt"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Café Olimpico – authentisch italienisch","Ruelle de la Visitation – Wandgemälde"]}
+    ],
+    info:[["Wetter","18–26°C, leichte Sommerkleidung"]]
+  },
+  {n:3,date:"So, 3. August",title:"Montreal Pride & Kultur",city:"montreal",cityLabel:"Montreal",
+    hotel:{name:"Courtyard Montreal Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Museum of Fine Arts, Basilika Notre-Dame oder Pointe-à-Callière Museum"]},
+      {t:"lunch",label:"Mittagessen",items:["Mandy's – kreative Salate (10 Min vom Hotel)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Montreal Pride (Fierté Montréal) – Paraden & Konzerte"]},
+      {t:"evening",label:"Abend",items:["Schwartz's Deli (Smoked Meat), Restaurant Le Mousso oder Le Lab"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Le Mal Nécessaire – Tiki-Bar","Musée des Hospitalières"]}
+    ]
+  },
+  {n:4,date:"Mo, 4. August",title:"Mont Royal & Osheaga Festival",city:"montreal",cityLabel:"Montreal",
+    hotel:{name:"Courtyard Montreal Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wanderung Mont Royal – Aussichtspunkt","St. Joseph's Oratory – größte Kirche Kanadas"]},
+      {t:"lunch",label:"Mittagessen",items:["Aux Vivres – vegane Küche, 4631 St Laurent Blvd"]},
+      {t:"afternoon",label:"Nachmittag",items:["Osheaga Music & Arts Festival – Parc Jean-Drapeau (Metro Gelbe Linie)"]},
+      {t:"evening",label:"Abend",items:["Le Vin Papillon, Joe Beef oder Foiegwa"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Parc Jean-Drapeau Hidden Waterfall","Crew Collective & Café (ehemalige Bank)"]}
+    ],
+    info:[["Tipp","Osheaga-Tickets im Voraus kaufen · Mont Royal: 2–3 Std. einplanen"]]
+  },
+  {n:5,date:"Di, 5. August",title:"Cirque du Soleil & Abschied",city:"montreal",cityLabel:"Montreal",
+    hotel:{name:"Courtyard Montreal Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Biodôme – fünf Ökosysteme","Botanischer Garten (Japanischer & Chinesischer Garten)"]},
+      {t:"lunch",label:"Mittagessen",items:["Falafel Yoni – 54 Rue Saint-Viateur O (Mile End)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Atwater Market – historischer Markt"]},
+      {t:"evening",label:"Abend",items:["Cirque du Soleil 'LUZIA' – Grand Chapiteau im Alten Hafen","Abschiedsabendessen"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Élémentaire Café","Atwater Cocktail Club"]}
+    ],
+    info:[["Hinweis","Packen für Abreise nach Quebec City am nächsten Tag"]]
+  },
+  // QUEBEC
+  {n:6,date:"Mi, 6. August",title:"Ankunft in Quebec City",city:"quebec",cityLabel:"Quebec City",
+    transport:{title:"Montreal → Quebec City",details:["Zug VIA Rail · Dauer 3,5 Std.","Preis: 98–105 CAD p.P.","Gare Centrale → Gare du Palais"]},
+    hotel:{name:"Quebec City Marriott Downtown",addr:"850 Place D'Youville, Quebec City",price:"290–380 CAD/Nacht",note:"Eingang Altstadt (Porte Saint-Jean)"},
+    grocery:"Épicerie J.A. Moisan – 699 Rue Saint-Jean (5 Min, ältester Lebensmittelladen Nordamerikas)",
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Anreise mit Zug","Transfer zum Hotel"]},
+      {t:"lunch",label:"Mittagessen",items:["Paillard – Bäckerei, 1097 Rue Saint-Jean"]},
+      {t:"afternoon",label:"Nachmittag",items:["Altstadt (Vieux-Québec)","Musée de la civilisation"]},
+      {t:"evening",label:"Abend",items:["Terrasse Dufferin","Quartier Petit Champlain"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Café Pekoe","Morrin Centre – ehem. Gefängnis"]}
+    ],
+    info:[["ÖPNV","RTC: 3,50 CAD · kostenloser 3-Tage-Pass für Hotelgäste"],["Wetter","16–24°C"]]
+  },
+  {n:7,date:"Do, 7. August",title:"Historisches Quebec",city:"quebec",cityLabel:"Quebec City",
+    hotel:{name:"Quebec City Marriott Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Citadelle de Québec – Wachablösung 10:00 Uhr","Stadtmauern (Fortifications of Québec)"]},
+      {t:"lunch",label:"Mittagessen",items:["Poutineville – berühmte Poutine, 735 Rue Saint-Jean"]},
+      {t:"afternoon",label:"Nachmittag",items:["Les Fêtes de la Nouvelle-France (New France Festival)","Alternative: Musée national des beaux-arts"]},
+      {t:"evening",label:"Abend",items:["Old Quebec City Food & Drink Tour","Alternative: Quartier Saint-Roch"]},
+      {t:"gem",label:"Versteckte Perlen",items:["deTerroir Café","Royal Battery"]}
+    ]
+  },
+  {n:8,date:"Fr, 8. August",title:"Naturwunder und Umgebung",city:"quebec",cityLabel:"Quebec City",
+    hotel:{name:"Quebec City Marriott Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Montmorency Falls – höher als Niagara, Bus 800 (30 Min)","Alternative: Île d'Orléans"]},
+      {t:"lunch",label:"Mittagessen",items:["La Petite cabane à Sucre – Ahornsirup-Spezialitäten, 94 Rue du Petit Champlain"]},
+      {t:"afternoon",label:"Nachmittag",items:["New France Festival fortsetzen","Alternative: Basilika Sainte-Anne-de-Beaupré (30 km)"]},
+      {t:"evening",label:"Abend",items:["Abendspaziergang mit Straßenkünstlern","Alternative: Bootsfahrt St. Lawrence River"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Les Cafés du Soleil","Chutes de la Chaudière"]}
+    ]
+  },
+  {n:9,date:"Sa, 9. August",title:"Kultur und Abschied",city:"quebec",cityLabel:"Quebec City",
+    hotel:{name:"Quebec City Marriott Downtown"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Plains of Abraham – Schlachtfeld & Park","Parlamentsgebäude – kostenlose Führungen"]},
+      {t:"lunch",label:"Mittagessen",items:["Queues de Castor (BeaverTails) – 47 Rue du Petit-Champlain"]},
+      {t:"afternoon",label:"Nachmittag",items:["Shopping Rue du Trésor & Rue Saint-Jean","Morrin Centre"]},
+      {t:"evening",label:"Abend",items:["Abschiedsabendessen","Packen für La Mauricie"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Cantook Café","Espace 400e","Q-de-Sac Resto Pub"]}
+    ],
+    info:[["Wichtig","Mietwagen für nächsten Tag organisieren"]]
+  },
+  // MAURICIE
+  {n:10,date:"So, 10. August",title:"Ankunft La Mauricie Nationalpark",city:"mauricie",cityLabel:"La Mauricie",
+    transport:{title:"Quebec City → La Mauricie NP",details:["Mietwagen · ca. 180 km · 2,5 Std.","Route: Autobahn 40 West, dann Route 155 Nord"]},
+    hotel:{name:"Auberge Saint-Mathieu",addr:"2081 Chemin Principal, Saint-Mathieu-du-Parc",price:"ab 160 CAD/Nacht",note:"Restaurant mit Seeblick"},
+    grocery:"Épicerie Langlois A Parc – 1921 Chemin Principal (180 m, tägl. 6–21 Uhr)",
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Anreise mit Mietwagen","Besucherzentrum","Kurze Erkundungswanderung"]},
+      {t:"lunch",label:"Mittagessen",items:["Snack Bar chez Mélo – Food Truck, 1901 Chemin Principal"]},
+      {t:"afternoon",label:"Nachmittag",items:["Kanufahren auf dem Lac Wapizagonke","Alternative: Schwimmen am Lac à la Pêche"]},
+      {t:"evening",label:"Abend",items:["Abendessen Le 2800 du parc","Sonnenuntergang am Aussichtspunkt"]},
+      {t:"gem",label:"Versteckte Perle",items:["Versteckte Buchten am Lac Wapizagonke"]}
+    ],
+    info:[["Parkeintritt","ca. 10 CAD p.P./Tag · 20 CAD Familienticket"],["Kanuverleih","ca. 40 CAD/halber Tag"],["Wetter","14–23°C, abends kühler"]]
+  },
+  {n:11,date:"Mo, 11. August",title:"Wandern und Wildtierbeobachtung",city:"mauricie",cityLabel:"La Mauricie",
+    hotel:{name:"Auberge Saint-Mathieu"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wanderung Mekinac Trail – 8 km Rundweg, 3–4 Std.","Alternative: Geführte Naturwanderung mit Parkranger"]},
+      {t:"lunch",label:"Mittagessen",items:["Le Comptoir de l'Auberge – Feinkostladen in der Auberge"]},
+      {t:"afternoon",label:"Nachmittag",items:["Wildtierbeobachtung Lac Wapizagonke (Elche, Bären, Biber)","Alternative: Fahrradtour"]},
+      {t:"evening",label:"Abend",items:["Abendessen Auberge aux Goglus","Alternative: Lagerfeuer & Sternbeobachtung"]},
+      {t:"gem",label:"Versteckte Perle",items:["Secret Lookout Point – im Besucherzentrum erfragen"]}
+    ],
+    info:[["Ausrüstung","Feste Schuhe, Wasser, Insektenschutz, Fernglas"]]
+  },
+  {n:12,date:"Di, 12. August",title:"Wassererlebnisse und Abreise",city:"mauricie",cityLabel:"La Mauricie",
+    hotel:{name:"Auberge Saint-Mathieu"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Kanu-Camping-Route erkunden","Alternative: Solitaire Lake Trail (5 km, 2–3 Std.)"]},
+      {t:"lunch",label:"Mittagessen",items:["Passion Lavande – Lavendelprodukte, St-Sévère (20 Min)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Schwimmen Lac à la Pêche","Aussichtspunkt Lac des Cinq"]},
+      {t:"evening",label:"Abend",items:["Fahrt nach Trois-Rivières (45 Min) · Mietwagen abgeben","Zug nach Ottawa (4–5 Std.)","Optional: Le Trou du Diable Microbrewery in Shawinigan"]},
+      {t:"gem",label:"Versteckte Perle",items:["Picknickplätze am Lac Édouard"]}
+    ]
+  },
+  // OTTAWA
+  {n:13,date:"Mi, 13. August",title:"Ankunft in Ottawa",city:"ottawa",cityLabel:"Ottawa",
+    transport:{title:"La Mauricie → Ottawa",details:["Mietwagen bis Trois-Rivières, dann Zug","Gesamtreisezeit: 5–6 Std.","Zugpreis: 70–90 CAD p.P."]},
+    hotel:{name:"Ottawa Marriott Hotel",addr:"100 Kent Street, Ottawa",price:"250–330 CAD/Nacht",note:"Zentrale Lage, Panoramablick obere Etagen"},
+    grocery:"Farm Boy – Innenstadt (10–15 Min)",
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Anreise mit Zug","Transfer zum Hotel"]},
+      {t:"lunch",label:"Mittagessen",items:["Mad Radish – Bowls & Salate, 116 Albert Street"]},
+      {t:"afternoon",label:"Nachmittag",items:["Innenstadt-Spaziergang","Rideau Canal (UNESCO)","ByWard Market"]},
+      {t:"evening",label:"Abend",items:["Abendessen ByWard Market","Entspannung im Hotel"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Tavern on the Falls","Corktown Footbridge"]}
+    ],
+    info:[["ÖPNV","OC Transpo: 3,75 CAD · Tagespass 10,75 CAD"],["Wetter","15–26°C"]]
+  },
+  {n:14,date:"Do, 14. August",title:"Kulturelles Ottawa",city:"ottawa",cityLabel:"Ottawa",
+    hotel:{name:"Ottawa Marriott Hotel"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Parliament Hill – Führung & Wachablösung 10:00","Peace Tower Panoramablick"]},
+      {t:"lunch",label:"Mittagessen",items:["Pure Kitchen – vegetarisch/vegan, 340 Elgin Street"]},
+      {t:"afternoon",label:"Nachmittag",items:["Wahl: Canadian Museum of History, National Gallery oder Canadian War Museum"]},
+      {t:"evening",label:"Abend",items:["Ottawa Greek Festival","Alternative: ByWard Market & Rideau Canal"]},
+      {t:"gem",label:"Versteckte Perlen",items:["My Little Cup – Café","Maplelawn Garden"]}
+    ],
+    info:[["Tipp","Donnerstags verlängerte Öffnungszeiten in nationalen Museen"]]
+  },
+  {n:15,date:"Fr, 15. August",title:"Natur und Outdoor-Aktivitäten",city:"ottawa",cityLabel:"Ottawa",
+    hotel:{name:"Ottawa Marriott Hotel"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Gatineau Park (165 km Wanderwege)","Pink Lake (3,5 km), Mackenzie King Estate, Fahrradtour"]},
+      {t:"lunch",label:"Mittagessen",items:["The Green Door – vegetarisches Buffet, 198 Main Street"]},
+      {t:"afternoon",label:"Nachmittag",items:["Kanu Rideau Canal · Canadian Museum of Nature · ByWard Market Food Tour"]},
+      {t:"evening",label:"Abend",items:["Play Food & Wine, Riviera oder Whalesbone"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Mer Bleue Bog – Bohlenwege","Bar Lupulus' Patio"]}
+    ],
+    info:[["Kanuverleih","Dow's Lake Pavilion · ca. 40 CAD/2 Std."]]
+  },
+  {n:16,date:"Sa, 16. August",title:"Letzte Erkundungen und Abreise",city:"ottawa",cityLabel:"Ottawa",
+    hotel:{name:"Ottawa Marriott Hotel"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Agriculture Museum, Royal Canadian Mint oder Major's Hill Park"]},
+      {t:"lunch",label:"Mittagessen",items:["Chickpeas – Falafel & Hummus, ByWard Market"]},
+      {t:"afternoon",label:"Nachmittag",items:["CF Rideau Centre","Bytown Museum","Major's Hill Park"]},
+      {t:"evening",label:"Abend",items:["Zug VIA Rail nach Toronto · 4,5 Std. · 59–121 CAD","→ Toronto Union Station"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Drip House","Stück des Eiffelturms im Bytown Museum"]}
+    ]
+  },
+  // TORONTO
+  {n:17,date:"So, 17. August",title:"Ankunft und Innenstadt Toronto",city:"toronto",cityLabel:"Toronto",
+    transport:{title:"Ottawa → Toronto",details:["Zug VIA Rail · 4,5 Std.","→ Toronto Union Station"]},
+    hotel:{name:"Hilton Toronto",addr:"145 Richmond Street West, Toronto",price:"280–350 CAD/Nacht",note:"Zentrale Lage, Innenpool"},
+    grocery:"Rabba Fine Foods – Innenstadt (10–15 Min)",
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Ankunft & Transfer","Wahl: CN Tower oder Royal Ontario Museum"]},
+      {t:"lunch",label:"Mittagessen",items:["Fresh Restaurants – pflanzlich/bio (10–15 Min)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Harbourfront & Ontario-See","Fährfahrt Toronto Islands","Harbourfront Centre"]},
+      {t:"evening",label:"Abend",items:["Entertainment District: Theater (Mirvish), Dinner in King West"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Graffiti Alley","Boxcar Social"]}
+    ],
+    info:[["ÖPNV","TTC: 3,30 CAD · Tagespass 13,50 CAD"],["Tipps","CN Tower Tickets vorab · Fähre 8,50 CAD ab Jack Layton Terminal"]]
+  },
+  {n:18,date:"Mo, 18. August",title:"Kultur und Geschichte",city:"toronto",cityLabel:"Toronto",
+    hotel:{name:"Hilton Toronto"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Art Gallery of Ontario oder Casa Loma"]},
+      {t:"lunch",label:"Mittagessen",items:["Kupfert & Kim – weizen-/fleischfrei, Finanzviertel"]},
+      {t:"afternoon",label:"Nachmittag",items:["Kensington Market & Chinatown – Vintage, Cafés, Street Art"]},
+      {t:"evening",label:"Abend",items:["Distillery District – viktorianische Industriegebäude","Optional: Bootstour Ontario-See"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Cloud Gardens","Café Apotek"]}
+    ],
+    info:[["Tipp","AGO Mi 18–21 Uhr kostenlos · Kensington Sonntags autofrei"]]
+  },
+  {n:19,date:"Di, 19. August",title:"Natur und Wissenschaft",city:"toronto",cityLabel:"Toronto",
+    hotel:{name:"Hilton Toronto"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Ontario Science Centre oder High Park"]},
+      {t:"lunch",label:"Mittagessen",items:["Impact Kitchen – glutenfrei/paleo/vegan"]},
+      {t:"afternoon",label:"Nachmittag",items:["Wahl: Queen Street West oder Ripley's Aquarium"]},
+      {t:"evening",label:"Abend",items:["Blue Jays im Rogers Centre","Live-Musik: Horseshoe Tavern oder The Rex"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Allan Gardens – Gewächshaus","The Tchotchke House"]}
+    ]
+  },
+  {n:20,date:"Mi, 20. August",title:"Tagesausflug Niagarafälle",city:"toronto",cityLabel:"Toronto",
+    hotel:{name:"Hilton Toronto"},
+    schedule:[
+      {t:"morning",label:"Ganztägig",items:["Anreise: organisierte Tour (100–150 CAD), Mietwagen (1,5 Std.) oder GO Train + WEGO Bus","Hornblower Niagara Cruise","Journey Behind the Falls","Skylon Tower","Niagara Parkway"]},
+      {t:"lunch",label:"Mittagessen",items:["Mitgebrachte Snacks (z.B. Nutbar) oder Imbiss vor Ort"]},
+      {t:"evening",label:"Abend",items:["Option 1: Rückkehr nach Toronto","Option 2: Niagara-on-the-Lake – Weingüter & Restaurants"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Weinkellner Restaurant","Niagara Glen Nature Reserve"]}
+    ],
+    info:[["Hinweis","Wasserdichte Kleidung · letzte GO-Züge ca. 22:30 Uhr · 100–200 CAD p.P."]]
+  },
+  {n:21,date:"Do, 21. August",title:"Moderne Kultur und Unterhaltung",city:"toronto",cityLabel:"Toronto",
+    hotel:{name:"Hilton Toronto"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Museum of Contemporary Art oder Graffiti Alley"]},
+      {t:"lunch",label:"Mittagessen",items:["Fresh Restaurants (anderer Standort)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Canadian National Exhibition (CNE) – Exhibition Place (Straßenbahn 509/511)"]},
+      {t:"evening",label:"Abend",items:["Second City Comedy Show","Rooftop Bar: The Porch, Lavelle oder Kost"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Queen Garden Cafe","Chester Hill Lookout"]}
+    ]
+  },
+  {n:22,date:"Fr, 22. August",title:"Abschied von Toronto",city:"toronto",cityLabel:"Toronto",
+    hotel:{name:"Hilton Toronto"},
+    schedule:[
+      {t:"morning",label:"Vormittag",items:["Wahl: Yorkville oder Bata Shoe Museum"]},
+      {t:"lunch",label:"Mittagessen",items:["Kupfert & Kim (anderer Standort)"]},
+      {t:"afternoon",label:"Nachmittag",items:["Eaton Centre","Alternative: Kensington Market"]},
+      {t:"evening",label:"Abend",items:["Transfer zum Flughafen: UP Express (25 Min, 12,35 CAD) oder Taxi/Uber (30–45 Min)","Abreise"]},
+      {t:"gem",label:"Versteckte Perlen",items:["Bata Shoe Museum (13.000 Schuhe)","Postman Waffles"]}
+    ],
+    info:[["Wichtig","Mind. 3 Std. vor int. Flug am Flughafen · Check-out 12:00"]]
+  }
+];
+
+const cityColors={montreal:"var(--montreal)",quebec:"var(--quebec)",mauricie:"var(--mauricie)",ottawa:"var(--ottawa)",toronto:"var(--toronto)"};
+
+const container=document.getElementById("days");
+
+function renderDay(d){
+  const color=cityColors[d.city];
+  let html=`<article class="day" data-city="${d.city}" id="day-${d.n}">
+    <div class="day-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="day-num" style="background:${color}"><span class="n">${d.n}</span><span class="l">Tag</span></div>
+      <div class="day-info">
+        <h3>${d.title}</h3>
+        <div class="sub">${d.date} · ${d.cityLabel}</div>
+      </div>
+      <div class="day-toggle">▾</div>
+    </div>
+    <div class="day-body">`;
+
+  if(d.transport){
+    html+=`<div class="section"><h4>Transport</h4><div class="transport"><h5>🚂 ${d.transport.title}</h5><ul>`;
+    d.transport.details.forEach(x=>html+=`<li>${x}</li>`);
+    html+=`</ul></div></div>`;
+  }
+
+  if(d.hotel){
+    html+=`<div class="section"><h4>Unterkunft</h4><div class="block"><strong>🏨 ${d.hotel.name}</strong>`;
+    if(d.hotel.addr&&d.hotel.addr!=="–")html+=`<div class="muted">${d.hotel.addr}</div>`;
+    if(d.hotel.price&&d.hotel.price!=="–")html+=`<div class="muted">${d.hotel.price}</div>`;
+    if(d.hotel.note)html+=`<div class="muted">${d.hotel.note}</div>`;
+    html+=`</div>`;
+    if(d.grocery)html+=`<div class="block"><strong>🛒 Lebensmittelladen</strong><div class="muted">${d.grocery}</div></div>`;
+    html+=`</div>`;
+  }
+
+  if(d.schedule){
+    html+=`<div class="section"><h4>Tagesplan</h4>`;
+    d.schedule.forEach(s=>{
+      const gem=s.t==="gem"?" gem-block":"";
+      html+=`<div class="block${gem}"><div class="timeslot"><span class="time ${s.t}">${s.label}</span><div><ul>`;
+      s.items.forEach(i=>html+=`<li>${i}</li>`);
+      html+=`</ul></div></div></div>`;
+    });
+    html+=`</div>`;
+  }
+
+  if(d.info&&d.info.length){
+    html+=`<div class="section"><h4>Praktische Informationen</h4><div class="info-grid">`;
+    d.info.forEach(([k,v])=>html+=`<div class="info-card"><strong>${k}</strong>${v}</div>`);
+    html+=`</div></div>`;
+  }
+
+  html+=`</div></article>`;
+  return html;
+}
+
+container.innerHTML=days.map(renderDay).join("");
+
+document.querySelectorAll("nav.cities button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("nav.cities button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const city=btn.dataset.city;
+    document.querySelectorAll(".day").forEach(d=>{
+      d.classList.toggle("hidden",city!=="all"&&d.dataset.city!==city);
+    });
+    window.scrollTo({top:document.querySelector("nav.cities").offsetTop+60,behavior:"smooth"});
+  });
+});
+
+function toggleAll(open){
+  document.querySelectorAll(".day:not(.hidden)").forEach(d=>{
+    d.classList.toggle("open",open);
+  });
+}
+
+// Open first day by default
+document.querySelector(".day").classList.add("open");
+</script>
+
+</body>
+</html>
