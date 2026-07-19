@@ -102,6 +102,9 @@
   .rt-list li.rt-gem b{color:#a5781f}
   .rt-d{color:var(--muted);font-size:12px}
   .rt-btn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 12px;border-radius:10px}
+  .rt-list li.rt-part{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--maple);padding:9px 0 1px}
+  .rt-list li.rt-transfer{color:var(--muted);font-size:12px;gap:5px;padding:3px 0 4px 3px}
+  .rt-list li.rt-transfer b{color:var(--ink)}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -494,18 +497,67 @@ const STAGES=[
    {nm:'CF Carrefour Laval',d:'eines der größten Malls Québecs (Laval)',q:'CF Carrefour Laval'}
   ],
   days:[
-   {iso:'2026-07-31',dt:'Fr 31.07.',title:'Ankunft & Vieux-Montréal',slots:[['🛬','Ankunft & Nachmittag'],['🌆','Abend']],items:[
+   {iso:'2026-07-31',dt:'Fr 31.07.',title:'Ankunft & Vieux-Montréal',slots:[['🛬','Ankunft & Nachmittag'],['🌆','Abend']],
+    route:{walk:true,mode:'🚶 zu Fuß · Ankunftsnachmittag & Abend',
+     lead:'Nach dem Check-in locker das Viertel rund ums Hotel erlaufen – alles in Vieux-Montréal fußläufig; abends kurz nach Norden zur Kulturmeile und zurück.',
+     steps:[
+      {part:'Nachmittag'},
+      {n:'Crew Collective & Café',d:'Café in alter Bankhalle, 360 Saint-Jacques (~5 Min)',q:'Crew Collective Café Montréal'},
+      {n:'Vieux-Port & Place Jacques-Cartier',d:'Uferpromenade, Straßenkünstler (~7 Min)',q:'Vieux-Port Montréal'},
+      {transfer:'~15 Min zu Fuß nach Norden oder Metro Orange (Place-d\'Armes → Place-des-Arts)'},
+      {part:'Abend'},
+      {n:'Quartier des Spectacles / Place des Arts',d:'Brunnenfeld & Open-Air-Kultur',q:'Place des Arts Montréal'},
+      {transfer:'~12 Min zurück Richtung Altstadt'},
+      {n:'Cité Mémoire',d:'Gratis-Videoprojektionen in den Gassen (Fr–So, nach Einbruch der Dunkelheit)',q:'Cité Mémoire Montréal',gem:true}
+     ]},
+    items:[
      I('Café Saint-Henri','cafe','Erster guter Kaffee nach der Ankunft','Café Saint-Henri Montréal','n','https://sainthenri.ca'),
      I('Crew Collective & Café','cafe','🔁 2025-Plan · Café in alter Banken-Kathedrale · 360 Saint-Jacques','Crew Collective Café Montréal','c','https://www.crewcollectivecafe.com'),
      I('Quartier des Spectacles / Place des Arts','sight','🔁 2025-Plan · Brunnenfeld, Open-Air-Kultur · zwischen Hotel und Plateau','Place des Arts Montréal','c','https://www.quartierdesspectacles.com'),
      I('Vieux-Port & Place Jacques-Cartier','sight','Abendspaziergang, Straßenkünstler, Terrassen','Vieux-Port Montréal','n','https://www.vieuxportdemontreal.com'),
      I('Cité Mémoire','sight','Gratis Outdoor-Videoprojektionen in den Gassen (Fr/Sa/So abends)','Cité Mémoire Montréal','v','https://www.montrealenhistoires.com')]},
-   {iso:'2026-08-01',dt:'Sa 01.08.',title:'Hub: Vieux-Montréal',items:[
+   {iso:'2026-08-01',dt:'Sa 01.08.',title:'Hub: Vieux-Montréal',
+    route:{walk:true,mode:'🚶 zu Fuß + Metro · ganzer Tag',
+     lead:'Vormittags die Altstadt zu Fuß – die 💎-Perlen liegen direkt am Weg; mittags per Metro zum Marché Atwater am Lachine-Kanal, abends ins Plateau.',
+     steps:[
+      {part:'Vormittag · Vieux-Montréal'},
+      {n:'Basilique Notre-Dame',d:'neugotisches Meisterwerk (~5 Min vom Hotel)',q:'Basilique Notre-Dame Montréal'},
+      {n:'Cours Le Royer',d:'begrünter, stiller Innenhof (~3 Min)',q:'Cours Le Royer Montréal',gem:true},
+      {n:'Chapelle Notre-Dame-de-Bon-Secours',d:'Turm mit Hafenblick (~5 Min)',q:'Chapelle Notre-Dame-de-Bon-Secours Montréal',gem:true},
+      {n:'Tour de l\'Horloge',d:'Uhrturm & Stadtstrand am Quai (~6 Min)',q:'Tour de l\'Horloge Montréal',gem:true},
+      {n:'Bota Bota',d:'Spa-Schiff am Alten Hafen (optional, reservieren)',q:'Bota Bota Montréal'},
+      {transfer:'Metro (Square-Victoria → Lionel-Groulx → Charlevoix) oder ~15 Min zu Fuß zum Marché Atwater'},
+      {part:'Nachmittag · Lachine-Kanal'},
+      {n:'Marché Atwater',d:'Markthalle + Satay Brothers, Picknick am Kanal',q:'Marché Atwater Montréal'},
+      {transfer:'abends Metro Grün ins Plateau (Rue Saint-Denis)'},
+      {part:'Abend'},
+      {n:'L\'Express',d:'klassische französische Brasserie (reservieren)',q:'L\'Express Montréal'}
+     ]},
+    items:[
      I('Basilika Notre-Dame','sight','Neugotisches Meisterwerk, blaue Gewölbe','Basilique Notre-Dame Montréal','n','https://www.basiliquenotredame.ca'),
      I('Marché Atwater','market','Art-déco-Uhrturm; Stand Satay Brothers','Marché Atwater Montréal','v','https://www.marchespublics-mtl.com'),
      I('Bota Bota','spa','Spa auf einem Schiff (optional)','Bota Bota Montréal','n','https://botabota.ca'),
      I("L'Express",'food','Klassische französische Brasserie, Rue Saint-Denis','L\'Express Montréal','n','https://restaurantlexpress.com')]},
-   {iso:'2026-08-02',dt:'So 02.08.',title:'Hub: Mont-Royal & Mile End',items:[
+   {iso:'2026-08-02',dt:'So 02.08.',title:'Hub: Mont-Royal & Mile End',
+    route:{walk:true,mode:'🚶 Metro + zu Fuß · ganzer Tag',
+     lead:'Vormittags auf den Mont-Royal (Aussicht + ruhige Waldpfade), sonntags die Tam-Tams; nachmittags hinunter ins kreative Mile End – Bagels, Buchläden, wilde Stadtwiese.',
+     steps:[
+      {transfer:'Metro Orange → Mont-Royal, dann Bus 11 oder ~20 Min Aufstieg zum Belvédère'},
+      {part:'Vormittag · Mont-Royal'},
+      {n:'Kondiaronk-Belvédère',d:'klassischer Skyline-Blick am Chalet',q:'Kondiaronk Belvedere Montréal'},
+      {n:'Mont-Royal Summit Loop',d:'ruhige Waldpfade zur Croix (~30 Min)',q:'Mont Royal summit loop trail',gem:true},
+      {n:'Tam-Tams du Mont-Royal',d:'sonntags: Trommelkreis am Cartier-Denkmal',q:'Tam-Tams Mont-Royal Montréal'},
+      {transfer:'~15 Min zu Fuß nordöstlich hinunter ins Mile End'},
+      {part:'Nachmittag · Mile End'},
+      {n:'St-Viateur & Fairmount Bagel',d:'die ewige Bagel-Debatte',q:'St-Viateur Bagel Montréal'},
+      {n:'La Drogheria Fine',d:'Gnocchi am Walk-up-Fenster (~2 Min)',q:'La Drogheria Fine Montréal',gem:true},
+      {n:'Librairie Drawn & Quarterly',d:'Kult-Indie-Buchladen',q:'Drawn and Quarterly Montréal',gem:true},
+      {n:'Le Champ des Possibles',d:'wilde Stadtwiese hinter den Gleisen',q:'Champ des Possibles Montréal',gem:true},
+      {n:'Café Olimpico',d:'italienischer Espresso, immer voll',q:'Café Olimpico Montréal'},
+      {part:'Abend'},
+      {n:'Dieu du Ciel!',d:'weltbekannte Brauerei (29 Laurier O.)',q:'Dieu du Ciel Montréal'}
+     ]},
+    items:[
      I('Tam-Tams du Mont-Royal','sight','Freier Trommelkreis, ab ~10:30; George-Étienne-Cartier-Denkmal','Mont Royal George-Étienne-Cartier Monument','v','https://www.lemontroyal.qc.ca'),
      I('Kondiaronk-Belvedere','view','Skyline-Aussicht','Kondiaronk Belvedere Montréal','n'),
      I('St-Viateur Bagel','bakery','263 rue St-Viateur O. · tägl. 6–24 Uhr','St-Viateur Bagel 263 Montréal','v','https://stviateurbagel.com'),
@@ -513,7 +565,26 @@ const STAGES=[
      I('Mile End Läden','shop','Buchläden, Plattenläden, Boutiquen, Galerien','Mile End Montréal','n'),
      I('Dieu du Ciel!','beer','29 Laurier O. · weltbekannte Brauerei','Dieu du Ciel 29 Laurier Montréal','v','https://dieuduciel.com'),
      I('Café Olimpico','cafe','🔁 2025-Plan · italienische Kaffee-Institution · 124 Saint-Viateur O.','Café Olimpico Montréal','c','https://cafeolimpico.com')]},
-   {iso:'2026-08-03',dt:'Mo 03.08.',title:'Hub: Little Italy & Plateau',items:[
+   {iso:'2026-08-03',dt:'Mo 03.08.',title:'Hub: Little Italy & Plateau',
+    route:{walk:true,mode:'🚶 Metro + zu Fuß · ganzer Tag',
+     lead:'Vormittags Little Italy rund um den Jean-Talon-Markt, nachmittags südwärts ins Plateau (Park, Murals, Läden), abends deftige Küche.',
+     steps:[
+      {transfer:'Metro Orange → Jean-Talon (~15 Min ab Hotel)'},
+      {part:'Vormittag · Little Italy'},
+      {n:'Marché Jean-Talon',d:'einer der größten Freiluftmärkte Nordamerikas',q:'Marché Jean-Talon Montréal'},
+      {n:'Église Madonna della Difesa',d:'Herzkirche mit kuriosem Fresko (~4 Min)',q:'Madonna della Difesa Montréal',gem:true},
+      {n:'MELLÖN Brasserie',d:'Mikrobrauerei direkt am Markt (Mittag)',q:'MELLÖN Brasserie Montréal'},
+      {transfer:'Metro Orange südwärts (Jean-Talon → Mont-Royal) oder ~20 Min zu Fuß ins Plateau'},
+      {part:'Nachmittag · Plateau'},
+      {n:'Parc La Fontaine',d:'schönster Stadtpark mit Teich',q:'Parc La Fontaine Montréal',gem:true},
+      {n:'Ruelle de la Visitation',d:'Mural-Gasse (~5 Min)',q:'Ruelle de la Visitation Montréal',gem:true},
+      {n:'Rue Saint-Denis & Plateau-Treppen',d:'Läden + typische geschwungene Außentreppen',q:'Rue Saint-Denis Plateau Montréal'},
+      {n:'Isle de Garde',d:'Brauerei mit zwei Terrassen',q:'Isle de Garde Montréal'},
+      {part:'Abend'},
+      {n:'Au Pied de Cochon / Joe Beef',d:'deftige Québec-Küche (unbedingt reservieren)',q:'Au Pied de Cochon Montréal'},
+      {n:'Big in Japan',d:'goldener Speakeasy zum Abschluss',q:'Big in Japan Bar Montréal',gem:true}
+     ]},
+    items:[
      I('Marché Jean-Talon','market','7070 Henri-Julien · Mo–Sa 8–18, So 8–17','Marché Jean-Talon Montréal','v','https://www.marchespublics-mtl.com'),
      I('MELLÖN Brasserie','beer','7141 Saint-André · direkt am Markt','MELLÖN Brasserie Montréal','v','https://mellonbrasserie.ca'),
      I('Isle de Garde','beer','1039 Beaubien E. · zwei Terrassen','Isle de Garde Montréal','v','https://www.isledegarde.com'),
@@ -522,7 +593,21 @@ const STAGES=[
      I('Ruelle de la Visitation','sight','🔁 2025-Plan · Mural-Gasse im Plateau · Streetart','Ruelle de la Visitation Montréal','c'),
      I('Joe Beef / Le Vin Papillon','food','🔁 2025-Plan · legendäre Adressen in Little Burgundy · Reservierung nötig','Joe Beef Montréal','c','https://joebeef.com'),
      I('Big in Japan / Le Mal Nécessaire','food','🔁 2025-Plan · Cocktail-Perlen: Speakeasy (4175 Saint-Laurent) bzw. Tiki-Bar (Chinatown)','Big in Japan Bar Montréal','c')]},
-   {iso:'2026-08-04',dt:'Di 04.08.',title:'Hub: Mont-Royal-Westflanke & Lachine-Kanal (langsamer Tag)',items:[
+   {iso:'2026-08-04',dt:'Di 04.08.',title:'Hub: Mont-Royal-Westflanke & Lachine-Kanal (langsamer Tag)',
+    route:{walk:true,mode:'🚶 Metro + zu Fuß · entspannter Tag',
+     lead:'Bewusst langsam: vormittags Oratoire & Outremont, nachmittags am Lachine-Kanal ausklingen. Alternativ als Ost-Halbtag: Jardin botanique + Biodôme (eigener Ausflug).',
+     steps:[
+      {transfer:'Metro Blau → Côte-des-Neiges oder Bus 165 zum Oratoire (~25 Min)'},
+      {part:'Vormittag · West'},
+      {n:'Oratoire Saint-Joseph',d:'Kanadas größte Kuppel, Weitblick',q:'Oratoire Saint-Joseph Montréal'},
+      {n:'Outremont / Mile End',d:'Cafés, Buchläden, ruhige Straßen',q:'Outremont Montréal'},
+      {transfer:'Metro Richtung Lionel-Groulx / Atwater (~20 Min)'},
+      {part:'Nachmittag · Lachine-Kanal'},
+      {n:'Atwater Library',d:'historische Bibliothek, stiller Lesesaal',q:'Atwater Library Montréal',gem:true},
+      {n:'Lachine-Kanal-Uferweg',d:'Bummel oder Leihrad am Wasser',q:'Lachine Canal Montréal',gem:true},
+      {n:'Bota Bota Spa',d:'nordisches Spa am Alten Hafen (Abschluss, reservieren)',q:'Bota Bota Montréal'}
+     ]},
+    items:[
      I('Oratoire Saint-Joseph','sight','Größter Schrein Kanadas · Kuppel mit Weitblick','Oratoire Saint-Joseph Montréal','n','https://www.saint-joseph.org'),
      I('Outremont / Mile End','shop','Cafés, Buchläden, Boutiquen (Puffer/Slow)','Outremont Montréal','n'),
      I('Bota Bota Spa','spa','Nordisches Spa auf einem Schiff (optional)','Bota Bota Montréal','n','https://botabota.ca'),
@@ -580,7 +665,7 @@ const STAGES=[
      I('Le Lapin Sauté','food','Kaminfeuer, Kaninchen-Spezialitäten','Le Lapin Sauté Québec','n','https://www.quartierpetitchamplain.com/fr/commercants/le-lapin-saute/'),
      I('Batterie Royale','sight','🔁 2025-Plan · kleine Kanonenbastion unterhalb der Place Royale','Batterie Royale Québec','c')]},
    {iso:'2026-08-06',dt:'Do 06.08.',title:'Hub: Oberstadt & Wälle',
-    route:{mode:'🚶 zu Fuß · ~4,5 km Rundweg (gut ein halber Tag +)',from:'77 rue Saint-Vallier Est Québec',
+    route:{walk:true,mode:'🚶 zu Fuß · ~4,5 km Rundweg (gut ein halber Tag +)',from:'77 rue Saint-Vallier Est Québec',
      lead:'Von der Unterkunft in Saint-Roch hinauf in die ummauerte Oberstadt und als Schleife über die Klippe zurück – die 💎-Perlen liegen direkt am Weg, kein Umweg nötig.',
      steps:[
       {n:'Hôtel du Parlement',d:'Start Oberstadt · Bronzefiguren-Fassade (~15 Min Aufstieg zu Fuß oder Bus 1)',q:'Hôtel du Parlement Québec'},
@@ -1422,9 +1507,17 @@ function routeHtml(d,s){
   const r=d.route; if(!r) return '';
   const from=r.from||stageBaseQ(s);
   const steps=r.steps||[];
-  const dir=[from, ...steps.map(x=>x.q||x.n)];
-  const url='https://www.google.com/maps/dir/'+dir.map(encodeURIComponent).join('/');
-  const li=steps.map((x,i)=>`<li class="${x.gem?'rt-gem':''}"><span class="rt-n">${x.gem?'💎':(i+1)}</span><div><b>${esc(x.n)}</b>${x.d?` <span class="rt-d">· ${esc(x.d)}</span>`:''}</div></li>`).join('');
+  const q=[]; let n=0, li='';
+  steps.forEach(x=>{
+    if(x.part){ li+=`<li class="rt-part">${esc(x.part)}</li>`; return; }
+    if(x.transfer){ li+=`<li class="rt-transfer">↳ <span><b>Übergang:</b> ${esc(x.transfer)}</span></li>`; return; }
+    n++; q.push(x.q||x.n);
+    li+=`<li class="${x.gem?'rt-gem':''}"><span class="rt-n">${x.gem?'💎':n}</span><div><b>${esc(x.n)}</b>${x.d?` <span class="rt-d">· ${esc(x.d)}</span>`:''}</div></li>`;
+  });
+  const enc=encodeURIComponent, mode=r.walk?'walking':'driving';
+  let url='https://www.google.com/maps/dir/?api=1&travelmode='+mode+'&origin='+enc(from);
+  if(q.length){ url+='&destination='+enc(q[q.length-1]); const mids=q.slice(0,-1); if(mids.length) url+='&waypoints='+mids.map(enc).join('%7C'); }
+  else { url+='&destination='+enc(from); }
   return `<div class="dayroute">
     <div class="rt-head">🗺️ <b>Tagesroute</b>${r.mode?`<span class="rt-mode">${esc(r.mode)}</span>`:''}</div>
     ${r.lead?`<div class="rt-lead">${esc(r.lead)}</div>`:''}
