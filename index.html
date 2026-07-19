@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#a01e1e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -279,6 +280,23 @@
   .calcell.sel{box-shadow:0 0 0 2px var(--maple) inset}
   .calcell .evdot{position:absolute;top:3px;right:4px;font-size:9px}
   .caldetail{margin-top:14px}
+  /* Übernachtungen-Tab */
+  .routebtn{display:block;text-align:center;text-decoration:none;background:var(--blue);color:#fff;font-weight:700;font-size:13.5px;border-radius:12px;padding:11px 14px;margin:0 0 12px;box-shadow:var(--shadow)}
+  .stayhead{font-size:16px;margin:16px 2px 8px}
+  .staybk{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .staybk-h{display:flex;align-items:center;gap:10px;padding:12px 14px 2px}
+  .staybk-h .badge{background:var(--maple);color:#fff;font-size:12.5px;font-weight:700;border-radius:8px;min-width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px;flex:none}
+  .staybk-h .sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:1px}
+  .staybk-nm{font-weight:700;font-size:15px}
+  .staybody{padding:0 14px 12px}
+  .stayarea{font-size:12.5px;background:var(--soft2);border:1px solid var(--line);border-radius:10px;padding:8px 11px;margin:2px 0 10px;line-height:1.5}
+  .stayarea b{color:var(--ink)}
+  .stayh{border-top:1px solid var(--line);padding:9px 0}
+  .stayh:first-of-type{border-top:0}
+  .stayh-nm{font-size:13.5px;font-weight:700}
+  .stayh-price{font-weight:600;color:var(--green);font-size:12px;margin-left:6px;white-space:nowrap}
+  .stayh-meta{font-size:12px;color:var(--muted);margin-top:1px;line-height:1.45}
+  .stayh-links{margin-top:5px;font-size:12px}
   /* Druck / PDF */
   #printArea{display:none}
   @media print{
@@ -331,6 +349,7 @@
   <button data-tab="today" class="active">📅 Heute</button>
   <button data-tab="cal">📆 Kalender</button>
   <button data-tab="plan">📍 Plan</button>
+  <button data-tab="stays">🛏️ Hotels</button>
   <button data-tab="story">📖 Bericht</button>
   <button data-tab="map">🗺️ Karte</button>
   <button data-tab="events">🎉 Events</button>
@@ -349,6 +368,7 @@
     <div class="chips" id="chips"></div>
     <div id="planList"></div>
   </div>
+  <div id="stays" class="pane"></div>
   <div id="story" class="pane"></div>
   <div id="map" class="pane"></div>
   <div id="events" class="pane"></div>
@@ -462,7 +482,15 @@ const STAGES=[
    I('Deschambault-Grondines','sight','Alte Windmühle','Moulin de Grondines','n','https://deschambault-grondines.com/moulin-banal-de-grondines'),
    I('Batiscan','sight','Altes Pfarrhaus, kostümierte Führungen','Vieux presbytère Batiscan','n','https://presbyterebatiscan.recitsquifontjaser.com')]},
  {badge:'2',name:'Québec City',sub:'Mi 05.08.–So 09.08. · 4 Nächte',
-  hotel:'Hotel-Viertel: Vieux-Québec (in den Mauern) oder hip: Saint-Roch.',
+  hotel:'Gebucht im Quartier Saint-Roch (Unterstadt) – hippes Viertel mit Cafés, Läden & Mikrobrauereien.',
+  booking:{hotel:'Unterkunft Québec · Quartier Saint-Roch',addr:'77 rue Saint-Vallier Est, G1K 3N9',
+    inn:'05.08.2026',out:'09.08.2026',nights:4,q:'77 rue Saint-Vallier Est Québec',
+    note:'Anreise mit Mietwagen ab Montréal (05.08.) · Check-out So 09.08., weiter Richtung Charlevoix.',
+    markets:[
+      {nm:'Métro Plaza Saint-Roch',d:'~700 m · ~9 Min',q:'Metro Plaza Saint-Roch Québec'},
+      {nm:'Grand Marché de Québec (ExpoCité)',d:'~2,5 km',q:'Grand Marché de Québec'},
+      {nm:'Épicerie J.A. Moisan (699 rue St-Jean)',d:'~1,2 km · älteste Épicerie',q:'J.A. Moisan Québec'}
+    ]},
   parking:'Vieux-Québec: Stationnement Hôtel-de-Ville (29 Côte de la Fabrique) ~20–22 CAD/Tag oder Place D\'Youville (965 Place D\'Youville) ~18–20 CAD/24 h, nachts günstiger (unbestätigt) · Live-Preise via App „Copilote" der Ville de Québec.',
   transit:{city:'(RTC)',txt:'Altstadt bestens zu Fuß; Bus RTC nur für entfernte Viertel (Saint-Roch, Montcalm/MNBAQ) · Einzelfahrt 3,85 CAD, Tagespass 10,50 CAD · App „RTC Nomade paiement" (Tarife ab 07/2026)',url:'https://www.rtcquebec.ca/'},
   days:[
@@ -568,18 +596,19 @@ const STAGES=[
   items:[I('Anreise Toronto','hotel','Hotel beziehen, Abend im Viertel','Toronto','c')]},
  {badge:'7',name:'Toronto + Niagara',sub:'Mo 17.08.–Sa 22.08. · 5 Nächte',
   hotel:'Hotel-Viertel: Distillery District/Old Town oder West Queen West.',
-  parking:'Mietwagen-Rückgabe schon am 18.08. (Niagara-Tag) → Toronto danach autofrei. Für den Niagara-Tag/die Ankunft: Green P Carpark 267 (70 Distillery Lane) Tagesmax. 20 CAD; am St. Lawrence Market (92 Front St E) Tagesmax. 9 CAD (Sa erste 2 Std. 1 CAD/Std.).',
+  parking:'Mietwagen-Rückgabe am 19.08. am Flughafen Toronto Pearson (YYZ) → Toronto danach autofrei (UP Express/TTC). Solange das Auto da ist (Ankunft + Niagara-Tag): Green P Carpark 267 (70 Distillery Lane) Tagesmax. 20 CAD; am St. Lawrence Market (92 Front St E) Tagesmax. 9 CAD (Sa erste 2 Std. 1 CAD/Std.).',
   transit:{city:'(TTC)',txt:'U-Bahn, Streetcar & Bus · Einzelfahrt 3,30 CAD (Presto/kontaktlos), DayPass 13,50 CAD · Union↔Flughafen YYZ mit UP Express 12,35 CAD (9,25 CAD Presto/kontaktlos), ~28 Min, alle 15 Min',url:'https://www.ttc.ca/'},
   days:[
-   {iso:'2026-08-18',dt:'Di 18.08.',title:'Hub: Niagara-Tag + Mietwagen-Rückgabe',items:[
+   {iso:'2026-08-18',dt:'Di 18.08.',title:'Hub: Niagara-Tag (mit Mietwagen)',items:[
      I('Niagarafälle','sight','~130 km / 1,5 h Fahrt','Niagara Falls','n','https://www.niagaraparks.com'),
      I('Niagara-Erlebnisse (Fälle)','sight','🔁 2025-Plan · Niagara City Cruises (Boot bis an den Hufeisenfall) · Journey Behind the Falls (Tunnel) · Aussicht Skylon Tower','Niagara City Cruises','c','https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/'),
      I('Niagara Parkway (Scenic) & Whirlpool Aero Car','view','Flussstraße NOTL↔Fälle · Aero Car 3850 Niagara Pkwy · Apr–Nov, ~9–18 Uhr','Whirlpool Aero Car Niagara','v','https://www.niagaraparks.com/visit/attractions/whirlpool-aero-car'),
      I('Niagara Glen Nature Reserve','nature','🔁 2025-Plan · Wanderpfade in der Flussschlucht','Niagara Glen Nature Reserve','c','https://www.niagaraparks.com/visit/attractions/niagara-glen'),
      I('Niagara-on-the-Lake Weingüter','wine','Inniskillin, Jackson-Triggs, Peller, Trius, Two Sisters, Ravine, Stratus · Eiswein','Niagara-on-the-Lake wineries','v','https://www.wineriesofniagaraonthelake.com'),
      I('Shaw Festival (optional)','sight','Theater · Saison läuft · u.a. Amadeus, Funny Girl, Sleuth · NOTL','Shaw Festival Niagara-on-the-Lake','v','https://www.shawfest.com'),
-     I('Mietwagen abgeben','hotel','Nach Rückkehr in Toronto · danach autofrei','Toronto','c')]},
-   {iso:'2026-08-19',dt:'Mi 19.08.',title:'Hub: Old Town & Distillery',items:[
+     I('Auto behalten','hotel','Rückgabe erst am 19.08. am Flughafen YYZ – heute noch flexibel mit dem Auto unterwegs','Toronto','c')]},
+   {iso:'2026-08-19',dt:'Mi 19.08.',title:'Hub: Old Town & Distillery · Mietwagen-Rückgabe',items:[
+     I('Mietwagen abgeben (YYZ)','hotel','Rückgabe am Flughafen Toronto Pearson · danach zurück in die City mit UP Express (~28 Min) · Toronto ab jetzt autofrei','Toronto Pearson Airport','c'),
      I('St. Lawrence Market','market','93 Front St E · Di–Fr 9–19, Sa 7–17, So 10–17, Mo zu · Peameal Bacon Sandwich (Carousel Bakery)','St. Lawrence Market Toronto','v','https://www.stlawrencemarket.com'),
      I('Distillery District','shop','Viktorianische Industriearchitektur, Ateliers','Distillery District Toronto','n','https://www.thedistillerydistrict.com'),
      I('Madrina Bar y Tapas','food','Katalanische Tapas','Madrina Bar y Tapas Toronto','n','https://madrinatapas.com'),
@@ -1037,6 +1066,7 @@ function save(){localStorage.setItem(KEY,JSON.stringify(state));}
 function get(id){return state[id]||{};}
 function setv(id,k,v){state[id]=Object.assign({},state[id],{[k]:v});save();updateProgress();}
 function mapUrl(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
+function routeUrl(){return 'https://www.google.com/maps/dir/'+['Montréal-Trudeau Airport, QC','Québec City, QC','Baie-Saint-Paul, QC','Trois-Rivières, QC','Ottawa, ON','Prince Edward County, ON','Toronto Pearson Airport, ON'].map(encodeURIComponent).join('/');}
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function isoToday(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 
@@ -1449,7 +1479,8 @@ function renderMap(){
     host.prepend(n);
     return;
   }
-  host.innerHTML=`<div class="mapnote"><b>Echte Karte</b> · Tippe einen Pin für Details & Navigation. Rote Linie = Fahrroute, gestrichelt = Tagesausflug.</div>
+  host.innerHTML=`<a class="routebtn" href="${routeUrl()}" target="_blank" rel="noopener">🗺️ Gesamtroute in Google Maps öffnen</a>
+    <div class="mapnote"><b>Echte Karte</b> · Tippe einen Pin für Details & Navigation. Rote Linie = Fahrroute, gestrichelt = Tagesausflug.</div>
     <div id="leafmap"></div>
     <div class="card"><h2>🚗 Fahretappen</h2><div class="leglist">
       <div><b>Di 04.08.</b> Montréal → Québec · Chemin du Roy · ~280 km · 3,5–4 h</div>
@@ -1459,7 +1490,8 @@ function renderMap(){
       <div><b>Do 13.08.</b> Trois-Rivières → Ottawa · ~330 km · 3,5–4 h</div>
       <div><b>Sa 15.08.</b> Ottawa → PEC · 1000 Islands & Kingston · ~290 km · 4–5 h</div>
       <div><b>Mo 17.08.</b> PEC → Toronto · ~210 km · 2,5 h</div>
-      <div><b>Di 18.08.</b> Tagesausflug Niagara · ~130 km · 1,5 h</div>
+      <div><b>Di 18.08.</b> Tagesausflug Niagara · ~130 km · 1,5 h (mit Mietwagen)</div>
+      <div><b>Mi 19.08.</b> Mietwagen-Rückgabe · Flughafen Toronto Pearson (YYZ)</div>
     </div></div>`;
   if(_leaflet){_leaflet.remove();_leaflet=null;}
   const map=L.map('leafmap',{scrollWheelZoom:false}).setView([46.0,-74.5],5);
@@ -1500,6 +1532,7 @@ function renderMapSVG(){
     </g>`;
   }
   document.getElementById('map').innerHTML=`
+  <a class="routebtn" href="${routeUrl()}" target="_blank" rel="noopener">🗺️ Gesamtroute in Google Maps öffnen</a>
   <div class="legend"><b>Routenübersicht</b> · Tippe auf eine Station, um zur Etappe zu springen. Gestrichelt = Tagesausflug/Stich­fahrt.</div>
   <div class="mapbox">
   <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" aria-label="Routenkarte">
@@ -1528,8 +1561,92 @@ function renderMapSVG(){
     <div><b>Do 13.08.</b> Trois-Rivières → Ottawa · ~330 km · 3,5–4 h</div>
     <div><b>Sa 15.08.</b> Ottawa → PEC · 1000 Islands & Kingston · ~290 km · 4–5 h mit Stopps</div>
     <div><b>Mo 17.08.</b> PEC → Toronto · ~210 km · 2,5 h</div>
-    <div><b>Di 18.08.</b> Tagesausflug Niagara · ~130 km einfach · 1,5 h · danach Mietwagen-Rückgabe</div>
+    <div><b>Di 18.08.</b> Tagesausflug Niagara · ~130 km einfach · 1,5 h (mit Mietwagen)</div>
+    <div><b>Mi 19.08.</b> Mietwagen-Rückgabe · Flughafen Toronto Pearson (YYZ)</div>
   </div></div>`;
+}
+
+// ================= ÜBERNACHTUNGEN =================
+const STAY_SUGGEST={
+ 'Charlevoix & Tadoussac':{
+   nights:'Vorschlag: 3 Nächte (So 09.08.–Mi 12.08.)',
+   area:'Basis in <b>Baie-Saint-Paul</b> (Künstlerstädtchen, zentral für den Tadoussac-Tagesausflug). Luxuriöser: <b>La Malbaie</b> / Pointe-au-Pic.',
+   hotels:[
+     {nm:'Hôtel & Spa Le Germain Charlevoix',meta:'Baie-Saint-Paul · Design-Hotel am Bahnhof Le Massif, Spa & Bäckerei',price:'~260–360 CAD',q:'Hôtel Le Germain Charlevoix Baie-Saint-Paul',u:'https://www.germainhotels.com/de/le-germain-hotel/charlevoix'},
+     {nm:'Auberge La Muse',meta:'Baie-Saint-Paul · charmante Auberge mitten im Ort, Garten',price:'~180–250 CAD',q:'Auberge La Muse Baie-Saint-Paul',u:'https://lamuse.com'},
+     {nm:'Fairmont Le Manoir Richelieu',meta:'La Malbaie · Schlosshotel über dem Strom, Golf & Spa (Luxus)',price:'~350–500 CAD',q:'Fairmont Le Manoir Richelieu La Malbaie',u:'https://www.fairmont.com/richelieu-charlevoix/'}
+   ]},
+ 'Trois-Rivières (Transit)':{
+   nights:'Vorschlag: 1 Nacht (Mi 12.08.–Do 13.08.)',
+   area:'Nähe <b>historische Altstadt / Rue des Ursulines</b> oder am <b>Sankt-Lorenz-Ufer</b>. Nur ein Zwischenstopp – zentral & praktisch reicht.',
+   hotels:[
+     {nm:'Hôtel Gouverneur Trois-Rivières',meta:'Zentral, nahe Altstadt & Amphithéâtre Cogeco',price:'~140–190 CAD',q:'Hôtel Gouverneur Trois-Rivières',u:'https://gouverneur.com'},
+     {nm:'Delta Hotels by Marriott Trois-Rivières',meta:'Am Fluss, beim Kongresszentrum, Pool',price:'~170–220 CAD',q:'Delta Hotels Trois-Rivières',u:'https://www.marriott.com'},
+     {nm:'Auberge du Lac Saint-Pierre',meta:'~15 Min östlich, direkt am Wasser, ruhig',price:'~190–260 CAD',q:'Auberge du Lac Saint-Pierre Trois-Rivières',u:'https://aubergelacsaintpierre.com'}
+   ]},
+ 'Ottawa':{
+   nights:'Vorschlag: 2 Nächte (Do 13.08.–Sa 15.08.)',
+   area:'<b>ByWard Market / Downtown</b> (alles zu Fuß). Hotel mit Parkmöglichkeit wählen (City-Parken ist teuer). Ketten-Optionen (Hilton, IHG, Marriott):',
+   hotels:[
+     {nm:'The Westin Ottawa',meta:'Marriott · 11 Colonel By Dr · direkt an ByWard Market & Rideau-Kanal',price:'~290–400 CAD',q:'The Westin Ottawa',u:'https://www.marriott.com'},
+     {nm:'Hilton Garden Inn Ottawa Downtown',meta:'Hilton · 361 Queen St · zentral, moderne Zimmer',price:'~230–320 CAD',q:'Hilton Garden Inn Ottawa Downtown',u:'https://www.hilton.com'},
+     {nm:'Holiday Inn Ottawa Downtown',meta:'IHG · 111 Cooper St · solide, nahe Downtown/The Glebe',price:'~200–280 CAD',q:'Holiday Inn Ottawa Downtown Cooper Street',u:'https://www.ihg.com'}
+   ]},
+ 'Prince Edward County':{
+   nights:'Vorschlag: 2 Nächte (Sa 15.08.–Mo 17.08.)',
+   area:'<b>Picton</b> (Städtchen mit Restaurants) oder <b>Wellington</b> (mitten in den Weingütern). Ländlich – Auto ist ohnehin dabei.',
+   hotels:[
+     {nm:'The Royal Hotel Picton',meta:'Aufwendig restauriertes Grandhotel von 1879, Spa',price:'~300–430 CAD',q:'The Royal Hotel Picton',u:'https://theroyalhotel.ca'},
+     {nm:'Drake Devonshire Inn',meta:'Wellington · Design-Ikone direkt am Lake Ontario',price:'~350–500 CAD',q:'Drake Devonshire Wellington',u:'https://www.thedrake.ca/drakedevonshire/'},
+     {nm:'The June Motel',meta:'Picton · hippes Boutique-Motel mit Wine-Bar',price:'~240–340 CAD',q:'The June Motel Picton',u:'https://thejunemotel.com'}
+   ]},
+ 'Toronto + Niagara':{
+   nights:'Vorschlag: 5 Nächte (Mo 17.08.–Sa 22.08.)',
+   area:'Zentral: <b>Downtown / Entertainment District</b> oder <b>Old Town / Distillery District</b>. Zum Flughafen YYZ am Abreisetag bequem per <b>UP Express</b> (Union → YYZ, ~28 Min). Ketten-Optionen (Hilton, IHG, Marriott):',
+   hotels:[
+     {nm:'Hilton Toronto Downtown',meta:'Hilton · 145 Richmond St W · Entertainment/Financial District, Innenpool',price:'~280–360 CAD',q:'Hilton Toronto 145 Richmond Street West',u:'https://www.hilton.com'},
+     {nm:'InterContinental Toronto Centre',meta:'IHG · 225 Front St W · nahe CN Tower & Union Station',price:'~300–420 CAD',q:'InterContinental Toronto Centre Front Street',u:'https://www.ihg.com'},
+     {nm:'Toronto Marriott Downtown Eaton Centre',meta:'Marriott · 525 Bay St · direkt am Eaton Centre, sehr zentral',price:'~300–400 CAD',q:'Toronto Marriott Downtown Eaton Centre',u:'https://www.marriott.com'}
+   ]}
+};
+function stayHotelRow(ht){
+  const web=ht.u?` · <a href="${esc(ht.u)}" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none">🔗 Web</a>`:'';
+  return `<div class="stayh"><div class="stayh-nm">${esc(ht.nm)} <span class="stayh-price">${esc(ht.price)}</span></div><div class="stayh-meta">${esc(ht.meta)}</div><div class="stayh-links"><a href="${mapUrl(ht.q)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">🧭 Karte</a>${web}</div></div>`;
+}
+function stayHead(badge,nm,sub){
+  return `<div class="staybk-h"><span class="badge">${badge}</span><div style="min-width:0"><div class="staybk-nm">${esc(nm)}</div><div class="sub">${esc(sub)}</div></div></div>`;
+}
+function renderStays(){
+  const host=document.getElementById('stays');
+  let h=`<div class="legend">🛏️ <b>Übernachtungen:</b> oben die <b>fest gebuchten</b> Unterkünfte & der Mietwagen, darunter <b>Vorschläge</b> für die noch offenen Etappen (Preise = grobe Richtwerte Hochsaison, bitte Verfügbarkeit & Preis vor Buchung prüfen).</div>`;
+
+  // 1) Fest gebucht
+  h+=`<div class="stayhead">✅ Fest gebucht</div>`;
+  STAGES.forEach(s=>{
+    if(s.booking) h+=`<div class="staybk">${stayHead(s.badge,s.name,s.sub)}${bookingHtml(s)}</div>`;
+  });
+  // Mietwagen
+  h+=`<div class="staybk">${stayHead('🚗','Mietwagen · National (Einweg)','Abholung & Rückgabe am Flughafen')}
+    <div class="staybody">
+      <div class="stayh"><div class="stayh-nm">Abholung <span class="stayh-price">Mi 05.08.2026</span></div><div class="stayh-meta">Flughafen Montréal-Trudeau (YUL) · nach den 5 autofreien Montréal-Tagen</div></div>
+      <div class="stayh"><div class="stayh-nm">Rückgabe <span class="stayh-price">Mi 19.08.2026</span></div><div class="stayh-meta">Flughafen Toronto Pearson (YYZ)</div></div>
+      <div class="stayh-meta" style="margin-top:8px">Niagara-Tagesausflug (18.08.) noch mit dem Auto; Rückgabe am 19.08. morgens am YYZ, danach Toronto autofrei (UP Express/TTC).</div>
+    </div></div>`;
+
+  // 2) Noch zu buchen – Vorschläge
+  h+=`<div class="stayhead">📝 Noch zu buchen – Vorschläge</div>`;
+  STAGES.forEach(s=>{
+    if(s.booking||s.drive||!s.days)return;
+    const sug=STAY_SUGGEST[s.name];
+    if(sug){
+      h+=`<div class="staybk">${stayHead(s.badge,s.name,sug.nights)}
+        <div class="staybody">
+          <div class="stayarea">📍 <b>Suchgebiet:</b> ${sug.area}</div>
+          ${sug.hotels.map(stayHotelRow).join('')}
+        </div></div>`;
+    }
+  });
+  host.innerHTML=h;
 }
 
 // ================= EVENTS =================
@@ -1889,6 +2006,7 @@ function switchTab(t){
   if(t==='lists')renderLists();
   if(t==='cal')renderCal();
   if(t==='story')renderStory();
+  if(t==='stays')renderStays();
   if(t==='map')renderMap();
   if(t==='plan'){syncPlanChecks();updateProgress();}
   window.scrollTo({top:0});
