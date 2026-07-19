@@ -444,6 +444,11 @@ const HERO_SVG=`<svg class="herobg" viewBox="0 0 800 360" preserveAspectRatio="x
 const STAGES=[
  {badge:'1',name:'Montréal',sub:'Fr 31.07.–Mi 05.08. · 5 Nächte · autofrei',
   hotel:'Hotel-Viertel: Vieux-Montréal (Charme) oder Mile End/Plateau. Früh buchen – Osheaga + Pride!',
+  sunset:[
+   {nm:'Terrasse William Gray',d:'Rooftop-Bar in Vieux-Montréal mit Blick über Altstadt & Alten Hafen',q:'Terrasse William Gray Montréal'},
+   {nm:'Les Enfants Terribles (44. Etage, PVM)',d:'Panorama-Restaurant/Bar hoch über Downtown',q:'Les Enfants Terribles 44e Place Ville Marie Montréal'},
+   {nm:'Terrasse Nelligan',d:'Dachterrasse in der Altstadt mit Hafen- und Basilika-Blick',q:'Terrasse sur l\'Auberge Hôtel Nelligan Montréal'}
+  ],
   photo:[
    {nm:'Belvédère Kondiaronk',d:'Klassischer Skyline-Blick vom Mont-Royal – am schönsten zur goldenen Stunde',q:'Kondiaronk Belvedere Montréal'},
    {nm:'Rue de la Commune / Vieux-Port',d:'Kopfstein & Speicherfassaden früh morgens fast menschenleer',q:'Rue de la Commune Montréal'},
@@ -519,6 +524,11 @@ const STAGES=[
    I('Batiscan','sight','Altes Pfarrhaus, kostümierte Führungen','Vieux presbytère Batiscan','n','https://presbyterebatiscan.recitsquifontjaser.com')]},
  {badge:'2',name:'Québec City',sub:'Mi 05.08.–So 09.08. · 4 Nächte',
   hotel:'Gebucht im Quartier Saint-Roch (Unterstadt) – hippes Viertel mit Cafés, Läden & Mikrobrauereien.',
+  sunset:[
+   {nm:'Ciel! Bistro-Bar (Drehrestaurant)',d:'28. Etage des Hôtel Le Concorde – dreht sich langsam, Rundum-Panorama',q:'Ciel Bistro-Bar Québec'},
+   {nm:'Bistro Le Sam (Château Frontenac)',d:'Terrassen-Bar hoch über dem Sankt-Lorenz',q:'Bistro Le Sam Château Frontenac Québec'},
+   {nm:'1608 Wine & Cheese Bar',d:'Elegante Bar im Frontenac mit Strom-Blick',q:'1608 Bar Château Frontenac Québec'}
+  ],
   photo:[
    {nm:'Terrasse Pierre-Dugua-De Mons',d:'Château-Frontenac-Blick ohne das Gedränge der Dufferin-Terrasse',q:'Terrasse Pierre-Dugua-De Mons Québec'},
    {nm:'Escalier Casse-Cou / Rue du Petit-Champlain',d:'Fotogene enge Gasse – früh morgens fast leer',q:'Escalier Casse-Cou Québec'},
@@ -587,6 +597,11 @@ const STAGES=[
    I('Basilika Sainte-Anne-de-Beaupré','sight','Großer Wallfahrtsort','Sainte-Anne-de-Beaupré','n','https://sanctuairesainteanne.org')]},
  {badge:'3',name:'Charlevoix & Tadoussac',sub:'So 09.08.–Mi 12.08. · 3 Nächte ⭐',
   hotel:'Hotel-Viertel: Baie-Saint-Paul (Künstlerstädtchen) als Basis.',
+  sunset:[
+   {nm:'Microbrasserie Tadoussac (Fjord-Terrasse)',d:'Craft-Bier direkt am Wasser, Sonnenuntergang über der Saguenay-Mündung',q:'Microbrasserie Tadoussac'},
+   {nm:'Fairmont Le Manoir Richelieu (Terrasse)',d:'Schlosshotel-Terrasse hoch über dem Strom (La Malbaie)',q:'Fairmont Le Manoir Richelieu La Malbaie'},
+   {nm:'Auberge des Falaises (Panorama)',d:'Terrasse mit weitem Sankt-Lorenz-Blick',q:'Auberge des Falaises La Malbaie'}
+  ],
   photo:[
    {nm:'Belvédère Saint-Irénée (Route 362)',d:'Hügel & Strom-Panorama an der Panoramastraße',q:'Belvédère Saint-Irénée Charlevoix'},
    {nm:'Baie-Éternité / Cap Trinité (Saguenay)',d:'Steilwände über dem Fjord – dramatisch',q:'Baie-Éternité Cap Trinité Saguenay'},
@@ -622,6 +637,10 @@ const STAGES=[
   ]},
  {badge:'4',name:'Trois-Rivières (Transit)',sub:'Mi 12.08.–Do 13.08. · 1 Nacht · Anfahrt ~200 km / 2,5 h',
   hotel:'Bricht die Westfahrt; historische Altstadt.',
+  sunset:[
+   {nm:'Poivre Noir (Fluss-Terrasse)',d:'Weinbar-Restaurant am Parc portuaire mit Sankt-Lorenz-Blick',q:'Poivre Noir Trois-Rivières'},
+   {nm:'Gambrinus (Terrasse)',d:'Mikrobrauerei mit Terrasse in Ufernähe',q:'Gambrinus Trois-Rivières'}
+  ],
   photo:[
    {nm:'Rue des Ursulines',d:'Älteste Kopfsteingasse, Klostermauern & Laternen',q:'Rue des Ursulines Trois-Rivières'},
    {nm:'Terrasse Turcotte',d:'Promenade am Sankt-Lorenz mit Pont-Laviolette-Blick',q:'Terrasse Turcotte Trois-Rivières'}
@@ -647,6 +666,11 @@ const STAGES=[
   ]},
  {badge:'5',name:'Ottawa',sub:'Do 13.08.–So 16.08. · 3 Nächte',
   hotel:'Hotel-Viertel: Nähe ByWard Market oder ruhiger The Glebe.',
+  sunset:[
+   {nm:'Copper Spirits & Sights (Rooftop)',d:'Dachbar im 16. Stock des Andaz am ByWard Market – Sonnenuntergang über der Stadt',q:'Copper Spirits and Sights Ottawa'},
+   {nm:'Tavern on the Falls',d:'Patio direkt an den Rideau Falls, Blick über den Fluss',q:'Tavern on the Falls Ottawa'},
+   {nm:'The Lookout (ByWard)',d:'Rooftop-Patio mitten im Marktviertel',q:'The Lookout Bar ByWard Market Ottawa'}
+  ],
   photo:[
    {nm:'Nepean Point',d:'Parlament, Fluss & Gatineau in einem Bild',q:'Nepean Point Ottawa'},
    {nm:'Alexandra Bridge',d:'Sonnenuntergang mit Parlaments-Silhouette',q:'Alexandra Bridge Ottawa'},
@@ -694,6 +718,11 @@ const STAGES=[
    I('Kingston & Fort Henry','sight','Festungsstadt aus Kalkstein','Fort Henry Kingston','n','https://www.forthenry.com')]},
  {badge:'6',name:'Prince Edward County',sub:'So 16.08.–Mo 17.08. · 1 Nacht ⭐',
   hotel:'Hotel-Viertel: Wellington oder Picton (mitten in Weingütern).',
+  sunset:[
+   {nm:'Lake on the Mountain (Terrasse)',d:'Bier/Wein auf der Terrasse hoch über der Bucht von Quinte',q:'Lake on the Mountain Resort Picton'},
+   {nm:'Drake Devonshire (Seeterrasse)',d:'Design-Inn direkt am Lake Ontario – Sonnenuntergang überm Wasser',q:'Drake Devonshire Wellington'},
+   {nm:'The County Cider Co. (Terrasse)',d:'Cidre-Terrasse über dem See in Waupoos',q:'County Cider Company Waupoos'}
+  ],
   photo:[
    {nm:'Sandbanks – Dunes Beach',d:'Riesige Süßwasser-Dünen, tolles Abendlicht',q:'Sandbanks Dunes Beach'},
    {nm:'Lake on the Mountain',d:'Blick von oben über die Bucht von Quinte',q:'Lake on the Mountain Prince Edward County'},
@@ -723,6 +752,11 @@ const STAGES=[
   items:[I('Anreise Toronto','hotel','Hotel beziehen, Abend im Viertel','Toronto','c')]},
  {badge:'7',name:'Toronto + Niagara',sub:'Mo 17.08.–Sa 22.08. · 5 Nächte',
   hotel:'Hotel-Viertel: Distillery District/Old Town oder West Queen West.',
+  sunset:[
+   {nm:'KOST (Bisha Hotel, 44. Etage)',d:'Baja-Rooftop-Bar hoch über der Skyline',q:'KOST Bisha Hotel Toronto'},
+   {nm:'Lavelle (King West Rooftop)',d:'Dachbar mit Pool und Downtown-Blick',q:'Lavelle Toronto'},
+   {nm:'Watermark (Niagara Fallsview)',d:'Am Niagara-Tag: Bar mit direktem Blick auf die beleuchteten Fälle',q:'Watermark Restaurant Niagara Falls'}
+  ],
   photo:[
    {nm:'Riverdale Park East',d:'Die klassische Downtown-Skyline vom Hügel',q:'Riverdale Park East Toronto'},
    {nm:'Polson Pier / Leslie Spit',d:'Skyline über dem Wasser, dazu Stadtnatur',q:'Polson Pier Toronto'},
@@ -1344,7 +1378,7 @@ function shoppingHtml(s){
   return `<div class="shopping">🛍️ <b>Shopping & Outlets:</b><ul>${items}</ul></div>`;
 }
 function extrasHtml(s){
-  if(!s.photo && !s.breakfast && !s.hike) return '';
+  if(!s.photo && !s.breakfast && !s.hike && !s.sunset) return '';
   const list=(arr)=>arr.map(x=>{
     const web=x.u?` <a href="${esc(x.u)}" target="_blank" rel="noopener" title="Website">🔗</a>`:'';
     return `<li><a href="${mapUrl(x.q||x.nm)}" target="_blank" rel="noopener">${esc(x.nm)}</a>${x.d?` <span style="color:var(--muted)">· ${esc(x.d)}</span>`:''}${web}</li>`;
@@ -1353,6 +1387,7 @@ function extrasHtml(s){
   if(s.photo&&s.photo.length) h+=`<div class="ex-sec"><h5>📷 Foto-Spots</h5><ul>${list(s.photo)}</ul></div>`;
   if(s.breakfast&&s.breakfast.length) h+=`<div class="ex-sec"><h5>🥐 Frühstück (Locals)</h5><ul>${list(s.breakfast)}</ul></div>`;
   if(s.hike&&s.hike.length) h+=`<div class="ex-sec"><h5>🥾 Wanderperlen</h5><ul>${list(s.hike)}</ul></div>`;
+  if(s.sunset&&s.sunset.length) h+=`<div class="ex-sec"><h5>🌇 Aussichts-Bars (Sonnenuntergang)</h5><ul>${list(s.sunset)}</ul></div>`;
   h+='</div>';
   return h;
 }
