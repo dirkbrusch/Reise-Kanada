@@ -79,6 +79,11 @@
   .transit{font-size:12.5px;background:rgba(124,92,191,.09);border:1px solid rgba(124,92,191,.25);border-radius:12px;padding:9px 12px;margin:8px 14px}
   .transit a{color:var(--blue);text-decoration:none}
   .parking{font-size:12.5px;background:rgba(47,107,79,.08);border:1px solid rgba(47,107,79,.22);border-radius:12px;padding:9px 12px;margin:8px 14px}
+  .shopping{font-size:12.5px;background:rgba(199,62,120,.08);border:1px solid rgba(199,62,120,.28);border-radius:12px;padding:9px 12px;margin:8px 14px}
+  .shopping ul{margin:5px 0 0;padding-left:18px}
+  .shopping li{margin:2px 0}
+  .shopping a{color:var(--blue);text-decoration:none}
+  .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .tour{border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin:10px 0;background:var(--soft2)}
   .tourhd{font-size:13.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
   .tourhd .cnt2{font-size:10.5px;font-weight:600;color:var(--muted);background:var(--soft);border-radius:6px;padding:1px 7px}
@@ -439,6 +444,13 @@ const STAGES=[
       {nm:'Provigo / Métro (Downtown)',d:'~1 km',q:'Provigo Montreal centre-ville'}
     ]},
   transit:{city:'(STM)',txt:'Metro & Bus · Einzelfahrt 3,75 CAD, 24-h-Pass 11,25 CAD, 10er 34,25 CAD · Flughafen-Bus 747 (YUL↔Centre-ville) 11,25 CAD = gilt als 24-h-Pass · OPUS-/A-Karte oder STM-App „Chrono" (Tarife ab 07/2026, unbestätigt)',url:'https://www.stm.info/en'},
+  shopping:[
+   {nm:'Centre Eaton & Complexe Desjardins',d:'Downtown, zu Fuß · Teil der Untergrundstadt (RÉSO)',q:'Centre Eaton de Montréal'},
+   {nm:'Marché Central',d:'großes Open-Air-Retail-Center (Nord)',q:'Marché Central Montréal'},
+   {nm:'Montréal Premium Outlets (Mirabel)',d:'Designer-Outlets, ~35 Min nördl. · nur mit Auto (also An-/Abreisetag)',q:'Premium Outlets Montréal Mirabel',u:'https://www.premiumoutlets.com/outlet/montreal'},
+   {nm:'Quartier DIX30 (Brossard)',d:'Lifestyle-Center am Südufer · mit Auto',q:'Quartier DIX30 Brossard'},
+   {nm:'CF Carrefour Laval',d:'eines der größten Malls Québecs (Laval)',q:'CF Carrefour Laval'}
+  ],
   days:[
    {iso:'2026-07-31',dt:'Fr 31.07.',title:'Ankunft & Vieux-Montréal',slots:[['🛬','Ankunft & Nachmittag'],['🌆','Abend']],items:[
      I('Café Saint-Henri','cafe','Erster guter Kaffee nach der Ankunft','Café Saint-Henri Montréal','n','https://sainthenri.ca'),
@@ -493,6 +505,12 @@ const STAGES=[
     ]},
   parking:'Vieux-Québec: Stationnement Hôtel-de-Ville (29 Côte de la Fabrique) ~20–22 CAD/Tag oder Place D\'Youville (965 Place D\'Youville) ~18–20 CAD/24 h, nachts günstiger (unbestätigt) · Live-Preise via App „Copilote" der Ville de Québec.',
   transit:{city:'(RTC)',txt:'Altstadt bestens zu Fuß; Bus RTC nur für entfernte Viertel (Saint-Roch, Montcalm/MNBAQ) · Einzelfahrt 3,85 CAD, Tagespass 10,50 CAD · App „RTC Nomade paiement" (Tarife ab 07/2026)',url:'https://www.rtcquebec.ca/'},
+  shopping:[
+   {nm:'Simons (Flagship)',d:'Québecer Kaufhaus · Rue Saint-Joseph in Saint-Roch, nah an eurer Unterkunft',q:'Simons Québec rue Saint-Joseph'},
+   {nm:'Laurier Québec',d:'größtes Einkaufszentrum der Stadt (Sainte-Foy)',q:'Laurier Québec'},
+   {nm:'Place Sainte-Foy',d:'gehobene Marken, direkt neben Laurier',q:'Place Sainte-Foy Québec'},
+   {nm:'Les Galeries de la Capitale',d:'Mall mit Indoor-Freizeitpark',q:'Galeries de la Capitale Québec'}
+  ],
   days:[
    {iso:'2026-08-05',dt:'Mi 05.08.',title:'Ankunft · Petit-Champlain & Place Royale',items:[
      I('Quartier Petit-Champlain','sight','Escalier Casse-Cou, enge Gassen','Quartier Petit-Champlain Québec','n','https://www.quartierpetitchamplain.com'),
@@ -548,6 +566,9 @@ const STAGES=[
   ]},
  {badge:'4',name:'Trois-Rivières (Transit)',sub:'Mi 12.08.–Do 13.08. · 1 Nacht · Anfahrt ~200 km / 2,5 h',
   hotel:'Bricht die Westfahrt; historische Altstadt.',
+  shopping:[
+   {nm:'Centre Les Rivières',d:'größtes Einkaufszentrum der Region (kurzer Stopp)',q:'Les Rivières Shopping Centre Trois-Rivières'}
+  ],
   parking:'Altstadt: gebührenpflichtig nur Mo–Fr 9–18 Uhr (1. Std. 1 CAD, danach steigend); abends, Wochenende & Feiertage gratis. Mi 12.08. tagsüber also kostenpflichtig.',
   days:[
    {iso:'2026-08-12',dt:'Mi 12.08.',title:'Trois-Rivières',items:[
@@ -559,6 +580,11 @@ const STAGES=[
   hotel:'Hotel-Viertel: Nähe ByWard Market oder ruhiger The Glebe.',
   parking:'Direkt am ByWard Market: städt. ByWard Garage (70 Clarence St) – seit 2026 nur 3-Std-Limit (4 CAD/Std., abends/So 3 CAD/Std., Übernacht max. 8 CAD). Fürs Tagesparken besser Dalhousie Garage (141 Clarence St) ~16–20 CAD/Tag (unbestätigt).',
   transit:{city:'(OC Transpo)',txt:'O-Train Line 1 & Bus · Einzelfahrt 3,80 CAD (Presto/kontaktlos) bzw. 4,10 CAD bar · Tagesdeckel/DayPass 12,25 CAD bei Presto/kontaktlos · Zentrum gut zu Fuß',url:'https://www.octranspo.com/en/'},
+  shopping:[
+   {nm:'CF Rideau Centre',d:'Downtown-Mall direkt am ByWard Market, zu Fuß',q:'CF Rideau Centre Ottawa'},
+   {nm:'Tanger Outlets Ottawa (Kanata)',d:'großes Outlet-Center · ~25 Min westl., mit Auto',q:'Tanger Outlets Ottawa',u:'https://www.tangeroutlets.com/ottawa'},
+   {nm:'Bayshore Shopping Centre',d:'großes Einkaufszentrum im Westen',q:'Bayshore Shopping Centre Ottawa'}
+  ],
   days:[
    {iso:'2026-08-13',dt:'Do 13.08.',title:'Anreise (~330 km / 3,5–4 h) · Hub: ByWard Market',items:[
      I('ByWard Market','market','Stände, Boutiquen, 100+ Lokale','ByWard Market Ottawa','n','https://www.byward-market.com'),
@@ -598,6 +624,13 @@ const STAGES=[
   hotel:'Hotel-Viertel: Distillery District/Old Town oder West Queen West.',
   parking:'Mietwagen-Rückgabe am 19.08. am Flughafen Toronto Pearson (YYZ) → Toronto danach autofrei (UP Express/TTC). Solange das Auto da ist (Ankunft + Niagara-Tag): Green P Carpark 267 (70 Distillery Lane) Tagesmax. 20 CAD; am St. Lawrence Market (92 Front St E) Tagesmax. 9 CAD (Sa erste 2 Std. 1 CAD/Std.).',
   transit:{city:'(TTC)',txt:'U-Bahn, Streetcar & Bus · Einzelfahrt 3,30 CAD (Presto/kontaktlos), DayPass 13,50 CAD · Union↔Flughafen YYZ mit UP Express 12,35 CAD (9,25 CAD Presto/kontaktlos), ~28 Min, alle 15 Min',url:'https://www.ttc.ca/'},
+  shopping:[
+   {nm:'CF Toronto Eaton Centre',d:'riesige Downtown-Mall (direkt beim Marriott), zu Fuß',q:'CF Toronto Eaton Centre'},
+   {nm:'Yorkdale Shopping Centre',d:'Premium-Mall mit vielen Designern (U-Bahn Line 1)',q:'Yorkdale Shopping Centre Toronto'},
+   {nm:'Toronto Premium Outlets (Halton Hills)',d:'Designer-Outlets, ~45 Min westl. · gut Richtung Flughafen',q:'Toronto Premium Outlets Halton Hills',u:'https://www.premiumoutlets.com/outlet/toronto'},
+   {nm:'Vaughan Mills',d:'Mega-Mall + Outlets (Nord-Toronto), mit Auto',q:'Vaughan Mills'},
+   {nm:'Outlet Collection at Niagara',d:'großes Outlet direkt bei den Fällen · perfekt am Niagara-Tag (18.08.)',q:'Outlet Collection at Niagara',u:'https://www.outletcollectionatniagara.com'}
+  ],
   days:[
    {iso:'2026-08-18',dt:'Di 18.08.',title:'Hub: Niagara-Tag (mit Mietwagen)',items:[
      I('Niagarafälle','sight','~130 km / 1,5 h Fahrt','Niagara Falls','n','https://www.niagaraparks.com'),
@@ -1067,6 +1100,7 @@ function get(id){return state[id]||{};}
 function setv(id,k,v){state[id]=Object.assign({},state[id],{[k]:v});save();updateProgress();}
 function mapUrl(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
 function routeUrl(){return 'https://www.google.com/maps/dir/'+['Montréal-Trudeau Airport, QC','Québec City, QC','Baie-Saint-Paul, QC','Trois-Rivières, QC','Ottawa, ON','Prince Edward County, ON','Toronto Pearson Airport, ON'].map(encodeURIComponent).join('/');}
+function bookUrl(name,ci,co){return 'https://www.booking.com/searchresults.html?ss='+encodeURIComponent(name)+'&checkin='+ci+'&checkout='+co+'&group_adults=2&no_rooms=1&group_children=0';}
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function isoToday(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 
@@ -1176,6 +1210,14 @@ function parkingHtml(s){
   const p=(s.booking&&s.booking.parking)||s.parking;if(!p)return '';
   return `<div class="parking">🅿️ <b>Parken:</b> ${esc(p)}</div>`;
 }
+function shoppingHtml(s){
+  if(!s.shopping||!s.shopping.length)return '';
+  const items=s.shopping.map(m=>{
+    const web=m.u?` <a href="${esc(m.u)}" target="_blank" rel="noopener" title="Website">🔗</a>`:'';
+    return `<li><a href="${mapUrl(m.q)}" target="_blank" rel="noopener">${esc(m.nm)}</a>${m.d?` <span style="color:var(--muted)">· ${esc(m.d)}</span>`:''}${web}</li>`;
+  }).join('');
+  return `<div class="shopping">🛍️ <b>Shopping & Outlets:</b><ul>${items}</ul></div>`;
+}
 
 function bookingHtml(s){
   if(!s.booking)return '';
@@ -1241,7 +1283,7 @@ function renderPlan(){
           <span class="chev">▾</span></div>
         <div class="body">`;
       if(s.hotel) h+=`<div class="hotel">🏨 ${esc(s.hotel)}</div>`;
-      h+=bookingHtml(s);h+=transitHtml(s);h+=parkingHtml(s);h+=modesHtml(s.name);
+      h+=bookingHtml(s);h+=transitHtml(s);h+=parkingHtml(s);h+=shoppingHtml(s);h+=modesHtml(s.name);
       if(s.drive){
         const dk=si+'-d',ord=dayOrder(dk,s.items.length);
         const names=ord.map(ii=>s.items[ii].map), gpx=ord.map(ii=>({nm:s.items[ii].nm,q:s.items[ii].map}));
@@ -1569,7 +1611,7 @@ function renderMapSVG(){
 // ================= ÜBERNACHTUNGEN =================
 const STAY_SUGGEST={
  'Charlevoix & Tadoussac':{
-   nights:'Vorschlag: 3 Nächte (So 09.08.–Mi 12.08.)',
+   nights:'Vorschlag: 3 Nächte (So 09.08.–Mi 12.08.)',ci:'2026-08-09',co:'2026-08-12',
    area:'Basis in <b>Baie-Saint-Paul</b> (Künstlerstädtchen, zentral für den Tadoussac-Tagesausflug). Luxuriöser: <b>La Malbaie</b> / Pointe-au-Pic.',
    hotels:[
      {nm:'Hôtel & Spa Le Germain Charlevoix',meta:'Baie-Saint-Paul · Design-Hotel am Bahnhof Le Massif, Spa & Bäckerei',price:'~260–360 CAD',q:'Hôtel Le Germain Charlevoix Baie-Saint-Paul',u:'https://www.germainhotels.com/de/le-germain-hotel/charlevoix'},
@@ -1577,7 +1619,7 @@ const STAY_SUGGEST={
      {nm:'Fairmont Le Manoir Richelieu',meta:'La Malbaie · Schlosshotel über dem Strom, Golf & Spa (Luxus)',price:'~350–500 CAD',q:'Fairmont Le Manoir Richelieu La Malbaie',u:'https://www.fairmont.com/richelieu-charlevoix/'}
    ]},
  'Trois-Rivières (Transit)':{
-   nights:'Vorschlag: 1 Nacht (Mi 12.08.–Do 13.08.)',
+   nights:'Vorschlag: 1 Nacht (Mi 12.08.–Do 13.08.)',ci:'2026-08-12',co:'2026-08-13',
    area:'Nähe <b>historische Altstadt / Rue des Ursulines</b> oder am <b>Sankt-Lorenz-Ufer</b>. Nur ein Zwischenstopp – zentral & praktisch reicht.',
    hotels:[
      {nm:'Hôtel Gouverneur Trois-Rivières',meta:'Zentral, nahe Altstadt & Amphithéâtre Cogeco',price:'~140–190 CAD',q:'Hôtel Gouverneur Trois-Rivières',u:'https://gouverneur.com'},
@@ -1585,7 +1627,7 @@ const STAY_SUGGEST={
      {nm:'Auberge du Lac Saint-Pierre',meta:'~15 Min östlich, direkt am Wasser, ruhig',price:'~190–260 CAD',q:'Auberge du Lac Saint-Pierre Trois-Rivières',u:'https://aubergelacsaintpierre.com'}
    ]},
  'Ottawa':{
-   nights:'Vorschlag: 2 Nächte (Do 13.08.–Sa 15.08.)',
+   nights:'Vorschlag: 2 Nächte (Do 13.08.–Sa 15.08.)',ci:'2026-08-13',co:'2026-08-15',
    area:'<b>ByWard Market / Downtown</b> (alles zu Fuß). Hotel mit Parkmöglichkeit wählen (City-Parken ist teuer). Ketten-Optionen (Hilton, IHG, Marriott):',
    hotels:[
      {nm:'The Westin Ottawa',meta:'Marriott · 11 Colonel By Dr · direkt an ByWard Market & Rideau-Kanal',price:'~290–400 CAD',q:'The Westin Ottawa',u:'https://www.marriott.com'},
@@ -1593,7 +1635,7 @@ const STAY_SUGGEST={
      {nm:'Holiday Inn Ottawa Downtown',meta:'IHG · 111 Cooper St · solide, nahe Downtown/The Glebe',price:'~200–280 CAD',q:'Holiday Inn Ottawa Downtown Cooper Street',u:'https://www.ihg.com'}
    ]},
  'Prince Edward County':{
-   nights:'Vorschlag: 2 Nächte (Sa 15.08.–Mo 17.08.)',
+   nights:'Vorschlag: 2 Nächte (Sa 15.08.–Mo 17.08.)',ci:'2026-08-15',co:'2026-08-17',
    area:'<b>Picton</b> (Städtchen mit Restaurants) oder <b>Wellington</b> (mitten in den Weingütern). Ländlich – Auto ist ohnehin dabei.',
    hotels:[
      {nm:'The Royal Hotel Picton',meta:'Aufwendig restauriertes Grandhotel von 1879, Spa',price:'~300–430 CAD',q:'The Royal Hotel Picton',u:'https://theroyalhotel.ca'},
@@ -1601,7 +1643,7 @@ const STAY_SUGGEST={
      {nm:'The June Motel',meta:'Picton · hippes Boutique-Motel mit Wine-Bar',price:'~240–340 CAD',q:'The June Motel Picton',u:'https://thejunemotel.com'}
    ]},
  'Toronto + Niagara':{
-   nights:'Vorschlag: 5 Nächte (Mo 17.08.–Sa 22.08.)',
+   nights:'Vorschlag: 5 Nächte (Mo 17.08.–Sa 22.08.)',ci:'2026-08-17',co:'2026-08-22',
    area:'Zentral: <b>Downtown / Entertainment District</b> oder <b>Old Town / Distillery District</b>. Zum Flughafen YYZ am Abreisetag bequem per <b>UP Express</b> (Union → YYZ, ~28 Min). Ketten-Optionen (Hilton, IHG, Marriott):',
    hotels:[
      {nm:'Hilton Toronto Downtown',meta:'Hilton · 145 Richmond St W · Entertainment/Financial District, Innenpool',price:'~280–360 CAD',q:'Hilton Toronto 145 Richmond Street West',u:'https://www.hilton.com'},
@@ -1609,16 +1651,17 @@ const STAY_SUGGEST={
      {nm:'Toronto Marriott Downtown Eaton Centre',meta:'Marriott · 525 Bay St · direkt am Eaton Centre, sehr zentral',price:'~300–400 CAD',q:'Toronto Marriott Downtown Eaton Centre',u:'https://www.marriott.com'}
    ]}
 };
-function stayHotelRow(ht){
+function stayHotelRow(ht,ci,co){
   const web=ht.u?` · <a href="${esc(ht.u)}" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none">🔗 Web</a>`:'';
-  return `<div class="stayh"><div class="stayh-nm">${esc(ht.nm)} <span class="stayh-price">${esc(ht.price)}</span></div><div class="stayh-meta">${esc(ht.meta)}</div><div class="stayh-links"><a href="${mapUrl(ht.q)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">🧭 Karte</a>${web}</div></div>`;
+  const price=(ci&&co)?` · <a class="pricelink" href="${esc(bookUrl(ht.nm,ci,co))}" target="_blank" rel="noopener">💶 Preis/Verfügbarkeit</a>`:'';
+  return `<div class="stayh"><div class="stayh-nm">${esc(ht.nm)} <span class="stayh-price">${esc(ht.price)}</span></div><div class="stayh-meta">${esc(ht.meta)}</div><div class="stayh-links"><a href="${mapUrl(ht.q)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">🧭 Karte</a>${web}${price}</div></div>`;
 }
 function stayHead(badge,nm,sub){
   return `<div class="staybk-h"><span class="badge">${badge}</span><div style="min-width:0"><div class="staybk-nm">${esc(nm)}</div><div class="sub">${esc(sub)}</div></div></div>`;
 }
 function renderStays(){
   const host=document.getElementById('stays');
-  let h=`<div class="legend">🛏️ <b>Übernachtungen:</b> oben die <b>fest gebuchten</b> Unterkünfte & der Mietwagen, darunter <b>Vorschläge</b> für die noch offenen Etappen (Preise = grobe Richtwerte Hochsaison, bitte Verfügbarkeit & Preis vor Buchung prüfen).</div>`;
+  let h=`<div class="legend">🛏️ <b>Übernachtungen:</b> oben die <b>fest gebuchten</b> Unterkünfte & der Mietwagen, darunter <b>Vorschläge</b> für die noch offenen Etappen. Die angezeigten Preise sind <b>grobe Richtwerte</b> – für den <b>tagesaktuellen Preis &amp; die Verfügbarkeit im gebuchten Zeitraum</b> je Hotel auf <b>💶 Preis/Verfügbarkeit</b> tippen (öffnet Booking.com mit vorausgefüllten Daten, 2 Personen).</div>`;
 
   // 1) Fest gebucht
   h+=`<div class="stayhead">✅ Fest gebucht</div>`;
@@ -1642,7 +1685,7 @@ function renderStays(){
       h+=`<div class="staybk">${stayHead(s.badge,s.name,sug.nights)}
         <div class="staybody">
           <div class="stayarea">📍 <b>Suchgebiet:</b> ${sug.area}</div>
-          ${sug.hotels.map(stayHotelRow).join('')}
+          ${sug.hotels.map(h=>stayHotelRow(h,sug.ci,sug.co)).join('')}
         </div></div>`;
     }
   });
