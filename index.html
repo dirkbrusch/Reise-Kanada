@@ -83,6 +83,13 @@
   .shopping ul{margin:5px 0 0;padding-left:18px}
   .shopping li{margin:2px 0}
   .shopping a{color:var(--blue);text-decoration:none}
+  .extras{font-size:12.5px;background:var(--soft2);border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin:8px 14px}
+  .extras .ex-sec{margin-top:9px}
+  .extras .ex-sec:first-child{margin-top:0}
+  .extras h5{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--maple);margin:0 0 3px;font-weight:800}
+  .extras ul{margin:0;padding-left:18px}
+  .extras li{margin:2px 0}
+  .extras a{color:var(--blue);text-decoration:none}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -437,6 +444,21 @@ const HERO_SVG=`<svg class="herobg" viewBox="0 0 800 360" preserveAspectRatio="x
 const STAGES=[
  {badge:'1',name:'Montréal',sub:'Fr 31.07.–Mi 05.08. · 5 Nächte · autofrei',
   hotel:'Hotel-Viertel: Vieux-Montréal (Charme) oder Mile End/Plateau. Früh buchen – Osheaga + Pride!',
+  photo:[
+   {nm:'Belvédère Kondiaronk',d:'Klassischer Skyline-Blick vom Mont-Royal – am schönsten zur goldenen Stunde',q:'Kondiaronk Belvedere Montréal'},
+   {nm:'Rue de la Commune / Vieux-Port',d:'Kopfstein & Speicherfassaden früh morgens fast menschenleer',q:'Rue de la Commune Montréal'},
+   {nm:'Habitat 67 vom Parc de la Cité-du-Havre',d:'Beste Perspektive auf den Beton-Baukasten',q:'Parc de la Cité-du-Havre Montréal'}
+  ],
+  breakfast:[
+   {nm:'Arts Café (Mile End)',d:'Ruhiges Local-Frühstück, Shakshuka & Bowls',q:'Arts Café Mile End Montréal'},
+   {nm:'Le Passé Composé',d:'Kleines Frühstücks-Bistro im Village, oft ohne Schlange',q:'Le Passé Composé Montréal'},
+   {nm:'Café Névé',d:'Entspanntes Nachbarschaftscafé, gutes Gebäck',q:'Café Névé Montréal'}
+  ],
+  hike:[
+   {nm:'Mont-Royal – Summit Loop & Escarpement',d:'Waldpfade zum Gipfelkreuz statt nur Belvédère',q:'Mont Royal summit loop trail'},
+   {nm:'Parc des Rapides (Lachine)',d:'Uferweg mit Stromschnellen & Reiher-Kolonie',q:'Parc des Rapides Lachine Montréal'},
+   {nm:'Parc-nature du Bois-de-l\'Île-Bizard',d:'Sumpf-Bohlenweg & Strand am Stadtrand',q:'Bois-de-l\'Île-Bizard nature park'}
+  ],
   booking:{hotel:'Embassy Suites by Hilton Montreal',addr:'208 Saint-Antoine Ouest, H2Y 0A6',
     inn:'31.07.2026',out:'05.08.2026',nights:5,q:'Embassy Suites by Hilton Montreal 208 Saint-Antoine Ouest',
     parking:'Hotel-Selbstparken ca. 39 CAD/Nacht (überdacht, max. ~1,80 m). Alternativen fußläufig: Indigo Quartier International (249 Saint-Antoine O., ~2 Min) oder Centre de Commerce Mondial (380 Saint-Antoine O., ~3 Min), ~20–28 CAD/Tag (unbestätigt). Hinweis: Mietwagen erst ab 05.08. – die 5 Montréal-Tage sind autofrei.',
@@ -497,6 +519,21 @@ const STAGES=[
    I('Batiscan','sight','Altes Pfarrhaus, kostümierte Führungen','Vieux presbytère Batiscan','n','https://presbyterebatiscan.recitsquifontjaser.com')]},
  {badge:'2',name:'Québec City',sub:'Mi 05.08.–So 09.08. · 4 Nächte',
   hotel:'Gebucht im Quartier Saint-Roch (Unterstadt) – hippes Viertel mit Cafés, Läden & Mikrobrauereien.',
+  photo:[
+   {nm:'Terrasse Pierre-Dugua-De Mons',d:'Château-Frontenac-Blick ohne das Gedränge der Dufferin-Terrasse',q:'Terrasse Pierre-Dugua-De Mons Québec'},
+   {nm:'Escalier Casse-Cou / Rue du Petit-Champlain',d:'Fotogene enge Gasse – früh morgens fast leer',q:'Escalier Casse-Cou Québec'},
+   {nm:'Lévis-Fähre',d:'Die schönste Skyline der Altstadt vom Wasser aus',q:'Traverse Québec Lévis'}
+  ],
+  breakfast:[
+   {nm:'La Boîte à Pain (Saint-Roch)',d:'Bäckerei-Café der Locals, Sauerteig & Viennoiserie',q:'La Boîte à Pain Saint-Roch Québec'},
+   {nm:'Le Petit Coin Latin',d:'Ruhiges Frühstück mit Innenhof in der Oberstadt',q:'Le Petit Coin Latin Québec'},
+   {nm:'Nektar Caféologue',d:'Für den ernsthaften Morgenkaffee (Saint-Roch)',q:'Nektar Caféologue Québec'}
+  ],
+  hike:[
+   {nm:'Promenade Samuel-De Champlain',d:'Uferpromenade am Strom, weit & ruhig (auch per Rad)',q:'Promenade Samuel-De Champlain Québec'},
+   {nm:'Parc de la Chute-Montmorency',d:'Treppe & Hängebrücke über den 83-m-Fall',q:'Parc de la Chute-Montmorency'},
+   {nm:'Sentiers du Cap-Tourmente',d:'Marschland-Wege, im Spätsommer tausende Schneegänse',q:'Cap-Tourmente Saint-Joachim'}
+  ],
   booking:{hotel:'Unterkunft Québec · Quartier Saint-Roch',addr:'77 rue Saint-Vallier Est, G1K 3N9',
     inn:'05.08.2026',out:'09.08.2026',nights:4,q:'77 rue Saint-Vallier Est Québec',
     note:'Anreise mit Mietwagen ab Montréal (05.08.) · Check-out So 09.08., weiter Richtung Charlevoix.',
@@ -550,6 +587,21 @@ const STAGES=[
    I('Basilika Sainte-Anne-de-Beaupré','sight','Großer Wallfahrtsort','Sainte-Anne-de-Beaupré','n','https://sanctuairesainteanne.org')]},
  {badge:'3',name:'Charlevoix & Tadoussac',sub:'So 09.08.–Mi 12.08. · 3 Nächte ⭐',
   hotel:'Hotel-Viertel: Baie-Saint-Paul (Künstlerstädtchen) als Basis.',
+  photo:[
+   {nm:'Belvédère Saint-Irénée (Route 362)',d:'Hügel & Strom-Panorama an der Panoramastraße',q:'Belvédère Saint-Irénée Charlevoix'},
+   {nm:'Baie-Éternité / Cap Trinité (Saguenay)',d:'Steilwände über dem Fjord – dramatisch',q:'Baie-Éternité Cap Trinité Saguenay'},
+   {nm:'Tadoussac-Dünen im Abendlicht',d:'Weite Sandhänge über der Mündung',q:'Maison des dunes Tadoussac'}
+  ],
+  breakfast:[
+   {nm:'Café Charlevoix (Baie-Saint-Paul)',d:'Mikro-Rösterei, bester Espresso der Stadt',q:'Café Charlevoix Baie-Saint-Paul'},
+   {nm:'À Chacun son Pain',d:'Bio-Bäckerei mit Charlevoix-Getreide',q:'À Chacun son Pain Baie-Saint-Paul'},
+   {nm:'Café Bohème (Tadoussac)',d:'Gemütliches Bistro-Café mit Aussicht',q:'Café Bohème Tadoussac'}
+  ],
+  hike:[
+   {nm:'Acropole des Draveurs (Hautes-Gorges)',d:'Anspruchsvoller Grat mit spektakulärem Tal-Blick',q:'Acropole des Draveurs Hautes-Gorges'},
+   {nm:'Mont du Lac des Cygnes (Grands-Jardins)',d:'Taiga-Gipfel mit Weitblick über Charlevoix',q:'Mont du Lac des Cygnes Grands-Jardins'},
+   {nm:'Sentier de la Pointe-de-l\'Islet (Tadoussac)',d:'Kurzer Uferrundweg – Wale oft vom Land',q:'Pointe de l\'Islet Tadoussac'}
+  ],
   parking:'Baie-Saint-Paul: Straßenparkplätze & Anreiz-Parkplätze (z.B. ehem. Krankenhaus, Centre Saint-Aubin) gratis; Kirchenparkplatz Place de l\'Église 5 CAD.',
   days:[
    {iso:'2026-08-09',dt:'So 09.08.',title:'Ankunft Baie-Saint-Paul · Sonntagsmarkt & Käse',items:[
@@ -570,6 +622,18 @@ const STAGES=[
   ]},
  {badge:'4',name:'Trois-Rivières (Transit)',sub:'Mi 12.08.–Do 13.08. · 1 Nacht · Anfahrt ~200 km / 2,5 h',
   hotel:'Bricht die Westfahrt; historische Altstadt.',
+  photo:[
+   {nm:'Rue des Ursulines',d:'Älteste Kopfsteingasse, Klostermauern & Laternen',q:'Rue des Ursulines Trois-Rivières'},
+   {nm:'Terrasse Turcotte',d:'Promenade am Sankt-Lorenz mit Pont-Laviolette-Blick',q:'Terrasse Turcotte Trois-Rivières'}
+  ],
+  breakfast:[
+   {nm:'Café Morgane Royale',d:'Belebtes Innenstadt-Café, guter Morgenkaffee',q:'Café Morgane Royale Trois-Rivières'},
+   {nm:'Le Panetier',d:'Handwerksbäckerei der Altstadt-Bewohner',q:'Le Panetier Trois-Rivières'}
+  ],
+  hike:[
+   {nm:'Île Saint-Quentin',d:'Uferwege & Strand mitten im Fluss',q:'Île Saint-Quentin Trois-Rivières'},
+   {nm:'Parc de la Rivière-Batiscan',d:'Wasserfälle & Hängebrücken (~40 Min östlich)',q:'Parc de la Rivière-Batiscan'}
+  ],
   shopping:[
    {nm:'Centre Les Rivières',d:'größtes Einkaufszentrum der Region (kurzer Stopp)',q:'Les Rivières Shopping Centre Trois-Rivières'}
   ],
@@ -583,6 +647,21 @@ const STAGES=[
   ]},
  {badge:'5',name:'Ottawa',sub:'Do 13.08.–So 16.08. · 3 Nächte',
   hotel:'Hotel-Viertel: Nähe ByWard Market oder ruhiger The Glebe.',
+  photo:[
+   {nm:'Nepean Point',d:'Parlament, Fluss & Gatineau in einem Bild',q:'Nepean Point Ottawa'},
+   {nm:'Alexandra Bridge',d:'Sonnenuntergang mit Parlaments-Silhouette',q:'Alexandra Bridge Ottawa'},
+   {nm:'Rideau Falls',d:'Zwillingsfälle direkt in den Ottawa River',q:'Rideau Falls Ottawa'}
+  ],
+  breakfast:[
+   {nm:'Ministry of Coffee (Wellington W)',d:'Ruhiges Spezialitäten-Café, Pour-Over',q:'Ministry of Coffee Ottawa'},
+   {nm:'Bread by Us (Hintonburg)',d:'Handwerksbäckerei der Nachbarschaft',q:'Bread by Us Ottawa'},
+   {nm:'blumenstudio',d:'Café + Floristik, Gebäck von Bread by Us',q:'blumenstudio Ottawa'}
+  ],
+  hike:[
+   {nm:'Gatineau Park – King Mountain Trail',d:'Kurzer Rundweg mit Steilkanten-Aussichten',q:'King Mountain Trail Gatineau Park'},
+   {nm:'Pink Lake Loop',d:'Smaragdgrüner See, Rundweg ~2,5 km',q:'Pink Lake Gatineau Park'},
+   {nm:'Mer Bleue Bog',d:'Bohlenweg durch ein Hochmoor – einzigartig',q:'Mer Bleue Bog Ottawa'}
+  ],
   parking:'Direkt am ByWard Market: städt. ByWard Garage (70 Clarence St) – seit 2026 nur 3-Std-Limit (4 CAD/Std., abends/So 3 CAD/Std., Übernacht max. 8 CAD). Fürs Tagesparken besser Dalhousie Garage (141 Clarence St) ~16–20 CAD/Tag (unbestätigt).',
   transit:{city:'(OC Transpo)',txt:'O-Train Line 1 & Bus · Einzelfahrt 3,80 CAD (Presto/kontaktlos) bzw. 4,10 CAD bar · Tagesdeckel/DayPass 12,25 CAD bei Presto/kontaktlos · Zentrum gut zu Fuß',url:'https://www.octranspo.com/en/'},
   shopping:[
@@ -615,6 +694,20 @@ const STAGES=[
    I('Kingston & Fort Henry','sight','Festungsstadt aus Kalkstein','Fort Henry Kingston','n','https://www.forthenry.com')]},
  {badge:'6',name:'Prince Edward County',sub:'So 16.08.–Mo 17.08. · 1 Nacht ⭐',
   hotel:'Hotel-Viertel: Wellington oder Picton (mitten in Weingütern).',
+  photo:[
+   {nm:'Sandbanks – Dunes Beach',d:'Riesige Süßwasser-Dünen, tolles Abendlicht',q:'Sandbanks Dunes Beach'},
+   {nm:'Lake on the Mountain',d:'Blick von oben über die Bucht von Quinte',q:'Lake on the Mountain Prince Edward County'},
+   {nm:'Point Petre',d:'Wilde Kalksteinküste mit Leuchtturm-Resten',q:'Point Petre Prince Edward County'}
+  ],
+  breakfast:[
+   {nm:'The Bean Counter Café (Picton)',d:'Local-Klassiker, Backwaren & Kaffee',q:'The Bean Counter Café Picton'},
+   {nm:'Bermuda Short Café (Bloomfield)',d:'Winziges Café mit blättriger Patisserie',q:'Bermuda Short Café Bloomfield'}
+  ],
+  hike:[
+   {nm:'Sandbanks Dunes Trail',d:'Rundweg über die Wanderdünen',q:'Sandbanks Dunes Trail'},
+   {nm:'Little Bluff Conservation Area',d:'Kliff-Aussicht & Kieselstrand, kaum Besucher',q:'Little Bluff Conservation Area Prince Edward County'},
+   {nm:'Millennium Trail',d:'Alte Bahntrasse quer durchs County (Rad/Wandern)',q:'Millennium Trail Prince Edward County'}
+  ],
   parking:'Ländlich – an Weingütern, Brauereien & Orten kostenlose Parkplätze. Sandbanks Provincial Park: kostenpflichtiges Tages-Permit am Parkeingang (Ontario Parks); an Sommer-Wochenenden früh kommen, Park füllt sich.',
   days:[
    {iso:'2026-08-16',dt:'So 16.08.',title:'Hub: Wein & Strand (locker)',items:[
@@ -630,6 +723,21 @@ const STAGES=[
   items:[I('Anreise Toronto','hotel','Hotel beziehen, Abend im Viertel','Toronto','c')]},
  {badge:'7',name:'Toronto + Niagara',sub:'Mo 17.08.–Sa 22.08. · 5 Nächte',
   hotel:'Hotel-Viertel: Distillery District/Old Town oder West Queen West.',
+  photo:[
+   {nm:'Riverdale Park East',d:'Die klassische Downtown-Skyline vom Hügel',q:'Riverdale Park East Toronto'},
+   {nm:'Polson Pier / Leslie Spit',d:'Skyline über dem Wasser, dazu Stadtnatur',q:'Polson Pier Toronto'},
+   {nm:'Toronto Islands (Ward\'s Island)',d:'Skyline & Strände, ruhiger Inselteil',q:'Ward\'s Island Toronto'}
+  ],
+  breakfast:[
+   {nm:'Wildhearts Café (Annex)',d:'Verstecktes Wohnzimmer-Café, exzellenter Espresso',q:'Wildhearts Cafe Toronto'},
+   {nm:'White Lily Diner (Riverside)',d:'Retro-Diner, alles hausgemacht',q:'White Lily Diner Toronto'},
+   {nm:'Mildred\'s Temple Kitchen (Liberty Village)',d:'Kult-Brunch (Pancakes), wochentags ruhiger',q:'Mildreds Temple Kitchen Toronto'}
+  ],
+  hike:[
+   {nm:'Tommy Thompson Park (Leslie Spit)',d:'Urwüchsige Landzunge mit Skyline & Vögeln',q:'Tommy Thompson Park Toronto'},
+   {nm:'High Park & Grenadier Pond',d:'Größter Stadtpark mit Wäldchen & Teich',q:'High Park Toronto'},
+   {nm:'Niagara Glen',d:'Schlucht-Pfade hinab zum Niagara-Fluss',q:'Niagara Glen Nature Reserve'}
+  ],
   parking:'Mietwagen-Rückgabe am 19.08. am Flughafen Toronto Pearson (YYZ) → Toronto danach autofrei (UP Express/TTC). Solange das Auto da ist (Ankunft + Niagara-Tag): Green P Carpark 267 (70 Distillery Lane) Tagesmax. 20 CAD; am St. Lawrence Market (92 Front St E) Tagesmax. 9 CAD (Sa erste 2 Std. 1 CAD/Std.).',
   transit:{city:'(TTC)',txt:'U-Bahn, Streetcar & Bus · Einzelfahrt 3,30 CAD (Presto/kontaktlos), DayPass 13,50 CAD · Union↔Flughafen YYZ mit UP Express 12,35 CAD (9,25 CAD Presto/kontaktlos), ~28 Min, alle 15 Min',url:'https://www.ttc.ca/'},
   shopping:[
@@ -1235,6 +1343,19 @@ function shoppingHtml(s){
   }).join('');
   return `<div class="shopping">🛍️ <b>Shopping & Outlets:</b><ul>${items}</ul></div>`;
 }
+function extrasHtml(s){
+  if(!s.photo && !s.breakfast && !s.hike) return '';
+  const list=(arr)=>arr.map(x=>{
+    const web=x.u?` <a href="${esc(x.u)}" target="_blank" rel="noopener" title="Website">🔗</a>`:'';
+    return `<li><a href="${mapUrl(x.q||x.nm)}" target="_blank" rel="noopener">${esc(x.nm)}</a>${x.d?` <span style="color:var(--muted)">· ${esc(x.d)}</span>`:''}${web}</li>`;
+  }).join('');
+  let h='<div class="extras">';
+  if(s.photo&&s.photo.length) h+=`<div class="ex-sec"><h5>📷 Foto-Spots</h5><ul>${list(s.photo)}</ul></div>`;
+  if(s.breakfast&&s.breakfast.length) h+=`<div class="ex-sec"><h5>🥐 Frühstück (Locals)</h5><ul>${list(s.breakfast)}</ul></div>`;
+  if(s.hike&&s.hike.length) h+=`<div class="ex-sec"><h5>🥾 Wanderperlen</h5><ul>${list(s.hike)}</ul></div>`;
+  h+='</div>';
+  return h;
+}
 
 function bookingHtml(s){
   if(!s.booking)return '';
@@ -1301,7 +1422,7 @@ function renderPlan(){
           <span class="chev">▾</span></div>
         <div class="body">`;
       if(s.hotel) h+=`<div class="hotel">🏨 ${esc(s.hotel)}</div>`;
-      h+=bookingHtml(s);h+=transitHtml(s);h+=parkingHtml(s);h+=shoppingHtml(s);h+=modesHtml(s.name);
+      h+=bookingHtml(s);h+=transitHtml(s);h+=parkingHtml(s);h+=shoppingHtml(s);h+=extrasHtml(s);h+=modesHtml(s.name);
       if(s.drive){
         const dk=si+'-d',ord=dayOrder(dk,s.items.length);
         const names=ord.map(ii=>s.items[ii].map), gpx=ord.map(ii=>({nm:s.items[ii].nm,q:s.items[ii].map}));
