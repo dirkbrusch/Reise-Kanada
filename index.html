@@ -90,6 +90,18 @@
   .extras ul{margin:0;padding-left:18px}
   .extras li{margin:2px 0}
   .extras a{color:var(--blue);text-decoration:none}
+  /* Tagesroute */
+  .dayroute{background:linear-gradient(180deg,var(--soft2),var(--card));border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:12px;padding:11px 13px;margin:10px 0 6px}
+  .dayroute .rt-head{font-size:13.5px}
+  .dayroute .rt-mode{font-size:11.5px;color:var(--muted);font-weight:600;margin-left:4px}
+  .dayroute .rt-lead{font-size:12.5px;color:var(--ink);margin:5px 0 9px;line-height:1.5}
+  .rt-list{list-style:none;margin:0;padding:0}
+  .rt-list li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;font-size:13px;line-height:1.45}
+  .rt-list li .rt-n{flex:none;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .rt-list li.rt-gem .rt-n{background:var(--gold)}
+  .rt-list li.rt-gem b{color:#a5781f}
+  .rt-d{color:var(--muted);font-size:12px}
+  .rt-btn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 12px;border-radius:10px}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -567,7 +579,21 @@ const STAGES=[
      I('Café La Maison Smith','cafe','An der Place Royale','Maison Smith Place Royale Québec','n','https://smithcafe.com'),
      I('Le Lapin Sauté','food','Kaminfeuer, Kaninchen-Spezialitäten','Le Lapin Sauté Québec','n','https://www.quartierpetitchamplain.com/fr/commercants/le-lapin-saute/'),
      I('Batterie Royale','sight','🔁 2025-Plan · kleine Kanonenbastion unterhalb der Place Royale','Batterie Royale Québec','c')]},
-   {iso:'2026-08-06',dt:'Do 06.08.',title:'Hub: Oberstadt & Wälle',items:[
+   {iso:'2026-08-06',dt:'Do 06.08.',title:'Hub: Oberstadt & Wälle',
+    route:{mode:'🚶 zu Fuß · ~4,5 km Rundweg (gut ein halber Tag +)',from:'77 rue Saint-Vallier Est Québec',
+     lead:'Von der Unterkunft in Saint-Roch hinauf in die ummauerte Oberstadt und als Schleife über die Klippe zurück – die 💎-Perlen liegen direkt am Weg, kein Umweg nötig.',
+     steps:[
+      {n:'Hôtel du Parlement',d:'Start Oberstadt · Bronzefiguren-Fassade (~15 Min Aufstieg zu Fuß oder Bus 1)',q:'Hôtel du Parlement Québec'},
+      {n:'Parc du Cavalier-du-Moulin',d:'versteckter Bastion-Mini-Park mit Aussicht (2 Min Abstecher)',q:'Parc du Cavalier-du-Moulin Québec',gem:true},
+      {n:'Citadelle de Québec',d:'Sternfestung · Wachablösung ~10 Uhr (~8 Min)',q:'Citadelle de Québec'},
+      {n:'Promenade des Gouverneurs',d:'Klippenweg mit Strom-Panorama hinüber zur Terrasse (~10 Min)',q:'Promenade des Gouverneurs Québec',gem:true},
+      {n:'Terrasse Dufferin & Château Frontenac',d:'Postkarten-Promenade (~5 Min)',q:'Terrasse Dufferin Québec'},
+      {n:'Maison de la littérature',d:'Bibliothek in neugotischer Kirche, gratis (~5 Min)',q:'Maison de la littérature Québec',gem:true},
+      {n:'Rue du Trésor & Fresque des Québécois',d:'Künstlergasse + großes Trompe-l\'œil-Wandbild (~5 Min)',q:'Rue du Trésor Québec'},
+      {n:'Fähre Québec–Lévis (optional)',d:'beste Skyline vom Wasser, hin & zurück ~30 Min',q:'Traverse Québec Lévis'},
+      {n:'Plains of Abraham',d:'Nachmittag: großer Park über dem Strom, Picknick (~10 Min)',q:'Plains of Abraham Québec'}
+     ]},
+    items:[
      I('Dufferin-Terrasse & Château Frontenac','sight','Promenade hoch über dem Strom','Terrasse Dufferin Québec','n','https://www.chateau-frontenac.com'),
      I('Festungswälle & Citadelle','sight','Spaziergang auf den Mauern','Citadelle de Québec','n','https://www.lacitadelle.qc.ca'),
      I('Fähre Québec–Lévis','ferry','Wenige Dollar, beste Stadt-Perspektive','Québec Lévis Ferry','n','https://www.traversiers.com'),
@@ -1391,6 +1417,21 @@ function extrasHtml(s){
   h+='</div>';
   return h;
 }
+function stageBaseQ(s){ return (s.booking&&s.booking.q) || s.baseQ || s.name; }
+function routeHtml(d,s){
+  const r=d.route; if(!r) return '';
+  const from=r.from||stageBaseQ(s);
+  const steps=r.steps||[];
+  const dir=[from, ...steps.map(x=>x.q||x.n)];
+  const url='https://www.google.com/maps/dir/'+dir.map(encodeURIComponent).join('/');
+  const li=steps.map((x,i)=>`<li class="${x.gem?'rt-gem':''}"><span class="rt-n">${x.gem?'💎':(i+1)}</span><div><b>${esc(x.n)}</b>${x.d?` <span class="rt-d">· ${esc(x.d)}</span>`:''}</div></li>`).join('');
+  return `<div class="dayroute">
+    <div class="rt-head">🗺️ <b>Tagesroute</b>${r.mode?`<span class="rt-mode">${esc(r.mode)}</span>`:''}</div>
+    ${r.lead?`<div class="rt-lead">${esc(r.lead)}</div>`:''}
+    <ol class="rt-list">${li}</ol>
+    <a class="rt-btn" href="${esc(url)}" target="_blank" rel="noopener">🧭 Route in Google Maps öffnen</a>
+  </div>`;
+}
 
 function bookingHtml(s){
   if(!s.booking)return '';
@@ -1470,6 +1511,7 @@ function renderPlan(){
         s.days.forEach((d,di)=>{
           const dk=si+'-'+di,ord=dayOrder(dk,d.items.length);
           h+=`<div class="day" data-dropday="${dk}"><h3><span class="dt">${esc(d.dt)}</span> ${esc(d.title)}</h3>`;
+          h+=routeHtml(d,s);
           h+=dayTours(d,dk,ord,si,di);
           h+=tourExtraHtml(d.title);
           h+=`</div>`;
