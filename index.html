@@ -668,11 +668,26 @@ const STAGES=[
     ]}
   ]},
  {badge:'→',name:'Fahrt: Chemin du Roy',sub:'Mi 05.08. · Montréal → Québec · ~280 km · 3,5–4 h mit Stopps',drive:true,iso:'2026-08-05',
+  route:{drive:true,from:'Aéroport Montréal-Trudeau YUL',mode:'🚗 Fahrt · ~280 km / 3,5–4 h mit Genuss-Stopps',
+   lead:'Check-out, Mietwagen am Flughafen YUL abholen, dann gemütlich am Nordufer über die ältesten Dörfer Québecs (Route 138, Chemin du Roy) – Hofläden, Bäckereien, Käse. Ankunft Québec am späten Nachmittag, abends bleibt Zeit für einen ersten Bummel in der Unterstadt.'},
   items:[
-   I('Mietwagen abholen','hotel','Nach Check-out (05.08.), morgens in Montréal','Montréal','c'),
-   I('Neuville','food','„Süßmais-Hauptstadt"; Stand Ferme Langlois / Chez Médé','Neuville Québec','c'),
-   I('Deschambault-Grondines','sight','Alte Windmühle','Moulin de Grondines','n','https://deschambault-grondines.com/moulin-banal-de-grondines'),
-   I('Batiscan','sight','Altes Pfarrhaus, kostümierte Führungen','Vieux presbytère Batiscan','n','https://presbyterebatiscan.recitsquifontjaser.com')]},
+   I('Mietwagen abholen (YUL)','hotel','nach Check-out · National, Einweg bis Toronto','Aéroport Montréal-Trudeau','c','',{time:'~9:30',noroute:true,info:{d:'Nach dem Check-out Transfer zum Flughafen YUL (Uber/Taxi ~30 Min). Dort den vorgebuchten National-Mietwagen abholen – Einweg bis Toronto (YYZ, Rückgabe 19.08.). Ab hier seid ihr mobil.',t:'Emerald-Club/Executive-Area nutzen; Tank-Policy „voll/voll", Führerschein & Kreditkarte bereit.'}}),
+   I('Moulin Antoine-Jetté & Boulangerie (Repentigny)','bakery','Mühlenstandort + Artisan-Bäckerei · Auto-Picknick','Moulin Antoine-Jetté Repentigny','v','',{gem:true,time:'~10:30',info:{d:'Historischer Mühlenstandort an der Rue Notre-Dame in Repentigny mit der Artisan-Bäckerei „Autour du Moulin" – Brote, Gebäck und Pizza fürs Auto-Picknick. Charmanter erster Halt direkt am Chemin du Roy.',t:'Proviant für unterwegs mitnehmen.'}}),
+   I('Le Pain Griffé (Louiseville)','bakery','Handwerks-Bäckerei im „Cœur villageois"','Le Pain Griffé Louiseville','v','',{time:'~11:45',noroute:true,info:{d:'Handwerks-Bäckerei im „Cœur villageois" von Louiseville – ein Pflichtstopp für Brot- und Patisserie-Liebhaber auf halber Strecke.',t:'Kurzer Abstecher von der Route 138.'}}),
+   I('Batiscan (Vieux presbytère)','sight','Pfarrhaus von 1816 am Flussufer','Vieux presbytère Batiscan','v','https://presbyterebatiscan.recitsquifontjaser.com',{time:'~12:45',info:{d:'Altes Pfarrhaus von 1816 direkt am Flussufer mit kostümierten Führungen zum Leben in Neufrankreich – ein hübscher Halt mit Blick auf den Strom.',t:'Auch nur der Vorplatz am Wasser lohnt für eine Picknick-Pause.'}}),
+   I('Deschambault-Grondines','sight','„schönstes Dorf" · alte Banal-Mühle am Strom','Moulin banal Grondines','v','https://deschambault-grondines.com/moulin-banal-de-grondines',{gem:true,time:'~13:30',info:{d:'Malerisches Dorf mit alter Banal-Mühle und weitem Blick über den Sankt-Lorenz – eines der „schönsten Dörfer Québecs".',t:'Kurzer Spaziergang zur Mühle und ans Ufer.'}}),
+   I('Neuville (Süßmais)','food','Maisstände + historische Steinhäuser','Neuville Québec','v','',{time:'~14:15',info:{d:'Als „Süßmais-Hauptstadt" bekannt: im Spätsommer verkaufen Höfe wie Ferme Langlois / Chez Médé frischen Mais direkt an der Straße. Dazu eine der längsten Reihen historischer Steinhäuser Québecs.',t:'Maisverkauf nur in der Saison – August passt.'}}),
+   I('Ankunft Québec · Saint-Roch','hotel','Unterkunft 77 rue Saint-Vallier Est','77 rue Saint-Vallier Est Québec','v','',{time:'~15:30',info:{d:'Ankunft in der Unterkunft an der 77 rue Saint-Vallier Est im hippen Quartier Saint-Roch – Cafés, Mikrobrauereien und Läden vor der Tür.',t:'Auto abstellen (Parken siehe Etappen-Info); die Altstadt ist zu Fuß oder mit kurzem Uber erreichbar.'}})],
+  flow:[
+   {seg:'🚗 Fahrt Montréal → Québec · Chemin du Roy (Route 138)'},
+   0,
+   {tr:'🚗 Ab YUL auf die Autoroute 40 Ost; für den Genuss-Teil rechtzeitig auf die Route 138 (Chemin du Roy) am Fluss wechseln.'},
+   {seg:'🥐 Genuss-Stopps am Nordufer'},
+   1,2,3,4,5,
+   {seg:'🏨 Ankunft Québec (~15:30)'},
+   6,
+   {home:'Unterkunft 77 rue Saint-Vallier Est (Saint-Roch). Auto abstellen (Parken siehe Etappen-Info); abends ist die Altstadt zu Fuß (~20 Min) oder per kurzem Uber (~8–10 CAD) erreichbar.'}
+  ]},
  {badge:'2',name:'Québec City',sub:'Mi 05.08.–So 09.08. · 4 Nächte',
   hotel:'Gebucht im Quartier Saint-Roch (Unterstadt) – hippes Viertel mit Cafés, Läden & Mikrobrauereien.',
   sunset:[
@@ -712,49 +727,128 @@ const STAGES=[
    {nm:'Les Galeries de la Capitale',d:'Mall mit Indoor-Freizeitpark',q:'Galeries de la Capitale Québec'}
   ],
   days:[
-   {iso:'2026-08-05',dt:'Mi 05.08.',title:'Ankunft · Petit-Champlain & Place Royale',items:[
-     I('Quartier Petit-Champlain','sight','Escalier Casse-Cou, enge Gassen','Quartier Petit-Champlain Québec','n','https://www.quartierpetitchamplain.com'),
-     I('Place Royale & Notre-Dame-des-Victoires','sight','Keimzelle Neufrankreichs','Place Royale Québec','n','https://www.placeroyale.ca'),
-     I('Café La Maison Smith','cafe','An der Place Royale','Maison Smith Place Royale Québec','n','https://smithcafe.com'),
-     I('Le Lapin Sauté','food','Kaminfeuer, Kaninchen-Spezialitäten','Le Lapin Sauté Québec','n','https://www.quartierpetitchamplain.com/fr/commercants/le-lapin-saute/'),
-     I('Batterie Royale','sight','🔁 2025-Plan · kleine Kanonenbastion unterhalb der Place Royale','Batterie Royale Québec','c')]},
-   {iso:'2026-08-06',dt:'Do 06.08.',title:'Hub: Oberstadt & Wälle',
-    route:{walk:true,mode:'🚶 zu Fuß · ~4,5 km Rundweg (gut ein halber Tag +)',from:'77 rue Saint-Vallier Est Québec',
-     lead:'Von der Unterkunft in Saint-Roch hinauf in die ummauerte Oberstadt und als Schleife über die Klippe zurück – die 💎-Perlen liegen direkt am Weg, kein Umweg nötig.',
-     steps:[
-      {n:'Hôtel du Parlement',d:'Start Oberstadt · Bronzefiguren-Fassade (~15 Min Aufstieg zu Fuß oder Bus 1)',q:'Hôtel du Parlement Québec'},
-      {n:'Parc du Cavalier-du-Moulin',d:'versteckter Bastion-Mini-Park mit Aussicht (2 Min Abstecher)',q:'Parc du Cavalier-du-Moulin Québec',gem:true},
-      {n:'Citadelle de Québec',d:'Sternfestung · Wachablösung ~10 Uhr (~8 Min)',q:'Citadelle de Québec'},
-      {n:'Promenade des Gouverneurs',d:'Klippenweg mit Strom-Panorama hinüber zur Terrasse (~10 Min)',q:'Promenade des Gouverneurs Québec',gem:true},
-      {n:'Terrasse Dufferin & Château Frontenac',d:'Postkarten-Promenade (~5 Min)',q:'Terrasse Dufferin Québec'},
-      {n:'Maison de la littérature',d:'Bibliothek in neugotischer Kirche, gratis (~5 Min)',q:'Maison de la littérature Québec',gem:true},
-      {n:'Rue du Trésor & Fresque des Québécois',d:'Künstlergasse + großes Trompe-l\'œil-Wandbild (~5 Min)',q:'Rue du Trésor Québec'},
-      {n:'Fähre Québec–Lévis (optional)',d:'beste Skyline vom Wasser, hin & zurück ~30 Min',q:'Traverse Québec Lévis'},
-      {n:'Plains of Abraham',d:'Nachmittag: großer Park über dem Strom, Picknick (~10 Min)',q:'Plains of Abraham Québec'}
-     ]},
+   {iso:'2026-08-05',dt:'Mi 05.08.',title:'Ankunft · Basse-Ville (Petit-Champlain & Place Royale)',
+    route:{walk:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚶 Ankunftsnachmittag & Abend · zu Fuß',
+     lead:'Ankunftsnachmittag in Québec: nach der Fahrt entspannt die Basse-Ville erkunden – Petit-Champlain, Place Royale und versteckte Treppen –, Apéro im Weingewölbe, Abendessen traditionell québécois. Kein Stress; der große Oberstadt-Rundgang kommt morgen.'},
     items:[
-     I('Dufferin-Terrasse & Château Frontenac','sight','Promenade hoch über dem Strom','Terrasse Dufferin Québec','n','https://www.chateau-frontenac.com'),
-     I('Festungswälle & Citadelle','sight','Spaziergang auf den Mauern','Citadelle de Québec','n','https://www.lacitadelle.qc.ca'),
-     I('Fähre Québec–Lévis','ferry','Wenige Dollar, beste Stadt-Perspektive','Québec Lévis Ferry','n','https://www.traversiers.com'),
-     I('Plains of Abraham','sight','Weitläufiger Schlachtfeld-Park hoch über dem Strom – ideal für einen Spaziergang','Plains of Abraham Québec','n'),
-     I('Morrin-Bibliothek','sight','Viktorianisches Juwel (Geheimtipp)','Morrin Centre Québec','n','https://www.morrin.org'),
-     I('Rue du Trésor','shop','🔁 2025-Plan · überdachte Künstler-Gasse (Aquarelle, Drucke) · Oberstadt','Rue du Trésor Québec','c'),
-     I('Hôtel du Parlement','sight','🔁 2025-Plan · Parlamentsgebäude, kostenlose Führungen · zwischen Altstadt und Plains','Hôtel du Parlement Québec','c','https://www.assnat.qc.ca')]},
-   {iso:'2026-08-07',dt:'Fr 07.08.',title:'Hub: Saint-Roch & Festival',items:[
-     I('Saint-Roch / Rue Saint-Joseph','shop','Concept Stores, Designer, Galerien','Rue Saint-Joseph Québec','n','https://www.stroch.com'),
-     I('Brasserie La Korrigane','beer','Bier + Poutine mit Biersauce','La Korrigane Québec','n','https://www.korrigane.ca'),
-     I('Saint-Jean-Baptiste','shop','Buchläden, Bäckereien, bunte Häuser','Saint-Jean-Baptiste Québec','n'),
-     I('Fêtes de la Nouvelle-France','sight','06.–09.08. · gratis · Essensstände, 17./18. Jh.','Vieux-Québec','v','https://nouvellefrance.qc.ca'),
-     I('Chez Boulay – bistro boréal','food','Boreale Küche','Chez Boulay Québec','n','https://chezboulay.com')]},
-   {iso:'2026-08-08',dt:'Sa 08.08.',title:'Hub: Île d\'Orléans (Foodie-Insel)',items:[
-     I('Manoir Mauvide-Genest','sight','Seigneurie-Herrenhaus von 1734 mit kleinem Museum – ältestes erhaltenes Herrenhaus Québecs (Saint-Jean)','Manoir Mauvide-Genest Île d\'Orléans','n','https://www.manoirmauvidegenest.com'),
-     I('Église de Sainte-Famille','sight','Steinkirche von 1743 der ältesten Pfarrei der Insel · dazu Panoramablick aufs Festland','Église Sainte-Famille Île d\'Orléans','n'),
-     I('Cassis Monna & Filles','food','Cassis-Likör, Vanille-Cassis-Softeis, Terrasse','Cassis Monna et Filles Île d\'Orléans','v','https://www.cassismonna.com'),
-     I('Les Fromages de l\'Isle d\'Orléans','food','Käserezept von 1635, „Le Paillasson", „Le Raffiné"','Fromages Isle d\'Orléans Sainte-Famille','v','https://www.fromagesdeliledorleans.com'),
-     I('Microbrasserie de l\'Île / Pub Le Mitan','beer','Bier mit Inselwasser, Strom-Blick','Microbrasserie Île d\'Orléans','v','https://microorleans.com'),
-     I('Vignoble Sainte-Pétronille','wine','Wein, Blick auf Montmorency','Vignoble Sainte-Pétronille','v','https://vs-p.ca'),
-     I('Cidrerie Verger Bilodeau','wine','Cidre / Eiscidre','Verger Bilodeau Île d\'Orléans','v','https://www.cidreriebilodeau.com'),
-     I('Chocolaterie de l\'Île','food','Schokolade','Chocolaterie Île d\'Orléans','v','https://chocolaterieorleans.com')]}
+     I('Quartier Petit-Champlain','sight','älteste Einkaufsgasse Nordamerikas · unterm Château','Quartier Petit-Champlain Québec','v','https://www.quartierpetitchamplain.com',{must:true,time:'16:00',info:{d:'Älteste Einkaufsstraße Nordamerikas: enge, blumengeschmückte Gassen mit Boutiquen und Kunsthandwerk am Fuß der Klippe, überragt vom Château Frontenac. Das Herz der Basse-Ville.',t:'Am späten Nachmittag/Abend, wenn die Tagesbusse weg sind, am schönsten.'}}),
+     I('Escalier Casse-Cou & Rue Sous-le-Cap','sight','„Halsbrecher-Treppe" + schmalste Gasse','Escalier Casse-Cou Québec','v','',{gem:true,time:'16:20',info:{d:'Die steile „Halsbrecher-Treppe" verbindet Unter- und Oberstadt; die nahe Rue Sous-le-Cap gilt als eine der schmalsten Gassen Nordamerikas – fotogen und meist übersehen.',t:'Früh morgens oder abends fast menschenleer.'}}),
+     I('Atelier La Mailloche','shop','Glasbläserei mit Live-Demos','Atelier La Mailloche Québec','v','https://lamailloche.com',{gem:true,time:'16:40',info:{d:'Eine der wenigen Glasbläsereien in historischem Ambiente – im Keller gibt es Live-Demonstrationen, oben Stücke direkt vom Ofen.',t:'Vorführzeiten vor Ort erfragen.'}}),
+     I('Place Royale & Notre-Dame-des-Victoires','sight','Gründungsplatz · älteste Steinkirche (1688)','Place Royale Québec','v','https://www.placeroyale.ca',{must:true,time:'17:00',info:{d:'Der gepflasterte Gründungsplatz Neufrankreichs mit der ältesten Steinkirche Nordamerikas (1688). Intim, geschichtsträchtig, stimmungsvoll im Abendlicht.',t:'Kurzer Blick in die Kirche lohnt.'}}),
+     I('Fresque des Québécois','sight','riesiges Trompe-l\'œil-Wandbild','Fresque des Québécois Québec','v','',{gem:true,time:'17:20',info:{d:'Riesiges Trompe-l\'œil-Wandbild nahe der Place Royale, das 400 Jahre Stadtgeschichte in eine Hausfassade malt – man entdeckt immer neue Figuren.',t:'Leicht zu übersehen; direkt an der Rue Notre-Dame.'}}),
+     I('Batterie Royale','sight','Kanonenstellung von 1691 am Ufer','Batterie Royale Québec','v','',{time:'17:35',noroute:true,info:{d:'Rekonstruierte Kanonenstellung von 1691 am Flussufer – ein kleiner, stimmungsvoller Halt abseits des Trubels.',t:'Schöner Blick auf den Hafen.'}}),
+     I('Érico Chocolaterie','food','Handwerks-Schokolade · Kult-Trinkschokolade','Érico Chocolaterie Québec','v','https://www.ericochocolatier.com',{time:'17:50',noroute:true,info:{d:'Handwerks-Schokolade mit kleinem Schoko-Museum – die heiße Schokolade ist Kult bei Einheimischen.',t:'Perfekt für eine süße Pause.'}}),
+     I('Le Pape Georges','wine','Weinbar im Steingewölbe (1690) · Livemusik','Le Pape Georges Québec','c','',{time:'18:30',info:{d:'Urige Weinbar in einem Steingewölbe von 1690 mit Kaminfeuer – regionale Käse/Charcuterie und abends oft Livemusik.',t:'Idealer Apéro; klein und gemütlich.'}}),
+     I('Aux Anciens Canadiens','food','québécoise Tradition im Haus von 1676','Aux Anciens Canadiens Québec','c','https://www.auxancienscanadiens.qc.ca',{info:{d:'Québec-Institution im ältesten Haus der Oberstadt (1676): Tourtière, Wild, Cipaille und Ahorn-Desserts – traditionelle québécoise Küche pur.',t:'Reservieren; Mittagsmenü ist deutlich günstiger als abends.'}}),
+     I('Le Lapin Sauté','food','gemütliches Bistro · Kaninchen & Cassoulet','Le Lapin Sauté Québec','c','https://www.quartierpetitchamplain.com/fr/commercants/le-lapin-saute/',{noroute:true,info:{d:'Gemütliches Bistro in Petit-Champlain mit Kaminfeuer, spezialisiert auf Kaninchengerichte und Cassoulet.',t:'Die kleine Terrasse ist begehrt.'}}),
+     I('Le Cochon Dingue','food','unprätentiöser Bistro-Klassiker','Le Cochon Dingue Petit-Champlain Québec','c','https://cochondingue.com',{noroute:true,info:{d:'Unprätentiöser Québecer Bistro-Klassiker – Poutine, Tourtière und gute Pommes frites, familientauglich.',t:'Gut für einen lockeren Ankunftsabend.'}})],
+    flow:[
+     {seg:'🏙️ Ankunft & Basse-Ville (ab ~16:00)'},
+     {tr:'Von der Unterkunft (Saint-Roch) ~20 Min zu Fuß hinunter in die Basse-Ville (Petit-Champlain) – oder kurzer Uber ~8–10 CAD / Bus RTC. Das Auto steht (Altstadt ist Fußgängerzone).'},
+     0,1,2,3,4,5,6,
+     {note:'🍴 Kein Mittagstisch nötig – unterwegs genascht; hier für die süße Pause Érico (Trinkschokolade). Alternativ guter Kaffee bei Carrera Café in Petit-Champlain.'},
+     {seg:'🍷 Apéro · Basse-Ville (ab ~18:30)'},
+     7,
+     {seg:'🌆 Abend · Auswahl (ab ~19:30)'},
+     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Aux Anciens Canadiens – traditionelle québécoise Küche im Haus von 1676 · 2) Le Lapin Sauté – gemütlich, Kaninchen · 3) Le Cochon Dingue – locker & unkompliziert. Reservieren.'},
+     8,9,10,
+     {home:'zurück nach Saint-Roch: ~20 Min bergauf zu Fuß (über die Côte de la Montagne) oder Uber ~8–10 CAD.'}
+    ]},
+   {iso:'2026-08-06',dt:'Do 06.08.',title:'Oberstadt & Wälle',
+    route:{walk:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚶 zu Fuß · ~4,5 km · ganzer Tag',
+     lead:'Der große Oberstadt-Tag: hinauf in die ummauerte Haute-Ville, Sternfestung und Klippenweg, Postkarten-Promenade am Château, nachmittags Picknick auf den Plains of Abraham, Sundowner mit Strom-Blick und boreale Küche am Abend. Reihenfolge = Laufreihenfolge.'},
+    items:[
+     I('Hôtel du Parlement','sight','Bronzefiguren-Fassade · Start Oberstadt','Hôtel du Parlement Québec','v','https://www.assnat.qc.ca',{time:'9:30',info:{d:'Prachtvolles Parlamentsgebäude im Second-Empire-Stil (1886) mit einer Fassade voller Bronzefiguren großer Persönlichkeiten Québecs; davor die Fontaine de Tourny und schöne Gärten.',t:'Kostenlose Führungen möglich (Ausweis nötig); auch nur Fassade & Gärten lohnen.'}}),
+     I('Parc du Cavalier-du-Moulin','nature','versteckter Bastion-Park mit Aussicht','Parc du Cavalier-du-Moulin Québec','v','',{gem:true,time:'10:00',info:{d:'Versteckter Mini-Park auf einer alten Bastion mit Aussicht – ein lokaler Geheimplatz zum Durchatmen zwischen den Mauern.',t:'Nur 2 Min Abstecher, kaum Touristen.'}}),
+     I('Citadelle de Québec','sight','Sternfestung · Wachablösung ~10 Uhr','Citadelle de Québec','v','https://www.lacitadelle.qc.ca',{must:true,time:'10:15',info:{d:'Québec ist die einzige ummauerte Stadt nördlich von Mexiko; die sternförmige Zitadelle ist bis heute aktive Garnison des Royal 22e Régiment. Im Sommer Wachablösung gegen 10 Uhr.',t:'Die Wälle ringsum sind frei begehbar; das Innere nur mit Führung.'}}),
+     I('Promenade des Gouverneurs','nature','Klippenweg mit Strom-Panorama','Promenade des Gouverneurs Québec','v','',{gem:true,time:'11:15',info:{d:'Treppen- und Stegweg unterhalb der Zitadelle entlang der Klippe – ein stiller Panoramaweg hoch über dem Sankt-Lorenz, der zur Terrasse Dufferin und zu den Plains führt.',t:'Etwas Steigung; grandiose Ausblicke.'}}),
+     I('Terrasse Dufferin & Château Frontenac','sight','Postkarten-Promenade überm Strom','Terrasse Dufferin Québec','v','https://www.chateau-frontenac.com',{must:true,time:'11:45',info:{d:'Hölzerne Promenade vor dem berühmtesten Schlosshotel der Welt, hoch über dem Strom – das Postkartenmotiv Québecs schlechthin.',t:'Toller Platz; im Sommer oft Straßenmusik.'}}),
+     I('Maison de la littérature','sight','Bibliothek in neugotischer Kirche · gratis','Maison de la littérature Québec','v','https://www.maisondelalitterature.qc.ca',{gem:true,time:'12:15',info:{d:'Spektakuläre öffentliche Bibliothek in einer umgebauten neugotischen Kirche – strahlend weißer, heller Lesesaal, kostenlos und kaum von Touristen besucht.',t:'Architektur-Highlight; kurz reinschauen lohnt.'}}),
+     I('Rue du Trésor','shop','überdachte Künstlergasse','Rue du Trésor Québec','v','',{time:'12:45',info:{d:'Schmale überdachte Gasse, in der Künstler seit Jahrzehnten Aquarelle, Drucke und Karikaturen verkaufen – direkt neben der Kathedrale.',t:'Nettes Mitbringsel; kurzer Bummel.'}}),
+     I('Paillard','bakery','Bäckerei-Café · Macarons, Sandwiches','Paillard Québec','v','https://paillard.ca',{time:'13:00',noroute:true,info:{d:'Beliebte Bäckerei-Café an der Rue Saint-Jean – Macarons, Sandwiches und Gelato, bei Locals für den schnellen Lunch.',t:'Ideal fürs Grazing statt Mittagstisch.'}}),
+     I('Fähre Québec–Lévis','ferry','beste Skyline vom Wasser · ~30 Min','Traverse Québec Lévis','v','https://www.traversiers.com',{time:'14:00',noroute:true,info:{d:'Kurze Überfahrt ans Südufer – die schönste Perspektive auf die Silhouette der Altstadt und das Château Frontenac. Wenige Dollar, ~10 Min je Richtung.',t:'Einfach hin- und zurückfahren, ohne in Lévis viel Zeit einzuplanen.'}}),
+     I('Plains of Abraham','nature','Schlachtfeld-Park · Picknick überm Strom','Plains of Abraham Québec','v','',{time:'15:00',info:{d:'Geschichtsträchtiger Schlachtfeld-Park von 1759, heute weitläufige grüne Stadtoase hoch über dem Strom – perfekt für Spaziergang oder Picknick.',t:'Viel Platz; schöne Ausblicke Richtung Fluss.'}}),
+     I('Parc du Bois-de-Coulonge','nature','ruhiger Gouverneurspark mit Strom-Blick','Parc du Bois-de-Coulonge Québec','v','',{gem:true,time:'15:45',noroute:true,info:{d:'Ehemaliger Gouverneurspark mit alten Bäumen und Strom-Blick westlich der Zitadelle – ruhig und bei Touristen unbekannt.',t:'Lohnt, wenn ihr die Plains verlängern wollt.'}}),
+     I('Bistro Le Sam / 1608 (Château)','wine','Sundowner mit Strom-Blick im Frontenac','Bistro Le Sam Château Frontenac Québec','c','',{time:'17:30',info:{d:'Terrassen- bzw. Kaminbar im Château Frontenac hoch über dem Sankt-Lorenz – eleganter Ort für einen Sundowner mit Strom-Blick.',t:'Auch ohne Hotelaufenthalt zugänglich; früh für einen Fensterplatz.'}}),
+     I('Chez Boulay – bistro boréal','food','boréale Bistroküche · >80 % regional','Chez Boulay Québec','c','https://chezboulay.com',{info:{d:'Boréale Bistroküche (Hirsch, Makrele, Birkensirup) mit über 80 % regionalen Zutaten – nordisch inspiriert und trotzdem zugänglich.',t:'Reservieren empfohlen.'}}),
+     I('Chez Muffy','food','Farm-to-table im Steingewölbe','Chez Muffy Québec','c','',{noroute:true,info:{d:'Farm-to-table im steinernen Gewölbe der Unterstadt (Auberge Saint-Antoine) – saisonal, romantisch, gehoben.',t:'Für einen besonderen Abend.'}}),
+     I('Le Saint-Amour','food','feine Québecer Küche mit Innengarten','Le Saint-Amour Québec','c','https://saint-amour.com',{noroute:true,info:{d:'Klassiker der feinen Québecer Küche mit Innengarten – ideal für einen festlichen Abend.',t:'Gehoben; reservieren.'}})],
+    flow:[
+     {seg:'☀️ Vormittag · Haute-Ville (ab ~9:30)'},
+     {tr:'Von Saint-Roch in die Oberstadt: ~15 Min Aufstieg zu Fuß (Côte d\'Abraham / Treppen) oder Bus RTC 1 bis Parlement. Das Auto steht.'},
+     0,1,2,3,4,5,6,
+     {note:'🍴 Mittags Grazing statt Restaurant: Bäckerei-Café Paillard an der Rue Saint-Jean (Sandwiches, Macarons) – etwas mitnehmen fürs Picknick auf den Plains.'},
+     {seg:'🌤️ Nachmittag · Fähre & Plains (ab ~14:00)'},
+     7,8,9,10,
+     {seg:'🍷 Sundowner · Château (ab ~17:30)'},
+     11,
+     {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
+     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Chez Boulay – boréale Bistroküche, zugänglich · 2) Chez Muffy – Farm-to-table im Gewölbe · 3) Le Saint-Amour – festlich & gehoben. Reservieren.'},
+     12,13,14,
+     {home:'aus der Oberstadt zurück nach Saint-Roch: ~15 Min bergab zu Fuß oder Bus RTC / Uber ~8–10 CAD.'}
+    ]},
+   {iso:'2026-08-07',dt:'Fr 07.08.',title:'Saint-Roch & Fêtes de la Nouvelle-France',
+    route:{walk:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚶 zu Fuß · euer Viertel + Festival',
+     lead:'Euer eigenes Viertel und Altstadt-Feststimmung: vormittags Saint-Roch (Röstereien, Street-Art, Concept-Stores, Genossenschafts-Brauerei), nachmittags die kostenlosen Fêtes de la Nouvelle-France in den Gassen der Altstadt, abends Craft-Bier und Terroir-Bistro vor der Haustür.'},
+    items:[
+     I('Jardin Jean-Paul-L\'Allier & Église Saint-Roch','nature','grünes Herz des Viertels vor der Kirche','Jardin Jean-Paul-L\'Allier Québec','v','',{gem:true,time:'10:00',info:{d:'Begrünter Stadtgarten mit Wasserlauf vor der mächtigen neugotischen Église Saint-Roch – Treffpunkt der Nachbarschaft und grünes Herz des Viertels.',t:'Direkt bei eurer Unterkunft; guter Startpunkt.'}}),
+     I('Nektar Caféologue','cafe','Mikro-Rösterei · einer der besten Kaffees','Nektar Caféologue Québec','v','https://nektar.ca',{time:'10:30',noroute:true,info:{d:'Ambitionierte Mikro-Rösterei mit rotierenden Bohnen aus aller Welt und sehr versierten Baristas – einer der besten Kaffees der Stadt.',t:'Perfekter Morgenstart.'}}),
+     I('Murals & Rue Saint-Vallier','sight','großflächige Street-Art an eurer Straße','Rue Saint-Vallier Est Québec','v','',{gem:true,time:'10:45',info:{d:'Großflächige Street-Art und hippe Straßenzüge in Saint-Roch/Saint-Sauveur – kostenlos und draußen, genau an eurer Straße.',t:'Kamera bereithalten.'}}),
+     I('Rue Saint-Joseph & Simons','shop','Concept-Stores, Designer, Simons-Flagship','Simons Québec rue Saint-Joseph','v','',{time:'11:15',info:{d:'Die Einkaufsader von Saint-Roch mit Concept-Stores, Designern, Galerien und dem Flagship des Québecer Kaufhauses Simons.',t:'Auch Plattenläden zum Stöbern.'}}),
+     I('Saint-Jean-Baptiste','sight','buntes Viertel · Église Saint-Jean-Baptiste','Église Saint-Jean-Baptiste Québec','v','',{time:'12:00',info:{d:'Lebendiges, un-touristisches Viertel mit bunten Holzhäusern und der prächtigen Église Saint-Jean-Baptiste – schöne Fassade, ruhiger Innenraum.',t:'Schöner Übergang zur Altstadt.'}}),
+     I('J.A. Moisan','market','ältester Lebensmittelladen Nordamerikas (1871)','J.A. Moisan Québec','v','',{time:'12:20',noroute:true,info:{d:'Ältester Lebensmittelladen Nordamerikas (1871) an der Rue Saint-Jean – knarzende Dielen, Regale voller Québecer Spezialitäten.',t:'Gute Mitbringsel; kurzer Stopp.'}}),
+     I('La Barberie','beer','Genossenschafts-Brauerei · Bier-Carrousel','La Barberie Québec','v','https://labarberie.com',{time:'13:00',info:{d:'Kult-Genossenschafts-Brauerei seit 1997 mit einer Carrousel-Verkostung von acht Bieren auf großer Sommerterrasse.',t:'Das Bier-Carrousel ist ideal zum Durchprobieren.'}}),
+     I('Fêtes de la Nouvelle-France','sight','Kostümfest in den Altstadt-Gassen · gratis','Fêtes de la Nouvelle-France Québec','v','https://nouvellefrance.qc.ca',{must:true,time:'14:30',info:{d:'Großes Kostümfest (06.–09.08.), das das 17./18. Jahrhundert in den Gassen der Altstadt aufleben lässt – Umzüge, Musik und historisches Streetfood.',t:'Eintritt frei; es wird voll, dafür tolle Atmosphäre und gutes Essen an den Ständen.'}}),
+     I('Griendel Brasserie','beer','24 Zapfhähne · lokaler Craft-Bier-Liebling','Griendel Québec','v','https://griendel.ca',{time:'17:30',info:{d:'24 Zapfhähne und gute Gastro-Küche – ein lokaler Liebling für ehrliches Craft-Bier in Saint-Roch/Saint-Sauveur.',t:'Guter Apéro; auch zum Essen möglich.'}}),
+     I('Le Clocher Penché','food','franko-québécoise Bistro-Institution in Saint-Roch','Le Clocher Penché Québec','c','https://clocherpenche.ca',{info:{d:'Franko-québécoise Bistro-Institution in Saint-Roch mit Marktküche und top Brunch – lokal verwurzelt und unprätentiös.',t:'Reservieren.'}}),
+     I('Ouroboros','food','saisonale Terroir-Marktküche (Bib Gourmand)','Ouroboros Québec','c','',{noroute:true,info:{d:'Terroir-getriebene Marktküche nach Saison (Bib Gourmand) – modern und lokal verankert.',t:'Gute mittlere Preisklasse.'}}),
+     I('ARVI','food','1 Michelin-Stern · kreative Terroir-Küche','ARVI Québec','c','https://arvi.ca',{noroute:true,info:{d:'Kreative Québecer Terroir-Küche (ein Michelin-Stern) im benachbarten Limoilou – eine der spannendsten Adressen der Stadt.',t:'Für einen besonderen Abend; früh reservieren.'}}),
+     I('jjacques','food','Austern, Meeresfrüchte, feine Fleischstücke','jjacques Québec','c','',{noroute:true,info:{d:'Bar-und-Küche-Konzept mit Austern, Meeresfrüchten und feinen Fleischstücken aus saisonalem Produkt.',t:'Locker und lecker.'}})],
+    flow:[
+     {seg:'☀️ Vormittag · Saint-Roch (euer Viertel, ab ~10:00)'},
+     {tr:'Saint-Roch ist euer Viertel – vormittags alles fußläufig ab der Unterkunft.'},
+     0,1,2,3,4,5,6,
+     {note:'🍴 Mittags Grazing: Kaffee bei Nektar, Bier-Carrousel & Snack bei La Barberie, Spezialitäten bei J.A. Moisan – kein fester Mittagstisch.'},
+     {tr:'Zum Festival in die Altstadt: ~15 Min bergauf zu Fuß oder Bus RTC 1.'},
+     {seg:'🎉 Nachmittag · Fêtes de la Nouvelle-France (ab ~14:30)'},
+     7,
+     {seg:'🍺 Apéro · Saint-Roch (ab ~17:30) — Tap-Room'},
+     8,
+     {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
+     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Le Clocher Penché – franko-québécoise Bistro-Institution · 2) Ouroboros – Terroir-Marktküche (Bib Gourmand) · 3) ARVI – 1 Michelin-Stern, besonderer Abend · 4) jjacques – Austern & Meeresfrüchte. Reservieren.'},
+     9,10,11,12,
+     {home:'Ihr wohnt mitten in Saint-Roch – abends ist alles fußläufig; von der Altstadt (Festival) ~15 Min bergab zurück, oder Uber ~8 CAD.'}
+    ]},
+   {iso:'2026-08-08',dt:'Sa 08.08.',title:'Île d\'Orléans (Fahr-Rundtour · Foodie-Insel)',
+    route:{drive:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚗 Fahr-Rundtour · Chemin Royal ~67 km',
+     lead:'Genuss-Rundfahrt über die Île d\'Orléans, den „Garten Québecs": Familienhöfe, eine fast 100-jährige Bäckerei, Käse nach 1635er-Rezept, Cassis-Softeis und Buvetten mit Stromblick – zum Sonnenuntergang leuchtet Québecs Skyline über dem Wasser. Fahrtag mit vielen kleinen Stopps.'},
+    items:[
+     I('Polyculture Plante','market','Hofladen am Inseleingang · Obst, Cidre, Gebäck','Polyculture Plante Île d\'Orléans','v','https://www.polycultureplante.com',{time:'10:00',info:{d:'Hofladen gleich am Inseleingang: Erdbeeren, Mais, Konfitüren, Cidre und Gebäck – ein preisgekrönter Familienbetrieb, guter erster Stopp.',t:'Saisonales Obst direkt vom Feld.'}}),
+     I('Vignoble Sainte-Pétronille','wine','Weingut mit Terrasse · Blick auf Montmorency','Vignoble Sainte-Pétronille','v','https://vs-p.ca',{time:'10:45',info:{d:'Weingut an der Inselspitze mit Terrasse und Blick auf die Montmorency-Fälle – einer der Weinbau-Pioniere der Insel.',t:'Verkostung mit Aussicht; wer fährt, spuckt aus.'}}),
+     I('Les Délices de l\'Île / Chocolaterie','food','Cassis-Sorbet, Sirupe & Inselschokolade','Les Délices de l\'Île d\'Orléans','v','https://delicesdeliledorleans.com',{time:'11:15',noroute:true,info:{d:'Spezialitäten rund um Cassis: Sirupe, Liköre und hausgemachtes Sorbet zum Probieren – plus Inselschokolade.',t:'Süßer Zwischenstopp.'}}),
+     I('Le Moulin de Saint-Laurent','food','Restaurant in alter Steinmühle · Wasserfall-Terrasse','Le Moulin de Saint-Laurent Île d\'Orléans','c','https://moulinstlaurent.qc.ca',{time:'12:00',noroute:true,info:{d:'Restaurant in einer alten Steinmühle mit Wasserfall-Terrasse – regionale Küche in romantischem Rahmen, gut für ein frühes Mittag.',t:'Terrassenplatz am Wasserfall erfragen.'}}),
+     I('Parc maritime de Saint-Laurent','sight','Bootsbau-Erbe & Picknickwiese am Wasser','Parc maritime de Saint-Laurent Île d\'Orléans','v','',{gem:true,time:'12:45',info:{d:'Altes Bootsbau-Erbe am Wasser mit Picknickwiese und Werftgeschichte – ein ruhiger Aussichts- und Geschichtsstopp.',t:'Schöner Blick auf den Strom.'}}),
+     I('Manoir Mauvide-Genest','sight','Herrenhaus von 1734 · ältestes Québecs','Manoir Mauvide-Genest Île d\'Orléans','v','https://www.manoirmauvidegenest.com',{time:'13:15',info:{d:'Seigneurie-Herrenhaus von 1734 mit kleinem Museum – das älteste erhaltene Herrenhaus Québecs (Saint-Jean).',t:'Auch der Garten am Wasser lohnt.'}}),
+     I('Les Fromages de l\'Isle d\'Orléans','food','Käse nach 1635er-Rezept · „Le Paillasson"','Fromages Isle d\'Orléans Sainte-Famille','v','https://www.fromagesdeliledorleans.com',{must:true,time:'14:00',info:{d:'Käserei, die das älteste Käserezept Nordamerikas (1635) wiederbelebt hat – den Grillkäse „Le Paillasson" und „Le Raffiné" gibt es fast nur hier.',t:'Direkt vor Ort probieren & kaufen.'}}),
+     I('Église de Sainte-Famille & Dorfkern','sight','Steinkirche 1743 · Blick aufs Festland','Église Sainte-Famille Île d\'Orléans','v','',{gem:true,time:'14:30',info:{d:'Steinkirche von 1743 der ältesten Pfarrei der Insel, dazu ein Dorfkern mit Häusern aus der Franzosenzeit und freiem Blick aufs Festland.',t:'Stiller, fotogener Halt.'}}),
+     I('Boulangerie Blouin','bakery','fast 100-jährige Familienbäckerei','Boulangerie Blouin Île d\'Orléans','v','',{gem:true,time:'15:00',info:{d:'Fast 100-jährige Familienbäckerei mit Urgroßmutter-Rezepten – Brot, Tourtière und Tartes wie früher.',t:'Perfekt für einen Snack unterwegs.'}}),
+     I('Cassis Monna & Filles','food','legendäres Vanille-Cassis-Softeis · Terrasse','Cassis Monna et Filles Île d\'Orléans','v','https://www.cassismonna.com',{must:true,time:'15:45',info:{d:'Familienbetrieb für Cassis-Liköre und -Sirupe; das Vanille-Cassis-Softeis ist legendär – dazu eine schöne Terrasse.',t:'Das Softeis nicht verpassen.'}}),
+     I('Cidrerie Verger Bilodeau','wine','Cidre & Eiscidre · Hofladen','Verger Bilodeau Île d\'Orléans','v','https://www.cidreriebilodeau.com',{time:'16:30',noroute:true,info:{d:'Obsthof und Cidrerie – Apfelwein, Eiscidre und ein gut bestückter Hofladen.',t:'Eiscidre als Mitbringsel.'}}),
+     I('Microbrasserie de l\'Île / Pub Le Mitan','beer','Inselbrauerei · Bier mit Inselwasser','Microbrasserie Île d\'Orléans','v','https://microorleans.com',{time:'17:15',info:{d:'Inselbrauerei mit Pub, Bier aus Inselwasser und Blick über den Strom – entspannter Apéro-Stopp.',t:'Terrasse bei gutem Wetter.'}}),
+     I('Auberge La Goéliche','food','Terrasse mit Québec-Skyline · Sonnenuntergang','Auberge La Goéliche Sainte-Pétronille','c','https://goeliche.ca',{info:{d:'Terrassen-Restaurant an der Inselspitze in Sainte-Pétronille mit Postkartenblick auf die Québec-Skyline – ideal zum Sonnenuntergang.',t:'Für den Sonnenuntergang reservieren; Fensterplatz/Terrasse erfragen.'}}),
+     I('La Midinette (Buvette)','food','Buvette mit kleinen Tellern & Naturwein','La Midinette Île d\'Orléans','c','',{noroute:true,info:{d:'Handwerksbäckerei und abends Buvette mit kleinen Tellern und Naturwein auf der Terrasse – entspannter Inselabend mit Stromblick.',t:'Lockere Alternative zum Dinner.'}})],
+    flow:[
+     {seg:'🚗 Fahr-Rundtour Île d\'Orléans (ab ~10:00)'},
+     {tr:'🚗 Mit dem Mietwagen ab Saint-Roch über den Pont de l\'Île (~25 Min) auf die Insel; Rundfahrt im Uhrzeigersinn über den Chemin Royal (~67 km Ringstraße).'},
+     0,1,2,3,4,5,6,7,8,9,10,
+     {note:'🍴 Genuss-Grazing statt Restaurant: Hofobst bei Polyculture Plante, Käse „Le Paillasson", Boulangerie Blouin, Cassis-Softeis bei Monna & Filles – über den Tag verteilt.'},
+     {seg:'🍺 Apéro · Inselbrauerei (ab ~17:15)'},
+     11,
+     {seg:'🌆 Abend · Sonnenuntergang an der Inselspitze (ab ~19:00)'},
+     {note:'💡 Empfehlung zum Sonnenuntergang: 1) Auberge La Goéliche – Terrasse mit Québec-Skyline überm Wasser (reservieren!) · 2) La Midinette – lockere Buvette mit Naturwein.'},
+     12,13,
+     {home:'🚗 Abends von der Westspitze Sainte-Pétronille über die Brücke zurück nach Saint-Roch (~30 Min). Wer verkostet, plant einen Fahrer/Uber ein – bei Wein/Cidre ausspucken.'}
+    ]}
   ]},
  {badge:'→',name:'Fahrt: Côte-de-Beaupré',sub:'So 09.08. · Québec → Baie-Saint-Paul · ~95 km · ~1,5 h + Stopps',drive:true,iso:'2026-08-09',
   items:[
@@ -1668,13 +1762,16 @@ function renderPlan(){
       if(s.hotel) h+=`<div class="hotel">🏨 ${esc(s.hotel)}</div>`;
       h+=bookingHtml(s);h+=transitHtml(s);h+=parkingHtml(s);h+=shoppingHtml(s);h+=extrasHtml(s);h+=modesHtml(s.name);
       if(s.drive){
-        const dk=si+'-d',ord=dayOrder(dk,s.items.length);
-        const names=ord.map(ii=>s.items[ii].map), gpx=ord.map(ii=>({nm:s.items[ii].nm,q:s.items[ii].map}));
-        h+=`<div class="day" data-dropday="${dk}"><div class="drive">🚗 Scenic-Etappe</div>`;
-        h+=tourBtns('Fahrt '+s.name,names,gpx,'Fahrt-Route (Google Maps)');
-        ord.forEach((ii,pos)=>h+=itemHtml(s.items[ii],si+'-d-'+ii,{dayKey:dk,pos,len:ord.length}));
-        h+=tourExtraHtml(s.name);
-        h+=`</div>`;
+        if(s.flow){ h+=dayFlowHtml(s,s,si,'d'); }
+        else {
+          const dk=si+'-d',ord=dayOrder(dk,s.items.length);
+          const names=ord.map(ii=>s.items[ii].map), gpx=ord.map(ii=>({nm:s.items[ii].nm,q:s.items[ii].map}));
+          h+=`<div class="day" data-dropday="${dk}"><div class="drive">🚗 Scenic-Etappe</div>`;
+          h+=tourBtns('Fahrt '+s.name,names,gpx,'Fahrt-Route (Google Maps)');
+          ord.forEach((ii,pos)=>h+=itemHtml(s.items[ii],si+'-d-'+ii,{dayKey:dk,pos,len:ord.length}));
+          h+=tourExtraHtml(s.name);
+          h+=`</div>`;
+        }
       } else {
         s.days.forEach((d,di)=>{
           const dk=si+'-'+di,ord=dayOrder(dk,d.items.length);
@@ -1756,12 +1853,15 @@ function renderToday(){
     }
     blocks.forEach(b=>{
       if(b.type==='drive'){
-        const dk=b.si+'-d',ord=dayOrder(dk,b.s.items.length);
-        const names=ord.map(ii=>b.s.items[ii].map), gpx=ord.map(ii=>({nm:b.s.items[ii].nm,q:b.s.items[ii].map}));
         h+=`<div class="card"><h2>🚗 ${esc(b.s.name)}</h2><p class="sub">${esc(b.s.sub)}</p>`;
-        h+=tourBtns('Fahrt '+b.s.name,names,gpx,'Fahrt-Route (Google Maps)');
-        ord.forEach(ii=>h+=itemHtml(b.s.items[ii],b.si+'-d-'+ii));
-        h+=tourExtraHtml(b.s.name);
+        if(b.s.flow){ h+=dayFlowHtml(b.s,b.s,b.si,'d'); }
+        else {
+          const dk=b.si+'-d',ord=dayOrder(dk,b.s.items.length);
+          const names=ord.map(ii=>b.s.items[ii].map), gpx=ord.map(ii=>({nm:b.s.items[ii].nm,q:b.s.items[ii].map}));
+          h+=tourBtns('Fahrt '+b.s.name,names,gpx,'Fahrt-Route (Google Maps)');
+          ord.forEach(ii=>h+=itemHtml(b.s.items[ii],b.si+'-d-'+ii));
+          h+=tourExtraHtml(b.s.name);
+        }
         h+=`</div>`;
       } else {
         const dk=b.si+'-'+b.di,ord=dayOrder(dk,b.d.items.length);
@@ -1852,11 +1952,14 @@ function renderCalDetail(iso){
     h+=`<div class="card"><h2>${b.type==='drive'?'🚗 '+esc(b.s.name):'📍 '+esc(b.d.title)}</h2>`;
     h+=`<p class="sub">${b.type==='day'?esc(b.d.dt):esc(b.s.sub)}</p>`;
     if(b.type==='drive'){
-      const dk=b.si+'-d',ord=dayOrder(dk,b.s.items.length);
-      const names=ord.map(ii=>b.s.items[ii].map), gpx=ord.map(ii=>({nm:b.s.items[ii].nm,q:b.s.items[ii].map}));
-      h+=tourBtns('Fahrt '+b.s.name,names,gpx,'Fahrt-Route (Google Maps)');
-      ord.forEach(ii=>h+=itemHtml(b.s.items[ii],b.si+'-d-'+ii));
-      h+=tourExtraHtml(b.s.name);
+      if(b.s.flow){ h+=dayFlowHtml(b.s,b.s,b.si,'d'); }
+      else {
+        const dk=b.si+'-d',ord=dayOrder(dk,b.s.items.length);
+        const names=ord.map(ii=>b.s.items[ii].map), gpx=ord.map(ii=>({nm:b.s.items[ii].nm,q:b.s.items[ii].map}));
+        h+=tourBtns('Fahrt '+b.s.name,names,gpx,'Fahrt-Route (Google Maps)');
+        ord.forEach(ii=>h+=itemHtml(b.s.items[ii],b.si+'-d-'+ii));
+        h+=tourExtraHtml(b.s.name);
+      }
     } else {
       if(b.s.booking)h+=bookingHtml(b.s); else if(b.s.hotel)h+=`<p class="sub">🏨 ${esc(b.s.hotel)}</p>`;
       h+=transitHtml(b.s)+parkingHtml(b.s);
