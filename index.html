@@ -116,6 +116,9 @@
   .ftr{color:var(--muted);font-size:12.5px;margin:5px 0 5px 8px;padding:2px 0 2px 8px;border-left:2px dashed var(--line)}
   .ftr b{color:var(--ink)}
   .dayflow{margin-top:6px}
+  .tchip{display:inline-block;font-size:10px;font-weight:800;background:var(--soft);color:var(--ink);padding:1px 7px;border-radius:6px;margin-right:6px;vertical-align:middle;white-space:nowrap}
+  .fnote{background:rgba(200,147,42,.12);border:1px solid rgba(200,147,42,.3);border-radius:11px;padding:9px 12px;margin:4px 0 8px;font-size:12.5px;line-height:1.55}
+  .fnote b{color:var(--maple)}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -529,25 +532,29 @@ const STAGES=[
      I('Cité Mémoire','sight','Gratis Outdoor-Videoprojektionen in den Gassen (Fr/Sa/So abends)','Cité Mémoire Montréal','v','https://www.montrealenhistoires.com')]},
    {iso:'2026-08-01',dt:'Sa 01.08.',title:'Hub: Vieux-Montréal',
     route:{walk:true,mode:'🚶 zu Fuß + Metro · ganzer Tag',
-     lead:'Ein durchgehender Weg ab Hotel: erst die Altstadt zu Fuß (die 💎-Perlen liegen direkt am Weg), dann per Metro an den Lachine-Kanal, abends ins Plateau. Die Reihenfolge ist die Laufreihenfolge.'},
+     lead:'Ein durchgehender Weg ab Hotel: erst die Altstadt zu Fuß (die 💎-Perlen liegen direkt am Weg), dann per Metro an den Lachine-Kanal, abends zurück zum Abendessen in der Altstadt. Reihenfolge = Laufreihenfolge; Uhrzeiten sind entspannte Richtwerte.'},
     items:[
-     I('Basilique Notre-Dame','sight','Neugotisches Meisterwerk mit tiefblau-goldenem Gewölbe · ~5 Min vom Hotel','Basilique Notre-Dame Montréal','n','https://www.basiliquenotredame.ca',{must:true}),
-     I('Cours Le Royer','sight','Begrünter, autofreier Innenhof zwischen alten Lagerhäusern – stiller Rückzug · ~3 Min','Cours Le Royer Montréal','v','',{gem:true}),
-     I('Chapelle Notre-Dame-de-Bon-Secours','sight','Seefahrer-Kapelle; Aufstieg zum Turm für einen unerwarteten Hafenblick · ~5 Min','Chapelle Notre-Dame-de-Bon-Secours Montréal','v','https://margueritebourgeoys.org',{gem:true}),
-     I('Marché Bonsecours','shop','Historische Markthalle mit lokalem Kunsthandwerk statt Touri-Nepp · ~2 Min','Marché Bonsecours Montréal','n','https://marchebonsecours.qc.ca',{gem:true}),
-     I('Tour de l\'Horloge','view','Uhrturm am Quai mit Aussichtsplattform & Stadtstrand – Hafenblick ohne Eintritt · ~6 Min','Tour de l\'Horloge Montréal','v','',{gem:true}),
-     I('Bota Bota','spa','Nordisches Spa auf einem Schiff am Alten Hafen (optional, reservieren)','Bota Bota Montréal','n','https://botabota.ca'),
-     I('Marché Atwater','market','Art-déco-Markthalle + Satay Brothers; Picknick am Lachine-Kanal','Marché Atwater Montréal','v','https://www.marchespublics-mtl.com',{must:true}),
-     I("L'Express",'food','Klassische französische Brasserie, Rue Saint-Denis (reservieren) · Alt.: Garde Manger, Modavie (Live-Jazz), Le Serpent','L\'Express Montréal','n','https://restaurantlexpress.com')],
+     I('Basilique Notre-Dame','sight','~5 Min vom Hotel · morgens am ruhigsten','Basilique Notre-Dame Montréal','v','https://www.basiliquenotredame.ca',{must:true,time:'9:30',info:{d:'Neugotisches Meisterwerk von 1829 mit tiefblau bemaltem Gewölbe, tausenden Blattgold-Sternen und einer der größten Casavant-Orgeln Nordamerikas. Der Innenraum ist bewusst wie ein Sternenhimmel gestaltet – ganz anders als das schlichte Äußere vermuten lässt.',t:'Eintritt kostenpflichtig; die abendliche Licht-Show „AURA" ist ein separates Ticket. Früh kommen, bevor die Reisegruppen eintreffen.'}}),
+     I('Cours Le Royer','sight','stiller Innenhof · ~3 Min','Cours Le Royer Montréal','v','',{gem:true,time:'10:15',info:{d:'Autofreier, begrünter Innenhof zwischen ehemaligen Textil-Lagerhäusern des 19. Jahrhunderts, heute Wohn- und Büro-Lofts. Einer der stillsten Winkel der Altstadt – die meisten Touristen laufen an der Zufahrt vorbei.',t:'Perfekte kurze Pause abseits des Trubels der Rue Saint-Paul.'}}),
+     I('Chapelle Notre-Dame-de-Bon-Secours','sight','Turmaufstieg, Hafenblick · ~5 Min','Chapelle Notre-Dame-de-Bon-Secours Montréal','v','https://margueritebourgeoys.org',{gem:true,time:'10:30',info:{d:'Die „Seefahrer-Kapelle" von 1771, gegründet von Marguerite Bourgeoys. Von Matrosen gestiftete hölzerne Votiv-Schiffe hängen unter der Decke; eine schmale Treppe führt hinauf auf den Turm.',t:'Turm & Aussichtsplattform gegen kleinen Eintritt – einer der schönsten Hafenblicke der Altstadt.'}}),
+     I('Marché Bonsecours','shop','Kunsthandwerk-Markthalle · ~2 Min','Marché Bonsecours Montréal','v','https://marchebonsecours.qc.ca',{gem:true,time:'11:00',info:{d:'Klassizistischer Markthallenbau von 1847 mit silberner Kuppel – einst Parlament und Rathaus. Heute lokale Boutiquen, Kunsthandwerk und Designer aus Québec statt Souvenir-Kitsch.',t:'Gute Adresse für ehrliche Mitbringsel.'}}),
+     I('Tour de l\'Horloge','view','Aussicht & Stadtstrand · ~6 Min','Tour de l\'Horloge Montréal','v','',{gem:true,time:'11:30',info:{d:'1922 als Denkmal für gefallene Matrosen errichteter Uhrturm am Quai de l\'Horloge. 192 Stufen führen zu einer kostenlosen Aussichtsplattform; davor liegt ein städtischer Sandstrand direkt am Fluss.',t:'Aufstieg gratis – toller Rundblick über Hafen und Skyline.'}}),
+     I('Bota Bota','spa','Spa-Schiff (optional) · reservieren','Bota Bota Montréal','c','https://botabota.ca',{time:'12:15',info:{d:'Nordisches Spa auf einer umgebauten Fähre im Alten Hafen: Warm- und Kaltbecken, Saunen und Ruhedecks mit Blick auf den Sankt-Lorenz-Strom. Ideal, um nach dem Altstadt-Rundgang runterzukommen.',t:'Vorab reservieren, Badesachen mitnehmen; der reine „Wasserkreislauf" ohne Massage ist günstiger.'}}),
+     I('Marché Atwater','market','Satay Brothers · Picknick am Kanal','Marché Atwater Montréal','v','https://www.marchespublics-mtl.com',{must:true,time:'13:30',info:{d:'Art-déco-Markthalle von 1933 mit markantem Uhrturm am Lachine-Kanal: Metzger, Käsehändler, Bäcker und Feinkost unter einem Dach. Der Stand „Satay Brothers" ist Kult für südostasiatisches Streetfood.',t:'Alles fürs Picknick am Kanal besorgen; bei Sonne ein Leihrad (BIXI) oder Spaziergang am Wasser.'}}),
+     I('Garde Manger','food','Seafood ohne Türschild · reservieren','Garde Manger Montréal','c','',{info:{d:'Chuck Hughes\' berühmtes Seafood-Lokal in Vieux-Montréal – ohne Schild an der Tür, eng, laut und lebendig. Austern, Hummer-Poutine und tagesfrische Meeresfrüchte in echter Bistro-Atmosphäre.',t:'Nur mit Reservierung; sehr klein und immer voll.'}}),
+     I('Modavie','food','Lammküche + Live-Jazz jeden Abend','Modavie Montréal','c','https://www.modavie.com',{noroute:true,info:{d:'Vieux-Montréal-Institution an der Ecke Saint-Paul/Saint-Vincent mit Fokus auf Lammgerichten und Québecer Produkten – dazu Live-Jazz an jedem Abend ohne Aufpreis.',t:'Früh reservieren, um zu den Jazz-Sets gut zu sitzen.'}}),
+     I('Le Serpent','food','kreative Bistronomie in alter Gießerei','Le Serpent Montréal','c','https://leserpent.ca',{noroute:true,info:{d:'Marktfrische, italienisch inspirierte Bistronomie in der ehemaligen Fonderie Darling (Griffintown): klare, kreative Teller in stylisch-industriellem Raum.',t:'Etwas außerhalb der Altstadt, aber ein lohnender kurzer Weg.'}}),
+     I("L'Express",'food','klassische Pariser Brasserie (Plateau)','L\'Express Montréal','c','https://restaurantlexpress.com',{noroute:true,info:{d:'Seit 1980 die Pariser-Stil-Brasserie schlechthin auf der Rue Saint-Denis im Plateau: Steak frites, Knochenmark, das Cornichon-Glas gratis auf dem Tisch. Zeitlos und immer voll.',t:'Reservieren; lohnt die Metrofahrt ins Plateau, wenn du klassische Brasserie willst.'}})],
     flow:[
-     {seg:'☀️ Vormittag · Vieux-Montréal (zu Fuß)'},
+     {seg:'☀️ Vormittag · Vieux-Montréal (ab ~9:30, zu Fuß)'},
      0,1,2,3,4,5,
      {tr:'Metro Orange+Grün (Square-Victoria → Lionel-Groulx → Charlevoix) oder ~15 Min zu Fuß zum Marché Atwater'},
-     {seg:'🌤️ Nachmittag · Lachine-Kanal'},
+     {seg:'🌤️ Nachmittag · Lachine-Kanal (ab ~13:30)'},
      6,
-     {tr:'abends Metro Grün ins Plateau (Rue Saint-Denis)'},
-     {seg:'🌆 Abend · Plateau'},
-     7
+     {tr:'Metro Grün+Orange zurück nach Vieux-Montréal (~15 Min, nahe Hotel)'},
+     {seg:'🌆 Abend · lokal & authentisch — Auswahl (ab ~19:00)'},
+     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Garde Manger – lebhaftes Seafood ohne Türschild, echtes Vieux-Montréal · 2) Modavie – Lammküche mit Live-Jazz · 3) Le Serpent – kreative Bistronomie in alter Gießerei · 4) L\'Express – klassische Brasserie, lohnt die Metro ins Plateau. Überall vorher reservieren!'},
+     7,8,9,10
     ]},
    {iso:'2026-08-02',dt:'So 02.08.',title:'Hub: Mont-Royal & Mile End',
     route:{walk:true,mode:'🚶 Metro + zu Fuß · ganzer Tag',
@@ -1395,7 +1402,7 @@ function infoPanelHtml(info,url){
 }
 function itemHtml(it,id,ord){
   const st=get(id);
-  const info=INFO[it.nm];
+  const info=it.info||INFO[it.nm];
   const url=it.url || (info&&info.u) || '';
   const drag = ord?`draggable="true" data-daykey="${ord.dayKey}" data-pos="${ord.pos}"`:'';
   const ctrl = ord?`<div class="ord"><button class="ordup" data-daykey="${ord.dayKey}" data-pos="${ord.pos}" ${ord.pos===0?'disabled':''} aria-label="hoch">▲</button><button class="orddn" data-daykey="${ord.dayKey}" data-pos="${ord.pos}" ${ord.pos===ord.len-1?'disabled':''} aria-label="runter">▼</button></div>`:'';
@@ -1404,7 +1411,7 @@ function itemHtml(it,id,ord){
     <input type="checkbox" class="cb" ${st.done?'checked':''} aria-label="erledigt">
     <div class="ico">${CAT[it.cat]||'📌'}</div>
     <div class="main">
-      <div class="nm ${info?'hasinfo':''}">${it.must?'<span class="pbadge must">⭐ Must-see</span>':''}${it.gem?'<span class="pbadge gem">💎 Perle</span>':''}${esc(it.nm)}${info?'<span class="infochev">›</span>':''}</div>
+      <div class="nm ${info?'hasinfo':''}">${it.time?'<span class="tchip">🕘 '+esc(it.time)+'</span>':''}${it.must?'<span class="pbadge must">⭐ Must-see</span>':''}${it.gem?'<span class="pbadge gem">💎 Perle</span>':''}${esc(it.nm)}${info?'<span class="infochev">›</span>':''}</div>
       ${it.nt?`<div class="nt">${esc(it.nt)}</div>`:''}
       <div class="acts">
         <a class="pill map" href="${mapUrl(it.map)}" target="_blank" rel="noopener">🧭 Karte</a>
@@ -1540,9 +1547,10 @@ function dayFlowHtml(d,s,si,di){
   const dk=si+'-'+di, r=d.route||{};
   let body='', order=[];
   (d.flow||[]).forEach(e=>{
-    if(typeof e==='number'){ const it=d.items[e]; if(it){ body+=itemHtml(it,dk+'-'+e); order.push(it.map);} return; }
+    if(typeof e==='number'){ const it=d.items[e]; if(it){ body+=itemHtml(it,dk+'-'+e); if(!it.noroute) order.push(it.map);} return; }
     if(e.seg){ body+=`<div class="fseg">${esc(e.seg)}</div>`; return; }
     if(e.tr){ body+=`<div class="ftr">↳ <span><b>Übergang:</b> ${esc(e.tr)}</span></div>`; return; }
+    if(e.note){ body+=`<div class="fnote">${esc(e.note)}</div>`; return; }
   });
   const from=r.from||stageBaseQ(s), mode=r.drive?'driving':'walking', enc=encodeURIComponent;
   let url='https://www.google.com/maps/dir/?api=1&travelmode='+mode+'&origin='+enc(from);
