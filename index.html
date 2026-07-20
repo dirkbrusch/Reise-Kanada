@@ -512,25 +512,24 @@ const STAGES=[
    {nm:'CF Carrefour Laval',d:'eines der größten Malls Québecs (Laval)',q:'CF Carrefour Laval'}
   ],
   days:[
-   {iso:'2026-07-31',dt:'Fr 31.07.',title:'Ankunft & Vieux-Montréal',slots:[['🛬','Ankunft & Nachmittag'],['🌆','Abend']],
-    route:{walk:true,mode:'🚶 zu Fuß · Ankunftsnachmittag & Abend',
-     lead:'Nach dem Check-in locker das Viertel rund ums Hotel erlaufen – alles in Vieux-Montréal fußläufig; abends kurz nach Norden zur Kulturmeile und zurück.',
-     steps:[
-      {part:'Nachmittag'},
-      {n:'Crew Collective & Café',d:'Café in alter Bankhalle, 360 Saint-Jacques (~5 Min)',q:'Crew Collective Café Montréal'},
-      {n:'Vieux-Port & Place Jacques-Cartier',d:'Uferpromenade, Straßenkünstler (~7 Min)',q:'Vieux-Port Montréal'},
-      {transfer:'~15 Min zu Fuß nach Norden oder Metro Orange (Place-d\'Armes → Place-des-Arts)'},
-      {part:'Abend'},
-      {n:'Quartier des Spectacles / Place des Arts',d:'Brunnenfeld & Open-Air-Kultur',q:'Place des Arts Montréal'},
-      {transfer:'~12 Min zurück Richtung Altstadt'},
-      {n:'Cité Mémoire',d:'Gratis-Videoprojektionen in den Gassen (Fr–So, nach Einbruch der Dunkelheit)',q:'Cité Mémoire Montréal',gem:true}
-     ]},
+   {iso:'2026-07-31',dt:'Fr 31.07.',title:'Ankunft Montréal (Landung ~16:00)',
+    route:{walk:true,mode:'🛬 Ankunftstag · Transfer, Check-in & Abendessen nahe Hotel',
+     lead:'Realistischer Ankunftstag: Landung ~16:00, Einreise/Gepäck, Transfer ins Hotel, Check-in und kurzer Einkauf – danach entspannt in Hotelnähe essen. Bewusst kein Abendprogramm; die Altstadt-Highlights kommen ab morgen.'},
     items:[
-     I('Café Saint-Henri','cafe','Erster guter Kaffee nach der Ankunft','Café Saint-Henri Montréal','n','https://sainthenri.ca'),
-     I('Crew Collective & Café','cafe','🔁 2025-Plan · Café in alter Banken-Kathedrale · 360 Saint-Jacques','Crew Collective Café Montréal','c','https://www.crewcollectivecafe.com'),
-     I('Quartier des Spectacles / Place des Arts','sight','🔁 2025-Plan · Brunnenfeld, Open-Air-Kultur · zwischen Hotel und Plateau','Place des Arts Montréal','c','https://www.quartierdesspectacles.com'),
-     I('Vieux-Port & Place Jacques-Cartier','sight','Abendspaziergang, Straßenkünstler, Terrassen','Vieux-Port Montréal','n','https://www.vieuxportdemontreal.com'),
-     I('Cité Mémoire','sight','Gratis Outdoor-Videoprojektionen in den Gassen (Fr/Sa/So abends)','Cité Mémoire Montréal','v','https://www.montrealenhistoires.com')]},
+     I('Check-in Embassy Suites by Hilton','hotel','208 Saint-Antoine Ouest · All-Suite mit Küchenzeile','Embassy Suites by Hilton Montreal 208 Saint-Antoine Ouest','v','',{time:'~17:30',noroute:true,info:{d:'All-Suite-Hotel am Rand von Vieux-Montréal (nah an Chinatown und Palais des congrès). Jede Suite hat eine Küchenzeile – praktisch für Selbstverpflegung – und ein warmes Frühstück ist inklusive.',t:'Bei Hilton-Honors-Status nach Upgrade/Late-Check-out fragen.'}}),
+     I('Kurz-Einkauf: IGA Complexe Desjardins','market','Wasser, Frühstück, Kleinigkeiten für die Suite · ~10 Min','IGA Complexe Desjardins Montreal','v','',{time:'~18:15',info:{d:'Großer Supermarkt im Complexe Desjardins, teils trocken über die Untergrundstadt (RÉSO) erreichbar. Ideal, um die Suite mit Wasser, Frühstückssnacks und Kleinigkeiten zu bestücken.',t:'Bei Regen die unterirdische Verbindung nutzen.'}}),
+     I('Quartier chinois (Chinatown)','food','schnelle, authentische Nudeln & Dumplings · ~5 Min','Quartier chinois Montréal','v','',{info:{d:'Montréals Chinatown rund um die Fußgängerzone Rue de la Gauchetière mit ihren Torbögen, nur wenige Minuten vom Hotel. Schnelle, ehrliche Nudeln, Dumplings und Bubble Tea – perfekt für einen müden Ankunftsabend.',t:'Für Dumplings z. B. Mai Xiang Yuan; meist ohne Reservierung.'}}),
+     I('Le Cartet','food','Bistro & Feinkost, Québecer Produkte · ~7 Min','Le Cartet Montréal','v','https://lecartet.com',{noroute:true,info:{d:'Beliebtes Bistro und Feinkostladen in einem hohen Backsteinraum (106 rue McGill) – bekannt für Brunch, abends aber auch unkomplizierte, gute Küche mit lokalen Produkten.',t:'Abends deutlich ruhiger als zur Brunch-Zeit.'}}),
+     I('Bevo Bar + Pizzeria','food','neapolitanische Holzofen-Pizza · ~8 Min','Bevo Bar Pizzeria Montréal','v','',{noroute:true,info:{d:'Lebhafte Pizzeria/Bar in Vieux-Montréal mit neapolitanischer Holzofen-Pizza – locker und unkompliziert für einen entspannten ersten Abend.',t:'Terrasse an der Rue Saint-Vincent bei gutem Wetter.'}})],
+    flow:[
+     {seg:'🛬 Ankunft · Fr 31.07., Landung ~16:00'},
+     {tr:'🛬 Flughafen YUL: Einreise & Gepäck ~45–60 Min. Zum Hotel (Embassy Suites, 208 Saint-Antoine O.): 🚗 Uber ~40–45 CAD oder Taxi zum Festpreis ~48 CAD (~30 Min). Budget-Alternative: Bus 747 (24-h-Pass 11,25 CAD, direkt am Terminal) bis Square-Victoria–OACI, dann ~4 Min zu Fuß.'},
+     0,1,
+     {seg:'🌆 Abend · nahe Hotel (entspannt, kein Programm)'},
+     {note:'💡 Bewusst ruhiger Ankunftsabend: nur Abendessen in Hotelnähe (alles fußläufig), danach ins Hotel. Meine Reihenfolge für den müden Abend: 1) Quartier chinois (schnell & authentisch, ~5 Min) · 2) Le Cartet (Bistro, ~7 Min) · 3) Bevo (Pizza, ~8 Min). Vieux-Port, Place Jacques-Cartier & Cité Mémoire heben wir uns für die Folgetage auf (Cité Mémoire Fr–So abends – gut am Sa/So).'},
+     2,3,4,
+     {home:'alle drei Lokale ~5–10 Min zu Fuß zurück zum Embassy Suites – am Ankunftsabend ideal.'}
+    ]},
    {iso:'2026-08-01',dt:'Sa 01.08.',title:'Hub: Vieux-Montréal',
     route:{walk:true,mode:'🚶 zu Fuß + Metro · ganzer Tag',
      lead:'Ein durchgehender Weg ab Hotel: erst die Altstadt zu Fuß (die 💎-Perlen liegen direkt am Weg), dann per Metro an den Lachine-Kanal, abends zurück zum Abendessen in der Altstadt. Reihenfolge = Laufreihenfolge; Uhrzeiten sind entspannte Richtwerte.'},
