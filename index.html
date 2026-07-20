@@ -935,7 +935,8 @@ const STAGES=[
      I('Microbrasserie Tadoussac','beer','Craft-Bier am Fjord · Sonnenuntergang','Microbrasserie Tadoussac','v','https://microtadoussac.com',{time:'16:45',info:{d:'Bier mit Wildzutaten der Côte-Nord (Sanddorn, Fichte, Algen, Haskap-Beere), direkt am Wasser – kleine Snacks dazu. Der Sonnenuntergang über der Saguenay-Mündung ist das Highlight.',t:'Terrasse; früh einen Platz sichern.'}}),
      I('Chez Mathilde','food','Michelin-empfohlenes Bistro gastronomique','Chez Mathilde Tadoussac','c','https://chezmathildebistro.com',{info:{d:'Michelin-empfohlenes Bistro gastronomique: Blindmenüs aus Côte-Nord-Terroir (Schneekrabbe, Heilbutt, Wild). Die beste Adresse im Dorf.',t:'Reservieren.'}}),
      I('Le William (Hôtel Tadoussac)','food','Fisch des Sankt-Lorenz · Traditionshotel','Le William Hôtel Tadoussac','c','https://hoteltadoussac.com',{noroute:true,info:{d:'Restaurant im historischen Hôtel Tadoussac, Fourchette-Bleue-zertifiziert: Fisch des Sankt-Lorenz und Québec-Terroir.',t:'Schöner Rahmen im Traditionshotel.'}}),
-     I('La Galouïne','food','Wild, Meeresfrüchte, ahorngeräucherter Lachs','La Galouïne Tadoussac','c','',{noroute:true,info:{d:'Familienrestaurant mit Wild, Meeresfrüchten und ahorngeräuchertem Lachs – Spezialitäten der Côte-Nord.',t:'Unkomplizierte, gute Wahl.'}})],
+     I('La Galouïne','food','Wild, Meeresfrüchte, ahorngeräucherter Lachs','La Galouïne Tadoussac','c','',{noroute:true,info:{d:'Familienrestaurant mit Wild, Meeresfrüchten und ahorngeräuchertem Lachs – Spezialitäten der Côte-Nord.',t:'Unkomplizierte, gute Wahl.'}}),
+     I('🐻 Bärenbeobachtung (Domaine de l\'Ours Noir)','nature','Sacré-Cœur · Ansitz zur Dämmerung · optional · VORAB BUCHEN','Ferme 5 Étoiles Sacré-Cœur','c','https://www.ferme5etoiles.com',{gem:true,time:'~19:30',noroute:true,info:{d:'Geführte Schwarzbär-Beobachtung von einem gesicherten Ansitz beim Domaine de l\'Ours Noir (Centre de vacances Ferme 5 Étoiles, Sacré-Cœur) – kurze Einführung mit Video, dann Walk zum Ansitz. Sichtungsrate rund 9 von 10 Mal, ~2 Std zur Abenddämmerung. ~25–30 Min nördlich von Tadoussac (kein Fährwechsel).',t:'Unbedingt vorab buchen; leise & warm. Alternativ bietet euer Wal-Anbieter AML eine Wal-&-Bären-Kombi an. Impact: dann früh/leicht essen und mit spätem Rückweg nach Baie-Saint-Paul (~23:30) rechnen.'}})],
     flow:[
      {seg:'🐋 Anfahrt & Walbeobachtung (ab ~8:30)'},
      {tr:'🚗 Ab Baie-Saint-Paul ~1,5 h nach Baie-Sainte-Catherine, dann die GRATIS-Fähre nach Tadoussac (alle ~20 Min, ~10 Min Überfahrt, keine Reservierung). In Tadoussac ist alles zu Fuß.'},
@@ -944,10 +945,13 @@ const STAGES=[
      2,3,4,5,
      {seg:'🍺 Sundowner am Fjord (ab ~16:45)'},
      6,
-     {seg:'🌆 Abend · Tadoussac — Auswahl (ab ~19:00)'},
+     {seg:'🐻 Optional: Bärenbeobachtung zur Dämmerung'},
+     {note:'🐻 Wildlife-Doppelpack: Nach den Walen abends noch Schwarzbären beim Domaine de l\'Ours Noir (Ferme 5 Étoiles, Sacré-Cœur, ~25–30 Min nördlich). Geführter Ansitz, Sichtung ~9 von 10 Mal, ~2 Std. UNBEDINGT vorab buchen (siehe „🎟️ Jetzt buchen" auf der Startseite). Wenn ihr das macht: vorher früh/leicht essen (Café Bohème / Picknick) und mit spätem Rückweg rechnen.'},
+     10,
+     {seg:'🌆 Abend · Tadoussac — Restaurant-Auswahl (ohne Bärentour, ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Chez Mathilde – Michelin-empfohlenes Terroir-Bistro (reservieren!) · 2) Le William – Fisch des Sankt-Lorenz im Traditionshotel · 3) La Galouïne – Wild & Meeresfrüchte, unkompliziert.'},
      7,8,9,
-     {home:'🚗 Abends zurück: Fähre nach Baie-Sainte-Catherine (nach 20 Uhr seltener – Zeiten prüfen), dann ~1,5 h nach Baie-Saint-Paul. Wer beim Sunset-Bier bleibt, plant den späteren Fährtakt ein; bei Alkohol Fahrer festlegen.'}
+     {home:'🚗 Abends zurück: Fähre nach Baie-Sainte-Catherine (nach 20 Uhr seltener – Zeiten prüfen!), dann ~1,5 h nach Baie-Saint-Paul. Mit Bärentour Ankunft ~23:30 – Fährtakt vorher checken. Bei Alkohol Fahrer festlegen.'}
     ]},
    {iso:'2026-08-11',dt:'Di 11.08.',title:'Route 362 & Baie-Saint-Paul (locker)',
     route:{drive:true,from:'Baie-Saint-Paul Québec',mode:'🚗 Panorama-Rundfahrt · ~120 km locker',
@@ -2153,6 +2157,20 @@ function renderChips(){
 }
 
 // ================= HEUTE =================
+const BOOKINGS_TODO=[
+ {t:'🐋 Walbeobachtung Tadoussac',when:'Mo 10.08.',d:'Croisières AML, große Tour ~3 h – verkauft sich in der Hochsaison früh aus',u:'https://www.croisieresaml.com/en/our-cruises/tadoussac'},
+ {t:'🐻 Bärenbeobachtung Sacré-Cœur',when:'Mo 10.08. abends · optional',d:'Domaine de l\'Ours Noir / Ferme 5 Étoiles – Ansitz zur Dämmerung, Sichtung ~9/10 · vorab buchen',u:'https://www.ferme5etoiles.com'},
+ {t:'🎡 Niagara City Cruises',when:'Di 18.08.',d:'Bootstour an den Hufeisenfall – Zeitfenster vorab sichern',u:'https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/'},
+ {t:'🗼 CN Tower (+ opt. EdgeWalk)',when:'Do 20.08.',d:'Timed Tickets; EdgeWalk stark begrenzt',u:'https://www.cntower.ca'},
+ {t:'⛴️ Toronto Islands Fähre',when:'Do 20.08.',d:'Tickets online vorab (lange Warteschlangen am Terminal)',u:'https://www.toronto.ca/explore-enjoy/toronto-island-ferries/ferry-ticket-passenger-information/'},
+ {t:'🍽️ Top-Restaurants reservieren',when:'diverse Tage',d:'lange Vorlaufzeit: Joe Beef & Mon Lapin (Montréal), Chez Mathilde (Tadoussac), Prime Seafood Palace (Toronto)',u:''}
+];
+function bookingsCardHtml(){
+  return `<div class="card"><h2>🎟️ Jetzt buchen / reservieren (zeitkritisch)</h2>
+    <p class="sub" style="margin-bottom:8px">Diese <b>Aktivitäten</b> sind früh ausgebucht – bitte separat von den Hotels buchen (Unterkunfts-Vorschläge stehen im Tab „🛏️ Unterkünfte").</p>
+    ${BOOKINGS_TODO.map(b=>`<div class="clitem"><div class="nm">${esc(b.t)}<span class="why">${esc(b.when)} · ${esc(b.d)}</span></div>${b.u?`<a class="pill map" href="${esc(b.u)}" target="_blank" rel="noopener" style="flex:none">🔗 buchen</a>`:''}</div>`).join('')}
+  </div>`;
+}
 function renderToday(){
   const t=isoToday();
   const el=document.getElementById('today');
@@ -2166,7 +2184,8 @@ function renderToday(){
     h+= open.length? open.slice(0,8).map(([id,p])=>`<div class="clitem"><div class="nm">${esc(p[0])}${p[1]?`<span class="why">${esc(p[1])}</span>`:''}</div></div>`).join('')
       : '<p class="sub">Alles erledigt – ihr seid startklar! 🎉</p>';
     h+=`<div style="margin-top:10px"><button class="btn sec" data-goto="lists">Zur Checkliste →</button></div></div>`;
-    h+=`<div class="card"><h2>🎫 Nicht vergessen</h2><p class="sub">eTA beantragen · Hotels Montréal früh sichern (Osheaga!) · AML-Waltour reservieren.</p></div>`;
+    h+=bookingsCardHtml();
+    h+=`<div class="card"><h2>🎫 Außerdem nicht vergessen</h2><p class="sub">eTA beantragen (Einreise) · noch offene Unterkünfte buchen (Tab „🛏️ Unterkünfte") · Reisepass mitführen (u. a. Boldt Castle / Grenzumgebung Thousand Islands).</p></div>`;
   } else if(t>TRIP_END){
     h+=`<div class="today-hero">${HERO_SVG}<div class="big">Willkommen zurück! 🛬</div>
       <div class="mini">23 Tage Ostkanada – wir hoffen, es war großartig.</div></div>`;
