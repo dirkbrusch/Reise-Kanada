@@ -1149,10 +1149,28 @@ const STAGES=[
     ]}
   ]},
  {badge:'→',name:'Fahrt: Thousand Islands',sub:'So 16.08. · Ottawa → PEC · ~290 km · 4–5 h mit Stopps',drive:true,iso:'2026-08-16',
+  route:{drive:true,from:'ByWard Market Ottawa',mode:'🚗 Genuss-Anfahrt · ~290 km / 4–5 h mit Stopps',
+   lead:'Genuss-Anfahrt Ottawa → Prince Edward County entlang der Thousand Islands: Inselkulisse bei Gananoque, die Kalksteinfestung Kingston mit Picknick-Bäckereien, eine Heritage-Brennerei als letzter Stopp – Ankunft im County am späten Nachmittag.'},
   items:[
-   I('So-Markt / Proviant vor Abfahrt','market','Ottawa Farmers Market am Lansdowne (sonntags) oder Bäckerei-Stopp','Ottawa Farmers Market Lansdowne','n','https://ottawafarmersmarket.ca'),
-   I('Gananoque / Boldt Castle','sight','Bootstour Thousand Islands (City Cruises) · Boldt Castle liegt in den USA → Reisepass für Grenzübertritt nötig!','Gananoque Boldt Castle','n','https://www.cityexperiences.com/gananoque/city-cruises/'),
-   I('Kingston & Fort Henry','sight','Festungsstadt aus Kalkstein','Fort Henry Kingston','n','https://www.forthenry.com')]},
+   I('So-Markt / Proviant vor Abfahrt','market','Ottawa Farmers Market (Lansdowne) · Picknick','Ottawa Farmers Market Lansdowne','v','https://ottawafarmersmarket.ca',{time:'~9:00',noroute:true,info:{d:'Sonntags-Bauernmarkt am Lansdowne (Ottawa Farmers Market) – ideal, um vor der langen Fahrt Picknick-Proviant zu besorgen.',t:'Alternativ ein Bäckerei-Stopp beim Verlassen der Stadt.'}}),
+   I('Gananoque / Thousand Islands','sight','Tor zu den Thousand Islands · Bootstour optional','Gananoque Thousand Islands','v','https://www.cityexperiences.com/gananoque/city-cruises/',{must:true,time:'~11:30',info:{d:'Gananoque ist das Tor zu den Thousand Islands – Bootstouren (City Cruises) schlängeln sich durch die Inselwelt; Boldt Castle thront auf Heart Island.',t:'Boldt Castle liegt auf US-Gebiet – für den Besuch Reisepass nötig. Bootstour ~1 h; wer knapp ist, genießt die Inselkulisse vom Ufer.'}}),
+   I('Thousand Islands Boat Museum & Café','sight','Bootsmuseum am Wasser · Kaffeepause','Thousand Islands Boat Museum Gananoque','v','',{gem:true,time:'~12:00',noroute:true,info:{d:'Bootsmuseum am Wasser in Gananoque mit Café – eine Kaffeepause mit Blick auf die Uferpromenade und die Inseln.',t:'Kurzer Halt zum Beinevertreten.'}}),
+   I('Panache Bakery & Café (Gananoque)','bakery','7 Brotsorten, Quiche & Pasteten · Picknick','Panache Bakery Gananoque','v','',{time:'~12:15',info:{d:'Gananoque-Bäckerei mit täglich 7 Brotsorten, Quiche und Pasteten – ideal fürs Picknick auf der Strecke.',t:'Proviant für unterwegs.'}}),
+   I('Kingston Waterfront & Fort Henry','sight','Kalksteinfestung · Lake-Ontario-Panorama','Fort Henry Kingston','v','https://www.forthenry.com',{gem:true,time:'~13:15',info:{d:'Festungsstadt aus Kalkstein an der Mündung des Sankt-Lorenz; im Fort Henry (UNESCO) gibt es Vorführungen in historischen Uniformen, dazu Lake-Ontario-Panorama.',t:'Kurzer Stopp am Waterfront/Fort für Foto & Pause.'}}),
+   I('Pan Chancho / De Mello (Kingston)','bakery','Kingston-Institution · Bäckerei & Rösterei','Pan Chancho Bakery Kingston','v','',{time:'~13:45',noroute:true,info:{d:'Kingston-Institutionen: Pan Chancho backt alles from scratch, De Mello ist eine preisgekrönte Rösterei – perfekt für Kaffee & Backwaren.',t:'Kurz in Downtown Kingston abbiegen.'}}),
+   I('Kinsip House of Fine Spirits (Bloomfield)','wine','Heritage-Farm-Brennerei · Whisky, Gin','Kinsip Bloomfield','v','https://kinsip.ca',{gem:true,time:'~15:30',info:{d:'Kleinbrennerei auf einer Heritage-Farm bei Bloomfield: Whisky, Gin und Bitters mit lokalem Twist – ein guter letzter Stopp beim Eintritt ins County.',t:'Verkostung – wer fährt, spuckt aus.'}}),
+   I('Ankunft Prince Edward County','hotel','Wellington / Picton · County-Basis','Wellington Prince Edward County','v','',{must:true,time:'~16:30',info:{d:'Ankunft in Prince Edward County (Wellington/Picton), umgeben von Weingütern, Cidrerien und Stränden.',t:'Auto abstellen; weiter im Tagesplan „Prince Edward County".'}})],
+  flow:[
+   {seg:'🚗 Fahrt Ottawa → PEC · Thousand Islands'},
+   {tr:'🚗 Lange Genussfahrt (~290 km / 4–5 h): Hwy 416 → 401 entlang des Sankt-Lorenz. Sonntags vorher am Ottawa Farmers Market (Lansdowne) Picknick besorgen.'},
+   0,1,2,3,
+   {note:'🍴 Picknick-Grazing unterwegs: Backwaren von Panache (Gananoque) bzw. Pan Chancho (Kingston), dazu die Inselkulisse – kein Restaurant-Mittag nötig.'},
+   4,5,
+   {tr:'🚗 Von Kingston weiter ins County (~1 h) – über die kostenlose Glenora-Fähre oder via Belleville.'},
+   {seg:'🥃 Letzter Stopp & Ankunft (~15:30)'},
+   6,7,
+   {home:'Ankunft in Prince Edward County (Wellington/Picton) – Auto abstellen; die County-Genüsse stehen im Tagesplan „Prince Edward County". Wein/Cidre: Fahrer einplanen.'}
+  ]},
  {badge:'6',name:'Prince Edward County',sub:'So 16.08.–Mo 17.08. · 1 Nacht ⭐',
   hotel:'Hotel-Viertel: Wellington oder Picton (mitten in Weingütern).',
   sunset:[
@@ -1176,17 +1194,49 @@ const STAGES=[
   ],
   parking:'Ländlich – an Weingütern, Brauereien & Orten kostenlose Parkplätze. Sandbanks Provincial Park: kostenpflichtiges Tages-Permit am Parkeingang (Ontario Parks); an Sommer-Wochenenden früh kommen, Park füllt sich.',
   days:[
-   {iso:'2026-08-16',dt:'So 16.08.',title:'Hub: Wein & Strand (locker)',items:[
-     I('Lake on the Mountain','view','Rätselhafter See ~60 m über der Bucht von Quinte · spektakulärer Aussichtspunkt (gut auf dem Weg in die Region)','Lake on the Mountain Prince Edward County','v','https://www.ontarioparks.ca/park/lakeonthemountain'),
-     I('Sandbanks Provincial Park','nature','Größte Süßwasser-Dünen der Welt · lange Sandstrände','Sandbanks Provincial Park','n','https://www.ontarioparks.ca/park/sandbanks'),
-     I('Prince Edward County Jazz Festival','sight','11.–16.08. (unbestätigt) · So noch mehrere Venues','Prince Edward County Jazz Festival','v','https://www.pecjazz.org'),
-     I('Midtown Brewing','beer','Wellington · Holzofen-Pizza – guter Abend-Stopp','Midtown Brewing Wellington','v','https://midtownbrewingcompany.com'),
-     I('Slickers County Ice Cream','food','Bloomfield · ausgefallene hausgemachte Sorten','Slickers Ice Cream Bloomfield','v','https://slickers.ca'),
-     I('Closson Chase','wine','629 Closson Rd, Hillier · Chardonnay/Pinot Noir · Tasting So–Do 11–17, Fr/Sa 11–18','Closson Chase Vineyards Hillier','v','https://www.clossonchase.com'),
-     I('Hinterland Wine Company','wine','1258 Closson Rd, Hillier · Sekt/Schaumwein, Patio & Winegarden','Hinterland Wine Company Hillier','v','https://www.hinterlandwine.com')]}
+   {iso:'2026-08-16',dt:'So 16.08.',title:'Ankunftsabend im County (Wein & Strand)',
+    route:{drive:true,from:'Wellington Prince Edward County',mode:'🚗 Ankunftsabend · kurze Fahrten im County',
+     lead:'Ankunftsabend im County (nach der langen Fahrt): erst ein Bummel durchs Dorf Wellington mit Strand zum Sonnenuntergang, ein Cidre/Bier auf der Hofterrasse und ein Drink in der versteckten Speakeasy-Lounge – dann Abendessen mit County-Terroir. Weingüter & Sandbanks nehmt ihr morgen früh auf dem Weg nach Toronto mit.'},
+    items:[
+     I('Wellington-Dorf & Rowing Club Beach','nature','Dorfstrand am Lake Ontario · Sonnenuntergang','Wellington Rowing Club Prince Edward County','v','',{gem:true,time:'16:45',info:{d:'Charmantes Dorf am Lake Ontario mit kleinem Dorfstrand (Rowing Club) – zum Sonnenuntergang treffen sich hier Locals, kaum Touristen.',t:'Schöner Ankunfts-Spaziergang; Badesachen mitnehmen.'}}),
+     I('The Local Store','shop','Concept-Store mit 140+ County-Künstlern','The Local Prince Edward County','v','',{gem:true,time:'17:00',noroute:true,info:{d:'Großer Concept-Store mit Werken von 140+ County-Künstlern und Food-Produzenten – perfekt, um sich auf die Region einzustimmen.',t:'Gute Mitbringsel & regionale Snacks.'}}),
+     I('Stock & Row Cidery / Gillingham','wine','Hofterrasse über Obstgarten · Sundowner','Stock & Row Bloomfield','v','https://visitthecounty.com/listing/stock-row',{time:'17:30',info:{d:'Hof-Cidery bzw. Brauerei mit großzügiger Terrasse über Obstgarten und Reben – entspannter Sundowner-Stopp.',t:'Terrasse im Abendlicht; hundefreundlich.'}}),
+     I('The Speakeasy Wine Lounge (Karlo Estates)','wine','versteckte Gatsby-Bar · intime Tastings','Karlo Estates Wellington','v','https://karloestates.com',{gem:true,time:'18:00',info:{d:'Versteckte Gatsby-Bar bei Karlo Estates – Holzbalken, rote Samtsofas, intime Tastings am Ankunftsabend.',t:'Stimmungsvoller Aperitif; klein, evtl. reservieren.'}}),
+     I('Drake Devonshire','food','Lakeside-Dining am Lake Ontario','Drake Devonshire Wellington','c','https://www.drakedevonshire.ca',{info:{d:'Design-Inn und Lakeside-Restaurant direkt am Lake Ontario – gehobene Comfort-Food, farm-to-table mit lokalen Farmen und Weingütern, Sonnenuntergang überm Wasser.',t:'Reservieren; auch nur für einen Drink an der Seeterrasse toll.'}}),
+     I('The Blue Sail','food','Seafood · hausgeräucherter Fisch · nur 26 Plätze','The Blue Sail Picton','c','https://thebluesail.ca',{noroute:true,info:{d:'Seafood-Markt & Restaurant mit hausgeräuchertem Fisch, Pickerel und Smoked-Trout-Dip – nur 26 Plätze.',t:'Klein; früh reservieren.'}}),
+     I('Bloomfield Public House','food','Dorf-Pub · saisonale County-Küche','Bloomfield Public House Bloomfield','c','',{noroute:true,info:{d:'Rustikal-schicker Dorf-Pub mit saisonaler County-Küche und lokalen Bieren.',t:'Unkompliziert und gut.'}}),
+     I('Hendrik\'s BBQ','food','Texas-Style-Smokehouse mit County-Wurzeln','Hendrik\'s BBQ Picton','c','',{noroute:true,info:{d:'Familiengeführtes Texas-Style-Smokehouse mit County-Wurzeln – lokales BBQ am Loyalist Parkway.',t:'Deftig; für BBQ-Fans.'}})],
+    flow:[
+     {seg:'🌅 Ankunftsabend · Wellington & Umgebung (ab ~16:45)'},
+     {tr:'Im County ist alles ländlich – kurze Fahrten mit dem Auto zwischen Dorf, Höfen und Restaurants (überall kostenlose Parkplätze).'},
+     0,1,
+     {seg:'🍷 Apéro · Hofterrasse & Speakeasy (ab ~17:30)'},
+     2,3,
+     {seg:'🌆 Abend · County-Terroir — Auswahl (ab ~19:00)'},
+     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Drake Devonshire – Lakeside-Dining am See (reservieren!) · 2) The Blue Sail – Seafood, nur 26 Plätze · 3) Bloomfield Public House – Dorf-Pub, locker · 4) Hendrik\'s BBQ – Smokehouse.'},
+     4,5,6,7,
+     {home:'Kurze Wege mit dem Auto zurück zur Unterkunft (Wellington/Picton). Wer Wein/Cidre/Bier trinkt: Fahrer festlegen – im County gibt es kaum Uber/Taxi.'}
+    ]}
   ]},
  {badge:'→',name:'Fahrt nach Toronto',sub:'Mo 17.08. · ~210 km · ~2,5 h',drive:true,iso:'2026-08-17',
-  items:[I('Anreise Toronto','hotel','Hotel beziehen, Abend im Viertel','Toronto','c')]},
+  route:{drive:true,from:'Wellington Prince Edward County',mode:'🚗 County-Vormittag + Fahrt ~210 km / ~2,5 h',
+   lead:'Letzter County-Vormittag und Schlussfahrt nach Toronto: früh an den Sandbanks-Strand oder durch die Lavendelfelder, eine letzte Weinverkostung, dann ~210 km (~2,5 h) in die Metropole. Ankunft am Nachmittag, entspannter erster Abend im Viertel.'},
+  items:[
+   I('Sandbanks Provincial Park','nature','größte Süßwasser-Dünen der Welt · Strand','Sandbanks Provincial Park','v','https://www.ontarioparks.ca/park/sandbanks',{must:true,time:'~9:30',info:{d:'Beheimatet die größten Süßwasser-Dünen der Welt und lange, flache Sandstrände am Lake Ontario.',t:'Tagesticket am Eingang; an Sommer-Wochenenden früh kommen, der Park füllt sich schnell.'}}),
+   I('Prince Edward County Lavender','nature','Lavendelfelder & Boutique','PEC Lavender Hillier','v','https://peclavender.com',{gem:true,time:'~10:45',noroute:true,info:{d:'Lavendelfelder nördlich von Wellington – durch die Reihen wandern, dazu eine Boutique mit Handgemachtem.',t:'Fotogen; morgens ruhig.'}}),
+   I('The Grange of Prince Edward','wine','Verkostung in 200 Jahre alter Scheune','The Grange Hillier','v','https://grangewinery.com',{gem:true,time:'~11:15',info:{d:'Mutter-Tochter-Weingut mit Verkostung in einer fast 200 Jahre alten Scheune; im Sommer Picknick möglich.',t:'Schöner, entspannter Tasting-Stopp am Vormittag.'}}),
+   I('Closson Chase / Hinterland','wine','bekannte Hillier-Güter (Chardonnay/Schaumwein)','Closson Chase Vineyards Hillier','v','https://www.clossonchase.com',{time:'~11:45',noroute:true,info:{d:'Zwei der bekanntesten County-Güter in Hillier: Closson Chase (Chardonnay/Pinot, violette Scheune), Hinterland (Schaumwein).',t:'Alternativen je nach Öffnungszeit/Lust.'}}),
+   I('Slickers County Ice Cream','food','ausgefallene hausgemachte Eissorten','Slickers Ice Cream Bloomfield','v','https://slickers.ca',{time:'~12:15',noroute:true,info:{d:'Kleine Eismanufaktur in Bloomfield mit ausgefallenen, hausgemachten Sorten.',t:'Süßer Absacker vor der Fahrt.'}}),
+   I('Ankunft Toronto','hotel','Hotel beziehen · Auto bleibt bis 19.08.','Downtown Toronto','v','',{must:true,time:'~16:00',info:{d:'Ankunft in Toronto nach ~2,5 h Fahrt – Hotel beziehen und locker im Viertel ankommen.',t:'Der Mietwagen bleibt bis 19.08. (Niagara-Tag) dabei; Parken im Hotel/Garage.'}})],
+  flow:[
+   {seg:'🌅 Letzter County-Vormittag (ab ~9:30)'},
+   0,1,2,3,4,
+   {note:'🍴 Vormittags-Grazing: Strand & Lavendel, dazu eine Weinverkostung und Eis von Slickers – die perfekte County-Verabschiedung.'},
+   {tr:'🚗 Dann Schlussfahrt nach Toronto: ~210 km / ~2,5 h via Belleville → Highway 401 West. Ankunft am Nachmittag.'},
+   {seg:'🏙️ Ankunft Toronto (~16:00)'},
+   5,
+   {home:'Ankunft Toronto: Hotel beziehen, ankommen, abends locker im Viertel. Ab morgen die Stadt – der Mietwagen bleibt noch bis 19.08. (nach dem Niagara-Tag) dabei.'}
+  ]},
  {badge:'7',name:'Toronto + Niagara',sub:'Mo 17.08.–Sa 22.08. · 5 Nächte',
   hotel:'Hotel-Viertel: Distillery District/Old Town oder West Queen West.',
   sunset:[
