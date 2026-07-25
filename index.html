@@ -875,6 +875,10 @@ const STAGES=[
   hotel:'✅ Gebucht: „VER-1 (haut)", Petite-Rivière-Saint-François (~10 Min von Baie-Saint-Paul) · 3 Nächte.',
   booking:{hotel:'VER-1 (haut) · Petite-Rivière-Saint-François · Hébergement-Charlevoix',addr:'1, Chemin du Versant, Petite-Rivière-Saint-François, QC G0A 2L0 · „auf halbem Weg zwischen Baie-Saint-Paul und Le Massif", ~10 Min von Baie-Saint-Paul, Flussblick.',
     inn:'09.08.2026',out:'12.08.2026',nights:3,q:'1 Chemin du Versant Petite-Rivière-Saint-François Québec',
+    markets:[
+      {nm:'IGA Baie-Saint-Paul',d:'~10 Min · großer Supermarkt an der Route 138',q:'IGA Baie-Saint-Paul'},
+      {nm:'Dépanneur Petite-Rivière-Saint-François',d:'im Ort · Grundbedarf',q:'Dépanneur Petite-Rivière-Saint-François'}
+    ],
     note:'✅ Bezahlt: 1.008,62 CAD (2 Erw., inkl. Taxen & Service). Bis 8 Pers., 3 SZ / 2 Bäder. Check-in 17:00, Check-out 11:00. ⚠️ Am Anreisetag 500 CAD Kautions-Vorautorisierung auf die Kreditkarte (nach Endkontrolle freigegeben). Manual mit Regeln/Adresse aus der Mail sichern, bevor es aus dem Archiv gelöscht wird.'},
   sunset:[
    {nm:'Microbrasserie Tadoussac (Fjord-Terrasse)',d:'Craft-Bier direkt am Wasser, Sonnenuntergang über der Saguenay-Mündung',q:'Microbrasserie Tadoussac'},
@@ -2042,11 +2046,11 @@ function dayFlowHtml(d,s,si,di){
 function bookingHtml(s){
   if(!s.booking)return '';
   const b=s.booking;
-  const mk=b.markets.map(m=>`<a href="${mapUrl(m.q)}" target="_blank" rel="noopener">🛒 ${esc(m.nm)}</a> <span style="color:var(--muted)">(${esc(m.d)})</span>`).join(' · ');
+  const mk=(b.markets||[]).map(m=>`<a href="${mapUrl(m.q)}" target="_blank" rel="noopener">🛒 ${esc(m.nm)}</a> <span style="color:var(--muted)">(${esc(m.d)})</span>`).join(' · ');
   return `<div class="booking">
     <div class="bk">🏨 ${esc(b.hotel)} <span style="font-weight:600;color:var(--blue)">· gebucht</span></div>
     <div class="ad">${esc(b.addr)} · ${esc(b.inn)}–${esc(b.out)} (${b.nights} N) · <a class="bmap" href="${mapUrl(b.q)}" target="_blank" rel="noopener">🧭 Karte</a></div>
-    <div class="mk"><b>Supermarkt:</b> ${mk}</div>
+    ${mk?`<div class="mk"><b>Supermarkt:</b> ${mk}</div>`:''}
     ${b.note?`<div class="warn">${esc(b.note)}</div>`:''}
   </div>`;
 }
