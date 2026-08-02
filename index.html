@@ -120,6 +120,17 @@
   .tchip{display:inline-block;font-size:10px;font-weight:800;background:var(--soft);color:var(--ink);padding:1px 7px;border-radius:6px;margin-right:6px;vertical-align:middle;white-space:nowrap}
   .fnote{background:rgba(200,147,42,.12);border:1px solid rgba(200,147,42,.3);border-radius:11px;padding:9px 12px;margin:4px 0 8px;font-size:12.5px;line-height:1.55}
   .fnote b{color:var(--maple)}
+  /* Fuß-Distanz zwischen Stopps (berechnet aus Koordinaten) */
+  .fleg{display:flex;align-items:center;gap:7px;margin:1px 0 1px 22px;font-size:11.5px;color:var(--muted);font-weight:600}
+  .fleg::before{content:"";width:2px;height:15px;background:linear-gradient(var(--line),var(--blue));border-radius:2px;flex:none}
+  .fleg-t{background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:2px 9px;white-space:nowrap}
+  .daydist{display:inline-block;margin-left:8px;background:var(--green);color:#fff;font-size:11px;font-weight:800;border-radius:99px;padding:3px 10px;vertical-align:middle;letter-spacing:.2px}
+  .fwarn{display:flex;gap:7px;align-items:flex-start;background:rgba(181,101,29,.13);border:1px solid rgba(181,101,29,.36);border-radius:11px;padding:8px 11px;margin:4px 0 8px 8px;font-size:12px;line-height:1.5;color:#8a4d16}
+  body[data-theme="dark"] .fwarn{color:#e0a468}
+  .fwarn b{color:#b5651d}
+  .wxbar{display:flex;gap:9px;align-items:flex-start;background:rgba(26,115,232,.09);border:1px solid rgba(26,115,232,.28);border-radius:12px;padding:10px 12px;margin:2px 0 10px;font-size:12.5px;line-height:1.55}
+  .wxbar .wxi{font-size:17px;flex:none;line-height:1.2}
+  .wxbar b{color:var(--blue)}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -566,45 +577,48 @@ const STAGES=[
      {home:'ab Mile End (Dieu du Ciel/Lawrence, nahe Metro Laurier): 🚇 Metro Orange Laurier (Richtung Côte-Vertu) bis Square-Victoria–OACI, dann ~4 Min zu Fuß. Alt.: 🚗 Uber ~16–20 CAD.'}
     ]},
    {iso:'2026-08-02',dt:'So 02.08.',title:'Hub: Mont-Royal & Vieux-Port',
-    route:{walk:true,mode:'🚶 Metro + zu Fuß · Vormittag Berg, Nachmittag & Abend Hafen',
-     lead:'Vormittags auf den Mont-Royal (Aussicht, ruhige Waldpfade und sonntags die Tam-Tams), ab dem frühen Nachmittag dann durchgehend am Vieux-Port. Der Hafenbummel läuft erst nach Osten bis zum Uhrturm und dann über die Promenade zurück, sodass wir gegen 16:00 wieder am Quai Jacques-Cartier sind – dort bleibt der späte Nachmittag bewusst offen. Abends Apéro, Abendessen in der Altstadt und Cité Mémoire (sonntags!). Alles am Hafen liegt 5–10 Min vom Hotel entfernt.'},
+    route:{walk:true,mode:'🚶 zu Fuß · kompakt in Hotelnähe · regentauglich',
+     wxi:'🌧️',
+     wx:'Ihr habt eine Regenwarnung für heute – deshalb ist dieser Tag bewusst kompakt und wettergeschützt: vormittags drinnen/überdacht (Basilika, Archäologie-Museum, optional das Spa-Schiff), nachmittags eine kurze Hafenrunde, und den Skyline-Blick holt ihr euch aus dem Riesenrad (geschlossene, klimatisierte Gondeln – fährt auch bei Regen). Kein Ausflug auf den Mont-Royal heute. Bei längeren Schauern lassen sich Pointe-à-Callière und der Marché Bonsecours gut dehnen.',
+     lead:'Ein ruhiger, kurzer Tag am Wasser statt Kilometer-Marsch: Vormittags wettergeschützt in Hotelnähe – die Basilika von 1829 mit ihrem Sternenhimmel-Gewölbe und das Archäologie-Museum Pointe-à-Callière über den Fundamenten der Stadtgründung (ideal bei Regen). Nachmittags eine kompakte Hafenrunde mit dem Riesenrad als Aussichts-Highlight. Alles liegt 5–10 Gehminuten vom Hotel; die Distanzen stehen zwischen den Punkten, und die eigentliche Tour bis zum offenen Nachmittag bleibt mit rund 3,5 km (Gesamtstrecke oben im Kopf) weit unter dem gestrigen Pensum. Ab 16:00 ist der Nachmittag bewusst offen.'},
     items:[
      I('Kondiaronk-Belvédère','view','klassischer Skyline-Blick am Chalet du Mont-Royal','Kondiaronk Belvedere Montréal','v','',{must:true,time:'10:00',info:{d:'Die große Aussichtsterrasse am Chalet du Mont-Royal mit dem klassischen Postkartenblick über Downtown und den Strom. Der Berg wurde vom Central-Park-Architekten Frederick Law Olmsted gestaltet.',t:'Morgens bestes Licht und noch leer.'}}),
      I('Mont-Royal Summit Loop & Croix','nature','ruhige Waldpfade zur Croix · ~30–40 Min','Mont Royal summit loop trail','v','',{gem:true,time:'10:45',info:{d:'Ruhige Waldpfade vom Belvédère hinauf zur Croix du Mont-Royal und zu versteckten Aussichten – wenig Touristen, viel Grün. Die beleuchtete Croix ist nachts weithin sichtbar.',t:'Feste Schuhe reichen; Schleife ~30–40 Min.'}}),
      I('Lac aux Castors & Maison Smith','nature','kleiner See mit Pavillon-Café · Rastpunkt','Lac aux Castors Montréal','v','',{time:'11:30',info:{d:'Kleiner See im Bergpark mit Pavillon (Maison Smith) und Skulpturenwiese – ein schöner Rastpunkt mit Café. Im Sommer Tretboote.',t:'Kaffee/Snack im Pavillon Maison Smith – heute ist das euer „Mittagessen light", bevor es an den Hafen geht.'}}),
      I('Tam-Tams du Mont-Royal','sight','sonntags: Trommelkreis am Cartier-Denkmal','Tam-Tams Mont-Royal Montréal','v','https://www.lemontroyal.qc.ca',{must:true,time:'12:15',info:{d:'Sonntäglicher, frei zugänglicher Trommelkreis am Fuß des Bergs rund um das George-Étienne-Cartier-Denkmal, dazu Picknick, Jongleure und ein kleiner Kunsthandwerksmarkt. Eine der lebendigsten Montréaler Traditionen.',t:'Nur sonntags ab ~Mittag bei gutem Wetter – heute kurz mitnehmen, dann geht es an den Hafen.'}}),
-     I('Place Jacques-Cartier','sight','lebhafter Pflasterplatz · Straßenkünstler & Terrassen','Place Jacques-Cartier Montréal','v','',{time:'13:50',info:{d:'Der abschüssige Pflasterplatz zwischen Rathaus und Hafen – Straßenkünstler, Blumenstände und Terrassen. Das lebendige Entree zum Vieux-Port.',t:'Sonntagnachmittag ist hier am meisten los; die Terrassen an den Rändern sind ruhiger.'}}),
-     I('Marché Bonsecours','shop','Kunsthandwerk-Markthalle · Québecer Designer','Marché Bonsecours Montréal','v','https://marchebonsecours.qc.ca',{gem:true,time:'14:15',info:{d:'Klassizistischer Markthallenbau von 1847 mit silberner Kuppel – einst Parlament und Rathaus. Heute lokale Boutiquen, Kunsthandwerk und Designer aus Québec statt Souvenir-Kitsch.',t:'Gute Adresse für ehrliche Mitbringsel; sonntags meist bis ~18 Uhr geöffnet (vor Ort prüfen).'}}),
-     I('Bassin Bonsecours','nature','Wasserbecken mit Tretbooten · ruhige Ecke','Bassin Bonsecours Montréal','v','',{gem:true,time:'14:40',info:{d:'Ruhiges Hafenbecken zwischen Uhrturm und Marché Bonsecours mit Tretbooten im Sommer und einer der schönsten Perspektiven auf die Altstadt-Silhouette.',t:'Direkt hinter dem Marché Bonsecours – 3 Min zu Fuß, schöner Fotostopp am Wasser.'}}),
-     I('Tour de l\'Horloge','view','Aussicht & Stadtstrand · gratis · Wendepunkt','Tour de l\'Horloge Montréal','v','',{gem:true,time:'15:00',info:{d:'1922 als Denkmal für gefallene Matrosen errichteter Uhrturm am Quai de l\'Horloge – das östliche Ende des Vieux-Port. 192 Stufen führen zu einer kostenlosen Aussichtsplattform; davor liegt ein städtischer Sandstrand direkt am Fluss.',t:'Aufstieg gratis, ~20–25 Min mit Aussicht. Danach geht es über die Promenade wieder westwärts zurück.'}}),
-     I('Promenade du Vieux-Port','view','Uferweg westwärts zurück · Straßenkünstler','Promenade du Vieux-Port Montréal','v','',{time:'15:30',info:{d:'Die lange Hafenpromenade zwischen Uhrturm und Quai King-Edward: Wasser, Rasenflächen, Straßenkünstler und Eisstände. Der Rückweg vom Uhrturm ist ein entspannter 12-Minuten-Bummel am Strom entlang.',t:'Perfekter Zeitpunkt: nachmittags spielen hier die meisten Straßenkünstler.'}}),
-     I('Quai Jacques-Cartier','view','Herz des Hafens · Rasenflächen, Foodtrucks, Hafenblick','Quai Jacques-Cartier Montréal','v','',{time:'15:45',info:{d:'Der zentrale Quai des Alten Hafens, direkt unterhalb der Place Jacques-Cartier: breite Rasenflächen, Foodtrucks, Bänke am Wasser und der beste Blick zurück auf die Altstadt-Silhouette. Im Sommer der lebendigste Platz am Hafen.',t:'Guter Treffpunkt – von hier sind es 5 Min zurück in die Altstadtgassen und ~8 Min zum Hotel.'}}),
-     I('Bota Bota','spa','Spa-Schiff am Hafen (optional, anderer Tag)','Bota Bota Montréal','c','https://botabota.ca',{time:'optional',noroute:true,info:{d:'Nordisches Spa auf einer umgebauten Fähre im Alten Hafen: Warm- und Kaltbecken, Saunen und Ruhedecks mit Blick auf den Sankt-Lorenz-Strom. Braucht 2–3 Stunden.',t:'Passt heute zeitlich nicht mehr – aber es liegt nur 5 Min vom Hotel und lässt sich an jedem Montréal-Tag spontan einschieben (vorab reservieren, Badesachen mitnehmen).'}}),
-     I('Les Sœurs Grises','beer','Brauerei-Gasthaus · eigene Fassbiere · Apéro','Les Sœurs Grises Montréal','v','',{time:'18:45',info:{d:'Handwerks-Brauerei-Gasthaus in Vieux-Montréal (32 Rue McGill) mit eigenen Bieren direkt vom Fass und geräucherten Spezialitäten. Ein entspannter Tap-Room für einen Apéro, bevor es zum Abendessen geht.',t:'Vom Quai Jacques-Cartier ~8 Min zu Fuß. Bei gutem Wetter Terrasse. Alternativ direkt am Wasser: Terrasse William Gray (Rooftop).'}}),
-     I('Garde Manger','food','Seafood ohne Türschild · reservieren','Garde Manger Montréal','c','',{info:{d:'Chuck Hughes\' berühmtes Seafood-Lokal in Vieux-Montréal – ohne Schild an der Tür, eng, laut und lebendig. Austern, Hummer-Poutine und tagesfrische Meeresfrüchte in echter Bistro-Atmosphäre.',t:'Nur mit Reservierung; sehr klein und immer voll. ~5 Min vom Hafen.'}}),
-     I('Modavie','food','Lammküche + Live-Jazz jeden Abend','Modavie Montréal','c','https://www.modavie.com',{noroute:true,info:{d:'Vieux-Montréal-Institution an der Ecke Saint-Paul/Saint-Vincent mit Fokus auf Lammgerichten und Québecer Produkten – dazu Live-Jazz an jedem Abend ohne Aufpreis.',t:'Früh reservieren, um zu den Jazz-Sets gut zu sitzen – auch sonntags Musik.'}}),
-     I('Barroco','food','holzgegrillte Küche im Gewölbekeller','Barroco Montréal','c','https://barroco.ca',{noroute:true,info:{d:'Geschichtsträchtige Vieux-Montréal-Adresse in einem Steingewölbe: holzgegrillte Küche, Paella, Wild und kräftige Weine – warm und intim.',t:'Gute Sonntags-Alternative, wenn Garde Manger ausgebucht ist.'}}),
+     I('Place Jacques-Cartier','sight','lebhafter Pflasterplatz · Straßenkünstler & Terrassen','Place Jacques-Cartier Montréal','v','',{time:'13:00',ll:[45.50786,-73.55329],info:{d:'Der abschüssige Pflasterplatz zwischen Rathaus und Hafen – Straßenkünstler, Blumenstände und Terrassen. Das lebendige Entree zum Vieux-Port.',t:'Sonntagnachmittag ist hier am meisten los; die Terrassen an den Rändern sind ruhiger.'}}),
+     I('Marché Bonsecours','shop','Kunsthandwerk-Markthalle · Québecer Designer','Marché Bonsecours Montréal','v','https://marchebonsecours.qc.ca',{time:'13:20',ll:[45.50958,-73.55134],info:{d:'Klassizistischer Markthallenbau von 1847 mit silberner Kuppel – einst Parlament und Rathaus. Heute lokale Boutiquen, Kunsthandwerk und Designer aus Québec statt Souvenir-Kitsch.',t:'Gute Adresse für ehrliche Mitbringsel; sonntags meist bis ~18 Uhr geöffnet (vor Ort prüfen).'}}),
+     I('Bassin Bonsecours','nature','Wasserbecken mit Tretbooten · ruhige Ecke','Bassin Bonsecours Montréal','v','',{gem:true,time:'13:45',ll:[45.50847,-73.54983],info:{d:'Ruhiges Hafenbecken zwischen Uhrturm und Marché Bonsecours mit Tretbooten im Sommer und einer der schönsten Perspektiven auf die Altstadt-Silhouette.',t:'Direkt hinter dem Marché Bonsecours – 3 Min zu Fuß, schöner Fotostopp am Wasser.'}}),
+     I('Tour de l\'Horloge','view','Aussicht & Stadtstrand · gratis · Wendepunkt','Tour de l\'Horloge Montréal','v','',{gem:true,time:'14:15',ll:[45.50964,-73.54673],info:{d:'1922 als Denkmal für gefallene Matrosen errichteter Uhrturm am Quai de l\'Horloge – das östliche Ende des Vieux-Port. 192 Stufen führen zu einer kostenlosen Aussichtsplattform; davor liegt ein städtischer Sandstrand direkt am Fluss.',t:'Aufstieg gratis, ~20–25 Min mit Aussicht. Danach geht es über die Promenade wieder westwärts zurück.'}}),
+     I('Promenade du Vieux-Port','view','Uferweg westwärts zurück · Straßenkünstler','Promenade du Vieux-Port Montréal','v','',{time:'14:45',ll:[45.50499,-73.55237],info:{d:'Die lange Hafenpromenade zwischen Uhrturm und Quai King-Edward: Wasser, Rasenflächen, Straßenkünstler und Eisstände. Der Rückweg vom Uhrturm ist ein entspannter 12-Minuten-Bummel am Strom entlang.',t:'Perfekter Zeitpunkt: nachmittags spielen hier die meisten Straßenkünstler.'}}),
+     I('Quai Jacques-Cartier','view','Herz des Hafens · Rasenflächen, Foodtrucks, Hafenblick','Quai Jacques-Cartier Montréal','v','',{time:'15:45',ll:[45.50731,-73.54877],info:{d:'Der zentrale Quai des Alten Hafens, direkt unterhalb der Place Jacques-Cartier: breite Rasenflächen, Foodtrucks, Bänke am Wasser und der beste Blick zurück auf die Altstadt-Silhouette. Im Sommer der lebendigste Platz am Hafen.',t:'Guter Treffpunkt – von hier sind es 5 Min zurück in die Altstadtgassen und ~8 Min zum Hotel.'}}),
+     I('Bota Bota','spa','nordisches Spa-Schiff · optional, ideal bei Regen','Bota Bota Montréal','c','https://botabota.ca',{time:'optional',noroute:true,ll:[45.49983,-73.55097],info:{d:'Nordisches Spa auf einer umgebauten Fähre im Alten Hafen: Warm- und Kaltbecken, Saunen und Ruhedecks mit Blick auf den Sankt-Lorenz-Strom. Braucht 2–3 Stunden.',t:'Passt heute zeitlich nicht mehr – aber es liegt nur 5 Min vom Hotel und lässt sich an jedem Montréal-Tag spontan einschieben (vorab reservieren, Badesachen mitnehmen).'}}),
+     I('Les Sœurs Grises','beer','Brauerei-Gasthaus · eigene Fassbiere · Apéro','Les Sœurs Grises Montréal','v','',{time:'18:45',ll:[45.49889,-73.55379],info:{d:'Handwerks-Brauerei-Gasthaus in Vieux-Montréal (32 Rue McGill) mit eigenen Bieren direkt vom Fass und geräucherten Spezialitäten. Ein entspannter Tap-Room für einen Apéro, bevor es zum Abendessen geht.',t:'Vom Quai Jacques-Cartier ~8 Min zu Fuß. Bei gutem Wetter Terrasse. Alternativ direkt am Wasser: Terrasse William Gray (Rooftop).'}}),
+     I('Garde Manger','food','Seafood ohne Türschild · reservieren','Garde Manger Montréal','c','',{time:'19:30',ll:[45.5028,-73.5556],info:{d:'Chuck Hughes\' berühmtes Seafood-Lokal in Vieux-Montréal – ohne Schild an der Tür, eng, laut und lebendig. Austern, Hummer-Poutine und tagesfrische Meeresfrüchte in echter Bistro-Atmosphäre.',t:'Nur mit Reservierung; sehr klein und immer voll. ~5 Min vom Hafen.'}}),
+     I('Modavie','food','Lammküche + Live-Jazz jeden Abend','Modavie Montréal','c','https://www.modavie.com',{noroute:true,ll:[45.50547,-73.55396],info:{d:'Vieux-Montréal-Institution an der Ecke Saint-Paul/Saint-Vincent mit Fokus auf Lammgerichten und Québecer Produkten – dazu Live-Jazz an jedem Abend ohne Aufpreis.',t:'Früh reservieren, um zu den Jazz-Sets gut zu sitzen – auch sonntags Musik.'}}),
+     I('Barroco','food','holzgegrillte Küche im Gewölbekeller','Barroco Montréal','c','https://barroco.ca',{noroute:true,ll:[45.50141,-73.55594],info:{d:'Geschichtsträchtige Vieux-Montréal-Adresse in einem Steingewölbe: holzgegrillte Küche, Paella, Wild und kräftige Weine – warm und intim.',t:'Gute Sonntags-Alternative, wenn Garde Manger ausgebucht ist.'}}),
      I('Cité Mémoire','sight','Gratis-Videoprojektionen in den Altstadt-Gassen (Fr–So abends)','Cité Mémoire Montréal','v','https://www.montrealenhistoires.com',{gem:true,noroute:true,info:{d:'Eine der größten Outdoor-Videoprojektionen der Welt: nach Einbruch der Dunkelheit erscheinen Szenen aus Montréals Geschichte an den Hauswänden der Altstadt. Ein stimmungsvoller, kostenloser Abschluss direkt beim Hotel.',t:'Nur Fr–So nach Dunkelheit (im August ab ~21:00) – Sonntag ist der letzte Abend der Woche. Die App „Montréal en Histoires" liefert Ton und Erklärungen.'}}),
-     I('Grande Roue de Montréal','view','60-m-Riesenrad · abends beleuchtet (optional)','Grande Roue de Montréal','v','https://lagranderouedemontreal.com',{time:'optional',noroute:true,info:{d:'Das 60 m hohe Riesenrad am Quai King-Edward mit klimatisierten Gondeln und Rundumblick über Altstadt, Hafen und Strom. Im Sommer bis ~23 Uhr in Betrieb.',t:'Nach dem Abendessen mit beleuchteter Skyline am schönsten – Ticket vorab online günstiger. ~6 Min vom Quai Jacques-Cartier.'}})],
+     I('Grande Roue de Montréal','view','60-m-Riesenrad · geschlossene Gondeln · euer Skyline-Blick','Grande Roue de Montréal','v','https://lagranderouedemontreal.com',{must:true,time:'15:15',ll:[45.50759,-73.55077],info:{d:'Das 60 m hohe Riesenrad am Quai King-Edward mit klimatisierten, verglasten Gondeln und Rundumblick über Altstadt, Hafen und Strom. Weil die Gondeln geschlossen sind, geht die Fahrt auch bei Regen – heute euer Ersatz für den Aussichtsberg.',t:'Ticket vorab online oft günstiger; ~4 Min vom Quai Jacques-Cartier. Abends beleuchtet besonders schön.'}}),
+     I('Basilique Notre-Dame','sight','~4 Min vom Hotel · drinnen · morgens am ruhigsten','Basilique Notre-Dame Montréal','v','https://www.basiliquenotredame.ca',{must:true,time:'10:00',ll:[45.50444,-73.55599],info:{d:'Neugotisches Meisterwerk von 1829 mit tiefblau bemaltem Gewölbe, tausenden Blattgold-Sternen und einer der größten Casavant-Orgeln Nordamerikas – ein Sternenhimmel-Innenraum, ganz anders als das schlichte Äußere. Perfekter, trockener Auftakt an einem Regentag.',t:'Falls ihr sie gestern schon gesehen habt: überspringen und direkt zum Museum. Eintritt kostenpflichtig; die Abend-Show „AURA" ist ein separates Ticket.'}}),
+     I('Pointe-à-Callière','sight','Archäologie-Museum am Gründungsort · der Regen-Anker','Pointe-à-Callière Montréal','v','https://pacmusee.qc.ca',{must:true,time:'10:45',ll:[45.5026,-73.55418],info:{d:'Montréals preisgekröntes Archäologie- und Geschichtsmuseum steht genau über den freigelegten Fundamenten der Stadtgründung von 1642. Ein unterirdischer Rundgang führt durch echte Ruinen, den alten Abwasserkanal und eine multimediale Zeitreise – der beste Ort der Stadt bei Regen.',t:'Plant 1–1,5 Std. ein; lässt sich bei Dauerregen gut dehnen. An der Place Royale, ~3 Min von der Basilika.'}})],
     flow:[
-     {seg:'☀️ Vormittag · Mont-Royal (ab ~10:00)'},
-     {tr:'🚇 Metro Orange ab Square-Victoria–OACI (Richtung Montmorency) bis Mont-Royal, dann Bus 11 (Richtung Parc du Mont-Royal) zum Chalet/Belvédère. Alt.: 🚗 Uber ~15–18 CAD direkt zum Belvédère.'},
-     0,1,2,3,
-     {tr:'🚇 Rückweg an den Hafen: Bus 11 hinunter zur Metro Mont-Royal, Linie Orange (Richtung Côte-Vertu) bis Square-Victoria–OACI, dann ~6 Min zu Fuß zur Place Jacques-Cartier (~30 Min gesamt). Alt.: 🚗 Uber ~16–20 CAD (~15 Min) – heute die entspanntere Wahl, damit wir gegen 13:50 am Hafen sind.'},
-     {seg:'⛵ Nachmittag · Vieux-Port — Hafenrunde nach Osten und zurück (ab ~13:50)'},
-     {note:'🍴 Kein Restaurant-Mittagessen heute: Kaffee/Snack im Pavillon Maison Smith am Berg, unterwegs am Hafen ein Eis oder eine Kleinigkeit an den Ständen der Promenade bzw. den Foodtrucks am Quai. 🧭 Laufrichtung: von der Place Jacques-Cartier erst ostwärts bis zum Uhrturm (Wendepunkt), dann über die Promenade wieder westwärts zurück zum Quai Jacques-Cartier.'},
-     4,5,6,7,8,9,
-     {seg:'⏳ 16:00 · Offene Zeit am Quai Jacques-Cartier (ca. 2,5 h, bis ~18:30)'},
-     {note:'⏳ Ab hier bewusst kein Programm: gut zweieinhalb Stunden offen am Vieux-Port. Zeit zum Treiben lassen, in der Sonne sitzen, Straßenkünstlern zusehen – der Quai Jacques-Cartier ist im Sommer das Herz des Hafens. Hotel (208 Saint-Antoine O.) und Altstadtgassen sind 5–8 Min entfernt, der Apéro um 18:45 liegt gleich um die Ecke.'},
-     10,
+     {seg:'☀️ Vormittag · Vieux-Montréal, drinnen & überdacht (ab ~10:00 · alles ~5 Min vom Hotel)'},
+     {note:'☔ Bewusst kompakt & wettergeschützt rund ums Hotel (208 Saint-Antoine O.). Kein Mont-Royal heute – bei Regen wäre die Aussicht verhangen und die Tam-Tams fallen aus; den Skyline-Blick holt ihr euch nachmittags aus dem Riesenrad. ☀️ Nur falls es überraschend aufklart: Bus 11 ab Metro Mont-Royal zum Kondiaronk-Belvédère + sonntags die Tam-Tams am Cartier-Denkmal – aber wirklich nur bei trockenem Wetter.'},
+     17,18,10,
+     {note:'🥐 Mittag leicht & unterwegs: z. B. eine warme Zimtschnecke bei Olive + Gourmando (Rue Saint-Paul O.) oder ein Café in den Gassen – kein großes Mittagessen, damit der Abend Platz hat.'},
+     {seg:'⛵ Nachmittag · Vieux-Port — kurze Hafenrunde & Riesenrad (ab ~13:00)'},
+     {note:'🧭 Laufrichtung: von der Place Jacques-Cartier nach Osten bis zum Uhrturm (Wendepunkt), dann über die Promenade westwärts zum Riesenrad und zurück zum Quai Jacques-Cartier. Alles am Wasser, kurze Wege – die Distanz steht jeweils zwischen den Punkten.'},
+     4,5,6,7,8,16,9,
+     {seg:'⏳ 16:00 · Offene Zeit am Quai Jacques-Cartier (ca. 2,5 h, bis ~18:30)',endtour:true},
+     {note:'⏳ Ab hier bewusst kein Programm: gut zweieinhalb Stunden offen am Vieux-Port. Treiben lassen, den Straßenkünstlern zusehen, am Wasser sitzen. Die Altstadtgassen beginnen gleich oberhalb (~5 Min), zum Hotel sind es ~15 Min – der Apéro liegt danach auf dem Rückweg westwärts (Distanz steht am Punkt).'},
      {seg:'🍺 Apéro · Vieux-Montréal (ab ~18:45) — Tap-Room oder Rooftop'},
      11,
-     {seg:'🌆 Abend · Vieux-Montréal — Auswahl (ab ~19:30)'},
-     {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Garde Manger – lebhaftes Seafood ohne Türschild, echtes Vieux-Montréal · 2) Modavie – Lammküche mit Live-Jazz · 3) Barroco – holzgegrillte Küche im Gewölbe. Alles fußläufig zum Hotel. ⚠️ Sonntag: Öffnungszeiten vorher prüfen, einige Altstadt-Adressen haben So/Mo Ruhetag – unbedingt reservieren.'},
+     {seg:'🌆 Abend · Vieux-Montréal — Restaurant zur Auswahl (ab ~19:30)'},
+     {note:'🍽️ Drei Adressen zur Wahl (alle fußläufig, unbedingt reservieren): 1) Garde Manger – lebhaftes Seafood ohne Türschild · 2) Modavie – Lammküche mit Live-Jazz · 3) Barroco – holzgegrillte Küche im Gewölbe. ⚠️ Sonntag: Öffnungszeiten vorher prüfen, einige Altstadt-Adressen haben So/Mo Ruhetag.'},
      12,13,14,
      {seg:'🌙 Nach dem Essen · direkt vor der Haustür (ab ~21:00)'},
-     15,16,
-     {home:'alles fußläufig: aus der Altstadt (Garde Manger / Modavie / Barroco), von den Cité-Mémoire-Projektionen oder vom Riesenrad sind es ~5–10 Min zu Fuß zurück zum Embassy Suites (208 Saint-Antoine O.).'}
+     15,
+     {home:'alles fußläufig: aus der Altstadt oder von den Cité-Mémoire-Projektionen sind es ~5–10 Min zurück zum Embassy Suites (208 Saint-Antoine O.). Bei Regen kurze Wege oder Uber ~8–10 CAD.'}
     ]},
    {iso:'2026-08-03',dt:'Mo 03.08.',title:'Little Italy & Plateau',
     route:{walk:true,mode:'🚶 Metro + zu Fuß · ganzer Tag',
@@ -2027,13 +2041,36 @@ function routeHtml(d,s){
     <a class="rt-btn" href="${esc(url)}" target="_blank" rel="noopener">🧭 Route in Google Maps öffnen</a>
   </div>`;
 }
+// Fuß-Distanz aus Koordinaten (Luftlinie × Straßenfaktor ~1,3)
+function haversineM(a,b){
+  const R=6371000, toR=x=>x*Math.PI/180;
+  const dLat=toR(b[0]-a[0]), dLon=toR(b[1]-a[1]);
+  const h=Math.sin(dLat/2)**2 + Math.cos(toR(a[0]))*Math.cos(toR(b[0]))*Math.sin(dLon/2)**2;
+  return 2*R*Math.asin(Math.min(1,Math.sqrt(h)));
+}
+function walkMeters(a,b){ return haversineM(a,b)*1.3; }
+function kmStr(m){ return m<950 ? (Math.round(m/50)*50)+' m' : (Math.round(m/100)/10).toString().replace('.',',')+' km'; }
+function walkStr(m){ const min=Math.max(1,Math.round(m/75)); return `<span class="fleg-t">↓ ${kmStr(m)} · ~${min} Min zu Fuß</span>`; }
+
 function dayFlowHtml(d,s,si,di){
   const dk=si+'-'+di, r=d.route||{};
-  let body='', order=[];
+  let body='', order=[], prevLL=null, totM=0, frozen=false;
   (d.flow||[]).forEach(e=>{
-    if(typeof e==='number'){ const it=d.items[e]; if(it){ body+=itemHtml(it,dk+'-'+e); if(!it.noroute) order.push(it.map);} return; }
-    if(e.seg){ body+=`<div class="fseg">${esc(e.seg)}</div>`; return; }
-    if(e.tr){ body+=`<div class="ftr">↳ <span><b>Übergang:</b> ${esc(e.tr)}</span></div>`; return; }
+    if(typeof e==='number'){
+      const it=d.items[e];
+      if(it){
+        if(it.ll && !it.noroute){
+          if(prevLL){ const m=walkMeters(prevLL,it.ll); if(!frozen) totM+=m; body+=`<div class="fleg">${walkStr(m)}</div>`; }
+          prevLL=it.ll;
+        }
+        body+=itemHtml(it,dk+'-'+e);
+        if(!it.noroute) order.push(it.map);
+      }
+      return;
+    }
+    if(e.seg){ if(e.endtour) frozen=true; body+=`<div class="fseg">${esc(e.seg)}</div>`; return; }
+    if(e.warn){ body+=`<div class="fwarn">⚠️ <span>${esc(e.warn)}</span></div>`; return; }
+    if(e.tr){ body+=`<div class="ftr">↳ <span><b>Übergang:</b> ${esc(e.tr)}</span></div>`; prevLL=null; return; }
     if(e.note){ body+=`<div class="fnote">${esc(e.note)}</div>`; return; }
     if(e.home){ body+=`<div class="ftr fhome">🏨 <span><b>Rückweg zum Hotel:</b> ${esc(e.home)}</span></div>`; return; }
   });
@@ -2041,9 +2078,12 @@ function dayFlowHtml(d,s,si,di){
   let url='https://www.google.com/maps/dir/?api=1&travelmode='+mode+'&origin='+enc(from);
   if(order.length){ url+='&destination='+enc(order[order.length-1]); const mids=order.slice(0,-1); if(mids.length) url+='&waypoints='+mids.map(enc).join('%7C'); }
   else url+='&destination='+enc(from);
+  const wx = r.wx?`<div class="wxbar"><span class="wxi">${esc(r.wxi||'🌦️')}</span><div>${esc(r.wx)}</div></div>`:'';
+  const dist = totM>250 ? `<span class="daydist">🚶 ~${(Math.round(totM/100)/10).toString().replace('.',',')} km</span>` : '';
   return `<div class="dayflow">
-    <div class="rt-head">🗺️ <b>Tagesablauf</b>${r.mode?`<span class="rt-mode">${esc(r.mode)}</span>`:''}</div>
+    <div class="rt-head">🗺️ <b>Tagesablauf</b>${r.mode?`<span class="rt-mode">${esc(r.mode)}</span>`:''}${dist}</div>
     ${r.lead?`<div class="rt-lead">${esc(r.lead)}</div>`:''}
+    ${wx}
     ${body}
     <a class="rt-btn" href="${esc(url)}" target="_blank" rel="noopener">🧭 Gesamte Tagesroute in Google Maps</a>
   </div>`;
