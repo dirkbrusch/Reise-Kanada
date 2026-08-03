@@ -2139,7 +2139,7 @@ function dayFlowHtml(d,s,si,di){
       const it=d.items[e];
       if(it){
         if(it.ll && !it.noroute){
-          if(prevLL){ const m=walkMeters(prevLL,it.ll); if(m<=2600){ if(!frozen) totM+=m; body+=`<div class="fleg">${walkStr(m)}</div>`; } else { body+=`<div class="fleg fleg-far"><span class="fleg-t">↔ ~${kmStr(m)} · größerer Sprung (Transit/Auto)</span></div>`; } }
+          if(prevLL){ const m=walkMeters(prevLL,it.ll); if(m<=2600){ if(!frozen) totM+=m; body+=`<div class="fleg">${walkStr(m)}</div>`; } else if(m<=15000){ body+=`<div class="fleg fleg-far"><span class="fleg-t">↔ ~${kmStr(m)} · größerer Sprung (Transit/Auto)</span></div>`; } }
           prevLL=it.ll;
         }
         body+=itemHtml(it,dk+'-'+e);
