@@ -2133,13 +2133,13 @@ function walkStr(m){ const min=Math.max(1,Math.round(m/75)); return `<span class
 
 function dayFlowHtml(d,s,si,di){
   const dk=si+'-'+di, r=d.route||{};
-  let body='', order=[], prevLL=null, totM=0, frozen=false;
+  let body='', order=[], prevLL=null, totM=0, frozen=false; const isDrive=r.drive||(s&&s.drive);
   (d.flow||[]).forEach(e=>{
     if(typeof e==='number'){
       const it=d.items[e];
       if(it){
         if(it.ll && !it.noroute){
-          if(prevLL){ const m=walkMeters(prevLL,it.ll); if(m<=2600){ if(!frozen) totM+=m; body+=`<div class="fleg">${walkStr(m)}</div>`; } else if(m<=15000){ body+=`<div class="fleg fleg-far"><span class="fleg-t">↔ ~${kmStr(m)} · größerer Sprung (Transit/Auto)</span></div>`; } }
+          if(prevLL && !isDrive){ const m=walkMeters(prevLL,it.ll); if(m<=2600){ if(!frozen) totM+=m; body+=`<div class="fleg">${walkStr(m)}</div>`; } else if(m<=15000){ body+=`<div class="fleg fleg-far"><span class="fleg-t">↔ ~${kmStr(m)} · größerer Sprung (Transit/Auto)</span></div>`; } }
           prevLL=it.ll;
         }
         body+=itemHtml(it,dk+'-'+e);
