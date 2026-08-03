@@ -148,6 +148,17 @@
   .fabout>summary::after{content:"aufklappen";margin-left:auto;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
   .fabout[open]>summary::after{content:"zuklappen"}
   .fabout .fabout-x{padding:2px 13px 12px;font-size:12.5px;line-height:1.62;color:var(--ink);white-space:pre-line}
+  /* Restaurant-Staffelung als Nav-Block */
+  .dine-block{margin:8px 0 10px;border:1px solid var(--line);border-radius:12px;background:var(--soft2);padding:10px 12px}
+  .dine-t{font-size:12.5px;color:var(--maple);margin-bottom:6px}
+  .dine-row{border-top:1px solid var(--line);padding:9px 0 8px}
+  .dine-row:first-of-type{border-top:0;padding-top:2px}
+  .dine-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13.5px}
+  .dine-why{font-size:12px;color:var(--muted);margin:3px 0 2px;line-height:1.5}
+  .dine-row .addr{margin:2px 0 5px}
+  .dine-row .pill.nav{display:inline-flex;margin-top:2px}
+  .dine-foot{font-size:11px;color:var(--muted);border-top:1px dashed var(--line);margin-top:7px;padding-top:6px}
+  .pbadge.top{background:rgba(160,30,30,.1);color:var(--maple);border:1px solid rgba(160,30,30,.3)}
   .stayh-links a.pricelink{color:#a01e1e;font-weight:600}
   .staysub{font-size:11px;font-weight:800;color:var(--maple);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 3px}
   .fewo-links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
@@ -806,7 +817,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:30)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Aux Anciens Canadiens – traditionelle québécoise Küche im Haus von 1676 · 2) Le Lapin Sauté – gemütlich, Kaninchen · 3) Le Cochon Dingue – locker & unkompliziert. Reservieren.'},
      8,9,10,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Le Lapin Sauté (€€) – 52 Rue du Petit-Champlain, Québec. Gemütliches Bistro mitten im Petit-Champlain mit québecoiser Küche rund um Kaninchen und Entenconfit – Kamin, kleine Stube, unbedingt reservieren · 💶 Preistipp: Le Cochon Dingue (€€) – 46 Boulevard Champlain, Québec. Institution seit 1979 direkt am Wasser – bodenständige Bistro-Klassiker und Frühstück zu fairen Preisen, unkompliziert und lokal beliebt · 🔍 Insider: Buffet de l\'Antiquaire (€) – 95 Rue Saint-Paul, Québec. Klassisches Casse-croûte im Antiquitätenviertel, ein Block abseits – hier frühstückt und lunched man deftig québecois, günstig und echt (selbst prüfen)'},
+     {dine:{top:{name:'Le Lapin Sauté',addr:'52 Rue du Petit-Champlain, Québec',price:'€€',why:'Gemütliches Bistro mitten im Petit-Champlain mit québecoiser Küche rund um Kaninchen und Entenconfit – Kamin, kleine Stube, unbedingt reservieren'},value:{name:'Le Cochon Dingue',addr:'46 Boulevard Champlain, Québec',price:'€€',why:'Institution seit 1979 direkt am Wasser – bodenständige Bistro-Klassiker und Frühstück zu fairen Preisen, unkompliziert und lokal beliebt'},insider:{name:'Buffet de l\'Antiquaire',addr:'95 Rue Saint-Paul, Québec',price:'€',why:'Klassisches Casse-croûte im Antiquitätenviertel, ein Block abseits – hier frühstückt und lunched man deftig québecois, günstig und echt (selbst prüfen)'}}},
      {home:'zurück nach Saint-Roch: ~20 Min bergauf zu Fuß (über die Côte de la Montagne) oder Uber ~8–10 CAD.'}
     ]},
    {iso:'2026-08-06',dt:'Do 06.08.',title:'Oberstadt & Wälle',
@@ -843,7 +854,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Chez Boulay – boréale Bistroküche, zugänglich · 2) Chez Muffy – Farm-to-table im Gewölbe · 3) Le Saint-Amour – festlich & gehoben. Reservieren.'},
      12,13,14,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Aux Anciens Canadiens (€€€) – 34 Rue Saint-Louis, Québec. Traditionelle québecoise Küche im ältesten Haus der Stadt (Maison Jacquet, 1676) – Tourtière, Bohnen, Ahornsirup-Desserts, das klassische Terroir-Erlebnis · 💶 Preistipp: Le Chic Shack (€€) – 15 Rue du Fort, Québec. Direkt gegenüber dem Château Frontenac: Burger aus kanadischem Rind (auch Bison), Pommes und hausgemachte Milchshakes – lässig und bezahlbar · 🔍 Insider: Chez Temporel (€) – 25 Rue Couillard, Québec. Verstecktes Café-Bistro seit 1974 in einer stillen Seitengasse – Croque, Sandwiches und starker Kaffee, wo die Einheimischen der Altstadt sitzen (selbst prüfen)'},
+     {dine:{top:{name:'Aux Anciens Canadiens',addr:'34 Rue Saint-Louis, Québec',price:'€€€',why:'Traditionelle québecoise Küche im ältesten Haus der Stadt (Maison Jacquet, 1676) – Tourtière, Bohnen, Ahornsirup-Desserts, das klassische Terroir-Erlebnis'},value:{name:'Le Chic Shack',addr:'15 Rue du Fort, Québec',price:'€€',why:'Direkt gegenüber dem Château Frontenac: Burger aus kanadischem Rind (auch Bison), Pommes und hausgemachte Milchshakes – lässig und bezahlbar'},insider:{name:'Chez Temporel',addr:'25 Rue Couillard, Québec',price:'€',why:'Verstecktes Café-Bistro seit 1974 in einer stillen Seitengasse – Croque, Sandwiches und starker Kaffee, wo die Einheimischen der Altstadt sitzen (selbst prüfen)'}}},
      {home:'aus der Oberstadt zurück nach Saint-Roch: ~15 Min bergab zu Fuß oder Bus RTC / Uber ~8–10 CAD.'}
     ]},
    {iso:'2026-08-07',dt:'Fr 07.08.',title:'Saint-Roch & Fêtes de la Nouvelle-France',
@@ -878,7 +889,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Le Clocher Penché – franko-québécoise Bistro-Institution · 2) Ouroboros – Terroir-Marktküche (Bib Gourmand) · 3) ARVI – 1 Michelin-Stern, besonderer Abend · 4) jjacques – Austern & Meeresfrüchte. Reservieren.'},
      9,10,11,12,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Le Clocher Penché (€€) – 203 Rue Saint-Joseph Est, Québec. Kult-Bistro von Saint-Roch in einer alten Bank: marktfrische québecoise Küche mit regionalen Produkten – eine Institution bei Einheimischen wie Kennern · 💶 Preistipp: Nina Pizza Napolitaine (€€) – 410 Rue Saint-Anselme, Québec. Beliebte neapolitanische Pizzeria mit Steinofen aus Sizilien, mitten im Viertel – lebhaft, gut und deutlich günstiger, ein Nachbarschaftsliebling · 🔍 Insider: Battuto (€€) – 527 Boulevard Langelier, Québec. Winziges 24-Sitze-Lokal einen Block abseits, italienisch inspiriert mit saisonalen Zutaten, Michelin-notiert – schwer zu bekommen, Kult bei Locals (selbst prüfen)'},
+     {dine:{top:{name:'Le Clocher Penché',addr:'203 Rue Saint-Joseph Est, Québec',price:'€€',why:'Kult-Bistro von Saint-Roch in einer alten Bank: marktfrische québecoise Küche mit regionalen Produkten – eine Institution bei Einheimischen wie Kennern'},value:{name:'Nina Pizza Napolitaine',addr:'410 Rue Saint-Anselme, Québec',price:'€€',why:'Beliebte neapolitanische Pizzeria mit Steinofen aus Sizilien, mitten im Viertel – lebhaft, gut und deutlich günstiger, ein Nachbarschaftsliebling'},insider:{name:'Battuto',addr:'527 Boulevard Langelier, Québec',price:'€€',why:'Winziges 24-Sitze-Lokal einen Block abseits, italienisch inspiriert mit saisonalen Zutaten, Michelin-notiert – schwer zu bekommen, Kult bei Locals (selbst prüfen)'}}},
      {home:'Ihr wohnt mitten in Saint-Roch – abends ist alles fußläufig; von der Altstadt (Festival) ~15 Min bergab zurück, oder Uber ~8 CAD.'}
     ]},
    {iso:'2026-08-08',dt:'Sa 08.08.',title:'Île d\'Orléans (Fahr-Rundtour · Foodie-Insel)',
@@ -911,7 +922,7 @@ const STAGES=[
      {seg:'🌆 Abend · Sonnenuntergang an der Inselspitze (ab ~19:00)'},
      {note:'💡 Empfehlung zum Sonnenuntergang: 1) Auberge La Goéliche – Terrasse mit Québec-Skyline überm Wasser (reservieren!) · 2) La Midinette – lockere Buvette mit Naturwein.'},
      12,13,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Le Moulin de St-Laurent (€€€) – 6436 Chemin Royal, Saint-Laurent-de-l\'Île-d\'Orléans. Terroir-Küche in einer alten Getreidemühle von 1720, Terrasse an einem kleinen Wasserfall – die klassische, stimmungsvolle Abendadresse der Insel · 💶 Preistipp: Resto du Sud (€) – 3681 Chemin Royal, Saint-François-de-l\'Île-d\'Orléans. Traditionelles Casse-croûte in einer roten Hütte mit Blick über den Strom – Poutine, Burger, einfache Inselküche, günstig und unprätentiös · 🔍 Insider: Vignoble Sainte-Pétronille (€€) – 8705 Chemin Royal, Sainte-Pétronille. Weingut am Westzipfel mit Blick auf die Montmorency-Fälle und die Stadt, holzofengebackene Pizza und Inselweine – etwas abseits, oft von Locals angesteuert (selbst prüfen)'},
+     {dine:{top:{name:'Le Moulin de St-Laurent',addr:'6436 Chemin Royal, Saint-Laurent-de-l\'Île-d\'Orléans',price:'€€€',why:'Terroir-Küche in einer alten Getreidemühle von 1720, Terrasse an einem kleinen Wasserfall – die klassische, stimmungsvolle Abendadresse der Insel'},value:{name:'Resto du Sud',addr:'3681 Chemin Royal, Saint-François-de-l\'Île-d\'Orléans',price:'€',why:'Traditionelles Casse-croûte in einer roten Hütte mit Blick über den Strom – Poutine, Burger, einfache Inselküche, günstig und unprätentiös'},insider:{name:'Vignoble Sainte-Pétronille',addr:'8705 Chemin Royal, Sainte-Pétronille',price:'€€',why:'Weingut am Westzipfel mit Blick auf die Montmorency-Fälle und die Stadt, holzofengebackene Pizza und Inselweine – etwas abseits, oft von Locals angesteuert (selbst prüfen)'}}},
      {home:'🚗 Abends von der Westspitze Sainte-Pétronille über die Brücke zurück nach Saint-Roch (~30 Min). Wer verkostet, plant einen Fahrer/Uber ein – bei Wein/Cidre ausspucken.'}
     ]}
   ]},
@@ -995,7 +1006,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 So-Abend: 1) Le Bercail (Hôtel Le Germain, verlässlich) oder locker das Le Saint-Pub (Brauereigasthaus) · 2) Faux Bergers nur mit Reservierung. Hinweis: Le Mouton Noir hat sonntags zu (Di–Sa) – das heben wir uns für den 11.08. auf.'},
      7,8,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Le Mouton Noir (€€€) – 43 rue Sainte-Anne, Baie-Saint-Paul. Kreative Bistronomie mit Charlevoix-Terroir und Terrasse direkt am Flussufer – die Genuss-Adresse des Ortes. · 💶 Preistipp: Le Saint-Pub (MicroBrasserie Charlevoix) (€€) – 25 rue Saint-Jean-Baptiste, Baie-Saint-Paul. Regionale Küche zum Bier aus der eigenen Charlevoix-Brauerei – lokal und deutlich günstiger. · 🔍 Insider: Joe Smoked Meat (€) – 54 rue Saint-Jean-Baptiste, Baie-Saint-Paul. Kleiner Kult-Laden für Smoked Meat, bei Einheimischen beliebt und günstig (oft nur Bar) – selbst prüfen.'},
+     {dine:{top:{name:'Le Mouton Noir',addr:'43 rue Sainte-Anne, Baie-Saint-Paul',price:'€€€',why:'Kreative Bistronomie mit Charlevoix-Terroir und Terrasse direkt am Flussufer – die Genuss-Adresse des Ortes.'},value:{name:'Le Saint-Pub (MicroBrasserie Charlevoix)',addr:'25 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€€',why:'Regionale Küche zum Bier aus der eigenen Charlevoix-Brauerei – lokal und deutlich günstiger.'},insider:{name:'Joe Smoked Meat',addr:'54 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€',why:'Kleiner Kult-Laden für Smoked Meat, bei Einheimischen beliebt und günstig (oft nur Bar) – selbst prüfen.'}}},
      {home:'Unterkunft „VER-1 (haut)" in Petite-Rivière-Saint-François, ~10 Min von Baie-Saint-Paul (Check-in ab 17:00). Tipp: erst Markt & Zentrum, dann gegen 17:00 einchecken, Gepäck abstellen und für Apéro/Dinner zurück nach Baie-Saint-Paul (~10 Min). Wer Bier/Wein trinkt: Fahrer festlegen.'}
     ]},
    {iso:'2026-08-10',dt:'Mo 10.08.',title:'Tadoussac · Wal- & Bären-Tag',
@@ -1024,7 +1035,7 @@ const STAGES=[
      {seg:'🐻 Bärenbeobachtung · Start 18:00 (Ansitz ~2 Std)'},
      {note:'🐻 ✅ Gebucht: Start 18:00, ~2 Std (Reservotron-Conf. 00002802 · 0 CAD über Kombi). Treffpunkt Domaine de nos Ancêtres, 1895 Route 172 SUD, Sacré-Cœur – spätestens 17:40 da sein (Puffer: 17:30). Von Tadoussac ~17:00 losfahren, ~20–30 Min Fahrt, kein Fährwechsel.'},
      7,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Bistro Le Bar Rayé (€€€) – 139 rue du Bord-de-l\'Eau, Tadoussac. Maritimes Bistro im Ortskern mit Fisch, Meeresfrüchten und lokalem Gemüse, Naturweinen und Terrasse am Wasser. · 💶 Preistipp: Restaurant Chantmartin (€€) – 227 rue des Pionniers, Tadoussac. Bodenständige Küche mit Fisch und Fruits de mer zum fairen Preis – ein solider lokaler Klassiker. · 🔍 Insider: Café Bohème (€) – 239 rue des Pionniers, Tadoussac. Im alten Gemischtwarenladen, bei Einheimischen und Rückkehrern von der Waltour beliebt, günstig – selbst prüfen.'},
+     {dine:{top:{name:'Bistro Le Bar Rayé',addr:'139 rue du Bord-de-l\'Eau, Tadoussac',price:'€€€',why:'Maritimes Bistro im Ortskern mit Fisch, Meeresfrüchten und lokalem Gemüse, Naturweinen und Terrasse am Wasser.'},value:{name:'Restaurant Chantmartin',addr:'227 rue des Pionniers, Tadoussac',price:'€€',why:'Bodenständige Küche mit Fisch und Fruits de mer zum fairen Preis – ein solider lokaler Klassiker.'},insider:{name:'Café Bohème',addr:'239 rue des Pionniers, Tadoussac',price:'€',why:'Im alten Gemischtwarenladen, bei Einheimischen und Rückkehrern von der Waltour beliebt, günstig – selbst prüfen.'}}},
      {home:'🚗 Nach der Bärentour (~20:00): von Sacré-Cœur ~20–30 Min zur Fähre in Tadoussac, hinüber nach Baie-Sainte-Catherine, dann ~1,5 h zurück zur Unterkunft in Petite-Rivière-Saint-François – Ankunft ~22:30–23:00. Die Traverse fährt abends seltener (Takt vorher prüfen). Tipp: vor der Rückfahrt in Tadoussac oder unterwegs noch etwas essen.'}
     ]},
    {iso:'2026-08-11',dt:'Di 11.08.',title:'Route 362 & Baie-Saint-Paul (locker)',
@@ -1057,7 +1068,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Le Mouton Noir – Bistro am Fluss, heute (Di) offen (reservieren!) · 2) Le Saint-Pub – locker mit Hausbier · 3) in La Malbaie: Vices Versa oder Le Perché Gourmand (mit Aussicht, ~30 Min Rückfahrt).'},
      9,10,11,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Faux Bergers (€€€) – 124 rue Saint-Jean-Baptiste, Baie-Saint-Paul. Saisonale québecoise Küche, die Charlevoix-Produkte feiert – eine der ambitioniertesten Adressen der Region. · 💶 Preistipp: Le Saint-Pub (MicroBrasserie Charlevoix) (€€) – 25 rue Saint-Jean-Baptiste, Baie-Saint-Paul. Regionale Gerichte zum hauseigenen Charlevoix-Bier – verlässlich lokal und preiswert. · 🔍 Insider: Café Arômes et Saveurs (€) – 64 rue Saint-Jean-Baptiste, Baie-Saint-Paul. Rustikales Café mit lokalen Produkten, bei Einheimischen für Kaffee und Herzhaftes beliebt, günstig – selbst prüfen.'},
+     {dine:{top:{name:'Faux Bergers',addr:'124 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€€€',why:'Saisonale québecoise Küche, die Charlevoix-Produkte feiert – eine der ambitioniertesten Adressen der Region.'},value:{name:'Le Saint-Pub (MicroBrasserie Charlevoix)',addr:'25 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€€',why:'Regionale Gerichte zum hauseigenen Charlevoix-Bier – verlässlich lokal und preiswert.'},insider:{name:'Café Arômes et Saveurs',addr:'64 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€',why:'Rustikales Café mit lokalen Produkten, bei Einheimischen für Kaffee und Herzhaftes beliebt, günstig – selbst prüfen.'}}},
      {home:'🚗 Zurück nach Baie-Saint-Paul; abends Le Saint-Pub oder Le Mouton Noir zu Fuß im Zentrum. Bei den La-Malbaie-Restaurants die ~30 Min Rückfahrt einplanen – Fahrer festlegen.'}
     ]}
   ]},
@@ -1168,7 +1179,7 @@ const STAGES=[
      7,8,9,
      {seg:'✨ Nach dem Essen · gratis Lichtshow (nach Einbruch der Dunkelheit)'},
      10,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Riviera (€€€) – 62 Sparks Street, Ottawa, ON. Kreative moderne kanadische Küche in einer stilvoll umgebauten alten Bankhalle — Ottawas gehobene Adresse. · 💶 Preistipp: Zak\'s Diner (€€) – 14 ByWard Market Square, Ottawa, ON. Klassischer 50er-Jahre-Diner mitten im Markt mit Poutine, All-Day-Breakfast und Milkshakes — günstig und rund um die Uhr. · 🔍 Insider: Benny\'s Bistro (€€) – 119 Murray Street, Ottawa, ON. Franko-kanadisches Bistro, versteckt hinter der French-Baker-Bäckerei — ein Local-Geheimtipp, den man leicht übersieht (selbst prüfen).'},
+     {dine:{top:{name:'Riviera',addr:'62 Sparks Street, Ottawa, ON',price:'€€€',why:'Kreative moderne kanadische Küche in einer stilvoll umgebauten alten Bankhalle — Ottawas gehobene Adresse.'},value:{name:'Zak\'s Diner',addr:'14 ByWard Market Square, Ottawa, ON',price:'€€',why:'Klassischer 50er-Jahre-Diner mitten im Markt mit Poutine, All-Day-Breakfast und Milkshakes — günstig und rund um die Uhr.'},insider:{name:'Benny\'s Bistro',addr:'119 Murray Street, Ottawa, ON',price:'€€',why:'Franko-kanadisches Bistro, versteckt hinter der French-Baker-Bäckerei — ein Local-Geheimtipp, den man leicht übersieht (selbst prüfen).'}}},
      {home:'Alles rund um ByWard Market/Lower Town zu Fuß; die Northern-Lights-Show ist am Parliament Hill (~10 Min zu Fuß). Zurück zum Hotel im Viertel wenige Minuten / kurzer Uber.'}
     ]},
    {iso:'2026-08-14',dt:'Fr 14.08.',title:'Parliament & Hintonburg',
@@ -1203,7 +1214,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Supply and Demand – Raw Bar & Pasta, Hintonburgs Benchmark (reservieren!) · 2) Stofa – Holzfeuer-Küche · 3) Fauna – kreativ, Canada\'s 100 Best.'},
      10,11,12,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Wellington Gastropub (€€€) – 1325 Wellington Street West, Ottawa, ON. Etablierter Gastropub in Hintonburg mit saisonaler, lokal bezogener kanadischer Küche — die gehobene Adresse des Viertels. · 💶 Preistipp: Tennessy Willems (€€) – 1082 Wellington Street West, Ottawa, ON. Gemütliche Holzofen-Pizzeria, seit Jahren ein Local-Favorit an der Wellington West — bodenständig und günstig. · 🔍 Insider: Elmdale House Tavern (€€) – 1084 Wellington Street West, Ottawa, ON. Alteingesessene Nachbarschafts-Taverne mit Austern und Livemusik, bei Einheimischen beliebt — einen Block abseits (selbst prüfen).'},
+     {dine:{top:{name:'Wellington Gastropub',addr:'1325 Wellington Street West, Ottawa, ON',price:'€€€',why:'Etablierter Gastropub in Hintonburg mit saisonaler, lokal bezogener kanadischer Küche — die gehobene Adresse des Viertels.'},value:{name:'Tennessy Willems',addr:'1082 Wellington Street West, Ottawa, ON',price:'€€',why:'Gemütliche Holzofen-Pizzeria, seit Jahren ein Local-Favorit an der Wellington West — bodenständig und günstig.'},insider:{name:'Elmdale House Tavern',addr:'1084 Wellington Street West, Ottawa, ON',price:'€€',why:'Alteingesessene Nachbarschafts-Taverne mit Austern und Livemusik, bei Einheimischen beliebt — einen Block abseits (selbst prüfen).'}}},
      {home:'aus Hintonburg zurück ins ByWard-/Hotel-Viertel: 🚇 O-Train Line 1 ab Bayview bis Rideau, oder 🚗 Uber ~12–15 CAD. Wer bis spät bei Beyond the Pale/Bar Lupulus bleibt: Uber zurück.'}
     ]},
    {iso:'2026-08-15',dt:'Sa 15.08.',title:'Gatineau Park & Natur (lockerer Tag)',
@@ -1234,7 +1245,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Beckta – Fine-Dining-Institution (besonderer Abend, reservieren) · 2) The Whalesbone – nachhaltige Seafood-/Austernbar · 3) Fauna – kreativ & lokal.'},
      8,9,10,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Restaurant Les Fougères (€€€) – 783 Route 105, Chelsea, QC. Seit 1993 die farm-to-table-Institution der Gatineau-Hügel mit québecoiser Küche aus regionalen Produkten — feine Adresse am Parkrand. · 💶 Preistipp: Chelsea Pub (€€) – 238 Old Chelsea Road, Chelsea, QC. Gemütlicher Dorfpub in einem Haus von 1875 mit Terrasse und bodenständiger Küche direkt am Südtor des Parks — günstig und locker. · 🔍 Insider: Kaffé 1870 (€€) – 715 Chemin Riverside, Wakefield, QC. Kultiges Dorf-Pub in Wakefield mit Livemusik und eklektischer Karte, bei Locals beliebt — rund 20 Min nördlich, lohnt den Umweg (selbst prüfen).'},
+     {dine:{top:{name:'Restaurant Les Fougères',addr:'783 Route 105, Chelsea, QC',price:'€€€',why:'Seit 1993 die farm-to-table-Institution der Gatineau-Hügel mit québecoiser Küche aus regionalen Produkten — feine Adresse am Parkrand.'},value:{name:'Chelsea Pub',addr:'238 Old Chelsea Road, Chelsea, QC',price:'€€',why:'Gemütlicher Dorfpub in einem Haus von 1875 mit Terrasse und bodenständiger Küche direkt am Südtor des Parks — günstig und locker.'},insider:{name:'Kaffé 1870',addr:'715 Chemin Riverside, Wakefield, QC',price:'€€',why:'Kultiges Dorf-Pub in Wakefield mit Livemusik und eklektischer Karte, bei Locals beliebt — rund 20 Min nördlich, lohnt den Umweg (selbst prüfen).'}}},
      {home:'Zurück ins ByWard-/Hotel-Viertel zu Fuß oder 🚗 Uber. Nepean Point liegt hinter der Nationalgalerie, ~5 Min vom Markt.'}
     ]}
   ]},
@@ -1307,7 +1318,7 @@ const STAGES=[
      {seg:'🌆 Abend · County-Terroir — Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Drake Devonshire – Lakeside-Dining am See (reservieren!) · 2) The Blue Sail – Seafood, nur 26 Plätze · 3) Bloomfield Public House – Dorf-Pub, locker · 4) Hendrik\'s BBQ – Smokehouse.'},
      4,5,6,7,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Drake Devonshire (€€€) – 24 Wharf Street, Wellington, ON. Farm-to-table am Seeufer mit saisonaler Küche aus County-Produkten – die stilvollste Adresse für den Ankunftsabend, direkt am Wasser. · 💶 Preistipp: Midtown Brewing Company (€€) – 266 Wellington Main Street, Wellington, ON. Craft-Beer-Pub mitten in Wellington mit ehrlicher lokaler Küche und Steinofen-Pizza – deutlich günstiger, entspannt, dog-friendly Terrasse. · 🔍 Insider: The County Canteen (€€) – 279 Main Street, Picton, ON. Pictons Brewpub, bei Einheimischen beliebt, mit County-Weinliste und 20+ Ontario-Bieren vom Fass – einen Ort weiter, selbst prüfen ob Tisch frei.'},
+     {dine:{top:{name:'Drake Devonshire',addr:'24 Wharf Street, Wellington, ON',price:'€€€',why:'Farm-to-table am Seeufer mit saisonaler Küche aus County-Produkten – die stilvollste Adresse für den Ankunftsabend, direkt am Wasser.'},value:{name:'Midtown Brewing Company',addr:'266 Wellington Main Street, Wellington, ON',price:'€€',why:'Craft-Beer-Pub mitten in Wellington mit ehrlicher lokaler Küche und Steinofen-Pizza – deutlich günstiger, entspannt, dog-friendly Terrasse.'},insider:{name:'The County Canteen',addr:'279 Main Street, Picton, ON',price:'€€',why:'Pictons Brewpub, bei Einheimischen beliebt, mit County-Weinliste und 20+ Ontario-Bieren vom Fass – einen Ort weiter, selbst prüfen ob Tisch frei.'}}},
      {home:'Kurze Wege mit dem Auto zurück zur Unterkunft (Wellington/Picton). Wer Wein/Cidre/Bier trinkt: Fahrer festlegen – im County gibt es kaum Uber/Taxi.'}
     ]}
   ]},
@@ -1394,7 +1405,7 @@ const STAGES=[
      {seg:'🌆 Abend · Niagara-on-the-Lake — Auswahl (ab ~18:30)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Treadwell Cuisine – preisgekröntes Farm-to-table (reservieren!) · 2) The Garrison House – gemütliches Gastro-Tavern · 3) Ravine Vineyard – Winery-Dinner. Optional: Shaw Festival (Theater) statt Dinner.'},
      10,11,12,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Treadwell Cuisine (€€€) – 114 Queen Street, Niagara-on-the-Lake, ON. Farm-to-Table-Küche aus der Region Niagara mit der größten Ontario-Weinauswahl der Welt. · 💶 Preistipp: The Olde Angel Inn (€€) – 224 Regent Street, Niagara-on-the-Lake, ON. Ältester Pub Ontarios (1789) mit ehrlicher lokaler Pub-Küche zu moderaten Preisen. · 🔍 Insider: The Sandtrap Pub & Grill (€€) – 358 Mary Street, Niagara-on-the-Lake, ON. Locals-Treffpunkt abseits der Touristenmeile, gutes Essen zu fairem Preis — selbst prüfen.'},
+     {dine:{top:{name:'Treadwell Cuisine',addr:'114 Queen Street, Niagara-on-the-Lake, ON',price:'€€€',why:'Farm-to-Table-Küche aus der Region Niagara mit der größten Ontario-Weinauswahl der Welt.'},value:{name:'The Olde Angel Inn',addr:'224 Regent Street, Niagara-on-the-Lake, ON',price:'€€',why:'Ältester Pub Ontarios (1789) mit ehrlicher lokaler Pub-Küche zu moderaten Preisen.'},insider:{name:'The Sandtrap Pub & Grill',addr:'358 Mary Street, Niagara-on-the-Lake, ON',price:'€€',why:'Locals-Treffpunkt abseits der Touristenmeile, gutes Essen zu fairem Preis — selbst prüfen.'}}},
      {home:'🚗 Abends von Niagara-on-the-Lake zurück nach Toronto (~1,5 h, QEW). Wer auf Weingütern verkostet: Fahrer festlegen oder Tastings ausspucken. Der Mietwagen wird morgen (19.08.) am Flughafen zurückgegeben.'}
     ]},
    {iso:'2026-08-19',dt:'Mi 19.08.',title:'Old Town & Distillery · Mietwagen-Rückgabe',
@@ -1430,7 +1441,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Ruby Watchco – 4-Gänge-Marktmenü (reservieren!) · 2) The Carbon Bar – Live-Fire-BBQ · 3) Cluny Bistro – franz. Bistro in der Distillery.'},
      10,11,12,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Cluny Bistro & Boulangerie (€€€) – 35 Tank House Lane, Toronto, ON. Modern-französisches Bistro mit hauseigener Boulangerie, das gastronomische Aushängeschild des Distillery District. · 💶 Preistipp: Pearl Diver (€€) – 100 Adelaide Street East, Toronto, ON. Entspannte Austern- und Seafood-Bar mit täglichem Buck-a-Shuck, mitten in Old Town. · 🔍 Insider: Betty\'s (€€) – 240 King Street East, Toronto, ON. Alteingesessene Locals-Kneipe mit günstiger Pub-Küche, einen Block abseits — selbst prüfen.'},
+     {dine:{top:{name:'Cluny Bistro & Boulangerie',addr:'35 Tank House Lane, Toronto, ON',price:'€€€',why:'Modern-französisches Bistro mit hauseigener Boulangerie, das gastronomische Aushängeschild des Distillery District.'},value:{name:'Pearl Diver',addr:'100 Adelaide Street East, Toronto, ON',price:'€€',why:'Entspannte Austern- und Seafood-Bar mit täglichem Buck-a-Shuck, mitten in Old Town.'},insider:{name:'Betty\'s',addr:'240 King Street East, Toronto, ON',price:'€€',why:'Alteingesessene Locals-Kneipe mit günstiger Pub-Küche, einen Block abseits — selbst prüfen.'}}},
      {home:'Alles in Old Town/Distillery/Riverside gut zu Fuß & per Streetcar (504/514). Zurück ins Hotelviertel: TTC oder kurzer Uber.'}
     ]},
    {iso:'2026-08-20',dt:'Do 20.08.',title:'Downtown & Waterfront',
@@ -1464,7 +1475,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Canoe – kanadische Küche im 54. Stock mit Skyline-Blick (reservieren!) · 2) Richmond Station – beliebtes Bistro · 3) Bymark – Fine Dining. Abend-Alternative: Mirvish-Theater/Four Seasons Centre.'},
      8,9,10,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Miku Toronto (€€€) – 10 Bay Street, Unit 105, Toronto, ON. Flammengeflämmtes Aburi-Sushi mit Terrasse direkt an der Harbourfront-Promenade. · 💶 Preistipp: Amsterdam BrewHouse (€€) – 245 Queens Quay West, Toronto, ON. Größtes Waterfront-Brauhaus der Stadt mit weitläufiger Seeterrasse und bodenständiger Küche. · 🔍 Insider: Wilbur Mexicana (€) – 552 King Street West, Toronto, ON. Bei Locals beliebtes mexikanisches Street Food auf King West, ein paar Blocks landeinwärts — selbst prüfen.'},
+     {dine:{top:{name:'Miku Toronto',addr:'10 Bay Street, Unit 105, Toronto, ON',price:'€€€',why:'Flammengeflämmtes Aburi-Sushi mit Terrasse direkt an der Harbourfront-Promenade.'},value:{name:'Amsterdam BrewHouse',addr:'245 Queens Quay West, Toronto, ON',price:'€€',why:'Größtes Waterfront-Brauhaus der Stadt mit weitläufiger Seeterrasse und bodenständiger Küche.'},insider:{name:'Wilbur Mexicana',addr:'552 King Street West, Toronto, ON',price:'€',why:'Bei Locals beliebtes mexikanisches Street Food auf King West, ein paar Blocks landeinwärts — selbst prüfen.'}}},
      {home:'Zurück ins Hotelviertel per TTC (Line 1) oder Uber. Wer lieber Kultur will: statt Cocktail ein Mirvish-Musical oder die Oper im Four Seasons Centre.'}
     ]},
    {iso:'2026-08-21',dt:'Fr 21.08.',title:'Kensington & West Queen West',
@@ -1498,7 +1509,7 @@ const STAGES=[
      {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
      {note:'💡 Meine Empfehlungs-Reihenfolge: 1) Prime Seafood Palace – Michelin-Steakhaus (schwer zu bekommen, früh reservieren) · 2) Antler – Wild & Foraged · 3) Oyster Boy – Austern. Optional: die CNE am Exhibition Place (startet heute, 21.08.).'},
      9,10,11,
-     {note:'🍴 Restaurant-Staffelung (Recherche · Adressen zum Eintippen; Öffnung/Andrang selbst prüfen): 🍽️ Top-Wahl: Grey Gardens (€€€) – 199 Augusta Avenue, Toronto, ON. Jen Aggs Michelin-Bib-Gourmand-Küche und Weinbar, kreativer Höhepunkt im Kensington Market. · 💶 Preistipp: Seven Lives Tacos y Mariscos (€) – 69 Kensington Avenue, Toronto, ON. Kult-Adresse für Baja-Style-Fischtacos, günstig und mitten im Markttrubel. · 🔍 Insider: Bar Libretto (früher Pizzeria Libretto Ossington) (€€) – 221 Ossington Avenue, Toronto, ON. Locals-Liebling für neapolitanische Pizza, einen Block abseits der Queen West — selbst prüfen.'},
+     {dine:{top:{name:'Grey Gardens',addr:'199 Augusta Avenue, Toronto, ON',price:'€€€',why:'Jen Aggs Michelin-Bib-Gourmand-Küche und Weinbar, kreativer Höhepunkt im Kensington Market.'},value:{name:'Seven Lives Tacos y Mariscos',addr:'69 Kensington Avenue, Toronto, ON',price:'€',why:'Kult-Adresse für Baja-Style-Fischtacos, günstig und mitten im Markttrubel.'},insider:{name:'Bar Libretto (früher Pizzeria Libretto Ossington)',addr:'221 Ossington Avenue, Toronto, ON',price:'€€',why:'Locals-Liebling für neapolitanische Pizza, einen Block abseits der Queen West — selbst prüfen.'}}},
      {home:'zurück ins Hotelviertel per TTC (501 Queen / Line 2) oder Uber. Optional statt Bar-Hopping: die CNE (Canadian National Exhibition) am Exhibition Place – startet heute (21.08.).'}
     ]},
    {iso:'2026-08-22',dt:'Sa 22.08.',title:'Abreise',
@@ -1965,6 +1976,20 @@ function get(id){return state[id]||{};}
 function setv(id,k,v){state[id]=Object.assign({},state[id],{[k]:v});save();updateProgress();}
 function mapUrl(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
 function navUrl(it){return 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(it.map||it.nm);}
+function dineRow(r,tier){
+  if(!r||!r.name)return '';
+  const badge = tier==='value'?'<span class="pbadge value">💶 Preistipp</span>':tier==='insider'?'<span class="pbadge insider">🔍 Insider</span>':'<span class="pbadge top">🍽️ Top-Wahl</span>';
+  const nav = 'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(r.name+(r.addr?', '+r.addr:''));
+  return `<div class="dine-row">
+    <div class="dine-h">${badge}<b>${esc(r.name)}</b>${r.price?`<span class="pricetag">${esc(r.price)}</span>`:''}</div>
+    ${r.why?`<div class="dine-why">${esc(r.why)}</div>`:''}
+    ${r.addr?`<div class="addr"><span class="pin">📍</span> ${esc(r.addr)}</div>`:''}
+    <a class="pill nav" href="${nav}" target="_blank" rel="noopener">➤ Navigieren</a>
+  </div>`;
+}
+function dineHtml(d){
+  return `<div class="dine-block"><div class="dine-t">🍽️ <b>Restaurant-Staffelung</b></div>${dineRow(d.top,'top')}${dineRow(d.value,'value')}${dineRow(d.insider,'insider')}<div class="dine-foot">Preise grob €/€€/€€€ · lokale Küche bevorzugt · Insider vor Ort prüfen (Öffnung/Andrang).</div></div>`;
+}
 function routeUrl(){return 'https://www.google.com/maps/dir/'+['Montréal-Trudeau Airport, QC','Québec City, QC','Baie-Saint-Paul, QC','Trois-Rivières, QC','Ottawa, ON','Prince Edward County, ON','Toronto Pearson Airport, ON'].map(encodeURIComponent).join('/');}
 function bookUrl(name,ci,co){return 'https://www.booking.com/searchresults.html?ss='+encodeURIComponent(name)+'&checkin='+ci+'&checkout='+co+'&group_adults=2&no_rooms=1&group_children=0';}
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2152,6 +2177,7 @@ function dayFlowHtml(d,s,si,di){
     if(e.seg){ if(e.endtour) frozen=true; body+=`<div class="fseg">${esc(e.seg)}</div>`; return; }
     if(e.warn){ body+=`<div class="fwarn">⚠️ <span>${esc(e.warn)}</span></div>`; return; }
     if(e.about){ body+=`<details class="fabout"><summary>📖 ${esc(e.about.t||'Über diese Gegend')}</summary><div class="fabout-x">${esc(e.about.x)}</div></details>`; return; }
+    if(e.dine){ body+=dineHtml(e.dine); return; }
     if(e.tr){ body+=`<div class="ftr">↳ <span><b>Übergang:</b> ${esc(e.tr)}</span></div>`; prevLL=null; return; }
     if(e.note){ body+=`<div class="fnote">${esc(e.note)}</div>`; return; }
     if(e.home){ body+=`<div class="ftr fhome">🏨 <span><b>Rückweg zum Hotel:</b> ${esc(e.home)}</span></div>`; return; }
