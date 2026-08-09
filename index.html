@@ -439,6 +439,7 @@
   <button data-tab="events">🎉 Events</button>
   <button data-tab="favs">⭐ Favoriten</button>
   <button data-tab="lists">✅ Listen</button>
+  <button data-tab="resv">🎟️ Reservierungen</button>
   <button data-tab="budget">💰 Budget</button>
   <button data-tab="info">ℹ️ Info</button>
 </nav>
@@ -458,6 +459,7 @@
   <div id="events" class="pane"></div>
   <div id="favs" class="pane"></div>
   <div id="lists" class="pane"></div>
+  <div id="resv" class="pane"></div>
   <div id="budget" class="pane"></div>
   <div id="info" class="pane"></div>
   <footer>Alle Daten bleiben lokal auf deinem Gerät (offline-fähig). Karten-Links brauchen Internet.</footer>
@@ -928,15 +930,16 @@ const STAGES=[
   route:{drive:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚗 Fahrt · ~95 km / ~1,5 h + Stopps',
    lead:'Genussfahrt Québec → Baie-Saint-Paul entlang der Côte-de-Beaupré. Feste Highlights heute: die Montmorency-Fälle, die Avenue Royale (älteste Landstraße Nordamerikas) und der Canyon Sainte-Anne. Danach zügig nach Baie-Saint-Paul zum Sonntagsmarkt (nur bis 15 Uhr!) und Käse an der Laiterie – und weil die Unterkunft einen Grill hat, abends Grillabend am Ferienhaus statt Restaurant.'},
   items:[
-   I('Montmorency-Fälle','sight','83 m – höher als Niagara! Hängebrücke über der Kante','Chute Montmorency','v','https://www.sepaq.com/destinations/parc-chute-montmorency',{ll:[46.89075,-71.14774],addr:', Boischatel',must:true,time:'~9:30',info:{d:'Mit 83 m rund 30 m höher als die Niagarafälle; eine Hängebrücke führt über die Abbruchkante, eine Seilbahn hinauf, Treppen hinunter.',t:'Bei Sonne Regenbögen im Sprühnebel; spektakulärer Kurzstopp gleich hinter Québec.'}}),
-   I('Route de la Nouvelle-France (Avenue Royale)','view','älteste Landstraße Nordamerikas · Steinhöfe','Avenue Royale Château-Richer','v','',{ll:[46.95918,-71.03802],addr:'Avenue Royale, Château-Richer',gem:true,time:'~10:15',noroute:true,info:{d:'Die „Route de la Nouvelle-France" ist die älteste Landstraße Nordamerikas, parallel zur Route 138 – Steinhöfe aus der Franzosenzeit und weite Strom-Aussichten, ruhiger als die Hauptstraße.',t:'Schöne, langsamere Alternative für ein Teilstück.'}}),
-   I('Basilika Sainte-Anne-de-Beaupré','sight','großer Wallfahrtsort · Mosaiken & Buntglas','Sainte-Anne-de-Beaupré','v','https://sanctuairesainteanne.org',{ll:[47.02608,-70.92534],addr:', Sainte-Anne-de-Beaupré',time:'~10:45',info:{d:'Einer der bedeutendsten Wallfahrtsorte Nordamerikas mit prächtiger Basilika, Mosaiken und Buntglas – schon von außen eindrucksvoll.',t:'Kurzer Halt; auch der Vorplatz lohnt.'}}),
-   I('Cidrerie Terre 50 / Café Apollo','wine','Cidre-Verkostung + Drittwellen-Café','Cidrerie Terre 50 Château-Richer','v','https://terre50.com',{time:'~11:15',noroute:true,info:{d:'Junge Cidrerie der Côte mit Brut-Pétillants und Blick auf Strom und Obstgärten; nebenan das Drittwellen-Café Apollo für einen schnellen Kaffee.',t:'Kurze Verkostung – wer fährt, spuckt aus.'}}),
-   I('Canyon Sainte-Anne','nature','Schluchten-Wasserfall mit Hängebrücken','Canyon Sainte-Anne Beaupré','v','https://www.canyonsa.qc.ca',{ll:[47.07449,-70.87704],addr:'Canyon Sainte-Anne, Saint-Ferréol-les-Neiges',gem:true,time:'~11:45',noroute:true,info:{d:'Schluchten-Wasserfall mit Hängebrücken kurz hinter der Basilika – ein kurzer, lohnender Spaziergang über die Stege.',t:'Optional; kostet ~1 h, Eintritt.'}}),
+   I('Montmorency-Fälle','sight','83 m – höher als Niagara! Hängebrücke über der Kante','Chute Montmorency','v','https://www.sepaq.com/destinations/parc-chute-montmorency',{ll:[46.89075,-71.14774],addr:', Boischatel',must:true,time:'~11:00',info:{d:'Mit 83 m rund 30 m höher als die Niagarafälle; eine Hängebrücke führt über die Abbruchkante, eine Seilbahn hinauf, Treppen hinunter.',t:'Bei Sonne Regenbögen im Sprühnebel; spektakulärer Kurzstopp gleich hinter Québec.'}}),
+   I('Route de la Nouvelle-France (Avenue Royale)','view','älteste Landstraße Nordamerikas · Steinhöfe','Avenue Royale Château-Richer','v','',{ll:[46.95918,-71.03802],addr:'Avenue Royale, Château-Richer',gem:true,time:'~11:30',noroute:true,info:{d:'Die „Route de la Nouvelle-France" ist die älteste Landstraße Nordamerikas, parallel zur Route 138 – Steinhöfe aus der Franzosenzeit und weite Strom-Aussichten, ruhiger als die Hauptstraße.',t:'Schöne, langsamere Alternative für ein Teilstück.'}}),
+   I('Basilika Sainte-Anne-de-Beaupré','sight','großer Wallfahrtsort · Mosaiken & Buntglas','Sainte-Anne-de-Beaupré','v','https://sanctuairesainteanne.org',{ll:[47.02608,-70.92534],addr:', Sainte-Anne-de-Beaupré',time:'~11:45',info:{d:'Einer der bedeutendsten Wallfahrtsorte Nordamerikas mit prächtiger Basilika, Mosaiken und Buntglas – schon von außen eindrucksvoll.',t:'Kurzer Halt; auch der Vorplatz lohnt.'}}),
+   I('Cidrerie Terre 50 / Café Apollo','wine','Cidre-Verkostung + Drittwellen-Café','Cidrerie Terre 50 Château-Richer','v','https://terre50.com',{time:'~12:00',noroute:true,info:{d:'Junge Cidrerie der Côte mit Brut-Pétillants und Blick auf Strom und Obstgärten; nebenan das Drittwellen-Café Apollo für einen schnellen Kaffee.',t:'Kurze Verkostung – wer fährt, spuckt aus.'}}),
+   I('Canyon Sainte-Anne','nature','Schluchten-Wasserfall mit Hängebrücken','Canyon Sainte-Anne Beaupré','v','https://www.canyonsa.qc.ca',{ll:[47.07449,-70.87704],addr:'Canyon Sainte-Anne, Saint-Ferréol-les-Neiges',gem:true,time:'~12:15',noroute:true,info:{d:'Schluchten-Wasserfall mit Hängebrücken kurz hinter der Basilika – ein kurzer, lohnender Spaziergang über die Stege.',t:'Optional; kostet ~1 h, Eintritt.'}}),
    I('Réserve du Cap-Tourmente','nature','Marschland · im Spätsommer Schneegänse','Cap-Tourmente Saint-Joachim','v','',{ll:[47.06623,-70.81059],addr:', Saint-Joachim',gem:true,time:'~12:30',noroute:true,info:{d:'20 km Wanderwege im Marschland – im Spätsommer sammeln sich hier tausende Schneegänse. Ein Top-Naturstopp am Fuß der Charlevoix-Hügel.',t:'Optional; lohnt für Naturfans, kostet aber Zeit (Umweg + Wanderung).'}}),
-   I('Ankunft Baie-Saint-Paul','hotel','Sonntagsmarkt bis 15 Uhr!','Baie-Saint-Paul Québec','v','',{ll:[47.44434,-70.50545],addr:', Baie-Saint-Paul',must:true,time:'~13:30',info:{d:'Ankunft im Künstlerstädtchen Baie-Saint-Paul – am Sonntag läuft bis 15 Uhr der Marché public (Maison Mère) mit Charlevoix-Produzenten.',t:'Erst Auto abstellen, dann direkt zum Markt; der ausführliche Nachmittag steht im Tagesplan „Ankunft Baie-Saint-Paul".'}})],
+   I('Ankunft Baie-Saint-Paul','hotel','Sonntagsmarkt bis 15 Uhr!','Baie-Saint-Paul Québec','v','',{ll:[47.44434,-70.50545],addr:', Baie-Saint-Paul',must:true,time:'~14:00',info:{d:'Ankunft im Künstlerstädtchen Baie-Saint-Paul – am Sonntag läuft bis 15 Uhr der Marché public (Maison Mère) mit Charlevoix-Produzenten.',t:'Erst Auto abstellen, dann direkt zum Markt; der ausführliche Nachmittag steht im Tagesplan „Ankunft Baie-Saint-Paul".'}})],
   flow:[
    {seg:'🚗 Fahrt Québec → Baie-Saint-Paul · Côte-de-Beaupré'},
+   {note:'⏰ Späterer Start heute: Wegen Packen/Auschecken erst ~11:00 an den Montmorency-Fällen (statt 9:30) – der Vormittag verschiebt sich ~1,5 h. Damit ihr den Sonntagsmarkt (bis 15 Uhr) noch mit ~1 h Zeit erlebt: Montmorency und Canyon Sainte-Anne auf je ~40 Min halten, die optionalen Stopps (Basilika, Cidrerie) heute weglassen und Grillfleisch gleich am Markt mitnehmen. So Ankunft Baie-Saint-Paul ~14:00.'},
    {tr:'🚗 Ab Québec auf die Route 138 Ost entlang der Côte-de-Beaupré; für ein ruhigeres, historisches Teilstück auf die Avenue Royale (Route de la Nouvelle-France) wechseln.'},
    0,1,
    {note:'⏱️ Optionale Kurzstopps auf der Strecke – nur bei Zeitpuffer: Basilika Sainte-Anne-de-Beaupré und Cidrerie Terre 50.'},
@@ -982,7 +985,7 @@ const STAGES=[
     route:{walk:true,from:'Baie-Saint-Paul Québec',mode:'🚶/🚗 Ankunftsnachmittag · Zentrum zu Fuß, Käsereien kurz mit Auto',
      lead:'Ankunft im Künstlerstädtchen: erst der Sonntagsmarkt (bis 15 Uhr), dann die Galeriengasse, die berühmten Charlevoix-Käsereien und ein erstes lokales Bier – entspannter Einstieg ins Tal.'},
     items:[
-     I('Marché public Baie-Saint-Paul','market','So bis 15 Uhr · Maison Mère · Charlevoix-Produzenten','Marché public Baie-Saint-Paul Maison Mère','v','https://maisonmere.ca/marche-public-baie-saint-paul/',{must:true,time:'~13:30',info:{d:'Sonntagsmarkt bei der Maison Mère (63 rue Ambroise-Fafard) mit Produzenten der „Route des Saveurs" – Käse, Brot, Cidre, Gemüse. Passt genau zum Anreisetag.',t:'Nur sonntags 10–15 Uhr – also gleich nach der Ankunft hin.'}}),
+     I('Marché public Baie-Saint-Paul','market','So bis 15 Uhr · Maison Mère · Charlevoix-Produzenten','Marché public Baie-Saint-Paul Maison Mère','v','https://maisonmere.ca/marche-public-baie-saint-paul/',{must:true,time:'~14:00',info:{d:'Sonntagsmarkt bei der Maison Mère (63 rue Ambroise-Fafard) mit Produzenten der „Route des Saveurs" – Käse, Brot, Cidre, Gemüse. Passt genau zum Anreisetag.',t:'Nur sonntags 10–15 Uhr – also gleich nach der Ankunft hin.'}}),
      I('Rue Saint-Jean-Baptiste (Galeriengasse)','shop','echte Künstlerateliers & Boutiquen','Rue Saint-Jean-Baptiste Baie-Saint-Paul','v','',{ll:[47.44332,-70.50761],addr:'Rue Saint-Jean-Baptiste, Baie-Saint-Paul',gem:true,time:'14:30',info:{d:'Dichte Reihe echter Künstlerateliers und Boutiquen abseits der Souvenirläden – Baie-Saint-Paul ist seit je ein Malerort (auch die Cirque-du-Soleil-Gründer traten hier auf). Sonntags oft mit Live-Atelierbetrieb.',t:'Zeit zum Stöbern lassen.'}}),
      I('Café Charlevoix','cafe','Mikro-Rösterei · bester Espresso der Stadt','Café Charlevoix Baie-Saint-Paul','v','https://cafecharlevoix.ca',{ll:[47.43852,-70.50662],addr:'63 Rue Ambroise-Fafard, Baie-Saint-Paul',time:'15:00',noroute:true,info:{d:'Mikro-Rösterei seit 2013, alle Bohnen vor Ort geröstet – bester Espresso der Stadt zu fairen Preisen.',t:'Gute Nachmittagspause.'}}),
      I('Laiterie Charlevoix','food','Käse-Économusée seit 1948 · Verkostung','Laiterie Charlevoix Baie-Saint-Paul','v','https://www.laiteriecharlevoix.com',{ll:[47.47251,-70.53101],addr:'Boulevard Monseigneur-De Laval, Baie-Saint-Paul',must:true,time:'15:45',info:{d:'Traditionskäserei seit 1948 mit Käse-Économusée samt Interpretationszentrum, Verkostung und Boutique (1167 boul. Mgr-De Laval).',t:'Öffnungszeiten ggf. telefonisch bestätigen (418 435-2184).'}}),
@@ -1881,6 +1884,29 @@ const PACK=[
 ];
 const BCATS=['Essen & Trinken','Unterkunft','Aktivitäten','Transport/Tanken','Shopping','Sonstiges'];
 
+const RESV=[
+ {sec:'🏛️ Ottawa (11.–12.08.)',items:[
+   ['Parliament Hill – Führung (West Block)','Zeitfenster online buchen · Changing of the Guard & Lichtshow gratis','https://visit.parl.ca',false]
+ ]},
+ {sec:'🚗 Tagesausflüge (mit Mietwagen)',items:[
+   ['⚠️ Hamilton – Spencer Gorge Parkzeitfenster','14.08. · Pflicht für Webster\'s/Tews Falls & Dundas Peak','https://conservationhamilton.ca/spencer-gorge/',true],
+   ['Elora Gorge / Quarry – Tages-/Tubing-Tickets','15.08. · an heißen Tagen früh weg','https://www.grandriver.ca/en/outdoor-recreation/Elora-Gorge.aspx',false],
+   ['Blue Mountain – Scenic Caves','16.08. · Tickets online','https://sceniccaves.com',false],
+   ['⚠️ Niagara – Bootstour (Niagara City Cruises)','17.08. · fester Zeitslot, stark nachgefragt','https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/',true],
+   ['⚠️ Sandbanks – Vehicle-Permit (Ontario Parks)','18.08. · Tages-Einfahrt, schnell ausverkauft','https://www.ontarioparks.ca/park/sandbanks',true]
+ ]},
+ {sec:'🏙️ Toronto Stadt (19.–21.08.)',items:[
+   ['⚠️ CN Tower – Aufstieg','20.08. · Zeitticket online','https://www.cntower.ca',true],
+   ['⚠️ Ripley\'s Aquarium','20.08. · Zeitticket / Kombiticket','https://www.ripleyaquariums.com/canada/',true],
+   ['⚠️ Toronto-Islands-Fähre','20.08. · Online-Ticket, im Sommer mit Zeitfenster','https://www.toronto.ca/explore-enjoy/toronto-island-ferries/',true]
+ ]},
+ {sec:'🍽️ Restaurants früh reservieren',items:[
+   ['Prime Seafood Palace','21.08. · sehr schwer – so früh wie möglich','https://primeseafoodpalace.ca',true],
+   ['Canoe – Skyline-Dinner','20.08. · Fensterplatz erfragen','https://www.canoerestaurant.com',false],
+   ['Treadwell Cuisine (Niagara-on-the-Lake)','17.08. · Farm-to-table','https://www.treadwellcuisine.com',false]
+ ]}
+];
+
 const TRIP_START='2026-07-31', TRIP_END='2026-08-22', TRIP_DAYS=23;
 
 // ================= STATE =================
@@ -2740,6 +2766,25 @@ function renderLists(){
     clBlock('Reisevorbereitung',PREP,'prep','🎫') + clBlock('Packliste',PACK,'pack','🧳');
 }
 
+// ================= RESERVIERUNGEN =================
+function renderResv(){
+  const chk=state._check||{}; let done=0,total=0,body='';
+  RESV.forEach((grp,gi)=>{
+    let rows='';
+    grp.items.forEach((it,ii)=>{
+      const id='resv-'+gi+'-'+ii; total++; if(chk[id])done++;
+      const link=it[2]?`<div style="margin-top:6px"><a class="ilink" href="${it[2]}" target="_blank" rel="noopener">🔗 online buchen</a></div>`:'';
+      rows+=`<div class="clitem ${chk[id]?'done':''}">
+      <input type="checkbox" class="cb clcb" data-cl="${id}" ${chk[id]?'checked':''}>
+      <div class="nm">${esc(it[0])}${it[1]?`<span class="why">${esc(it[1])}</span>`:''}${link}</div></div>`;
+    });
+    body+=`<div class="card"><h2>${grp.sec}</h2>${rows}</div>`;
+  });
+  const intro=`<div class="card"><h2>🎟️ Reservierungen <span class="sub" style="font-weight:400">· ${done}/${total} erledigt</span></h2>
+    <p class="sub">Bereits gebucht (Wal-/Bärentour, AURA, Mietwagen, alle Unterkünfte) sind hier nicht gelistet. <b>⚠️ = Kontingent oft knapp → zuerst sichern.</b></p></div>`;
+  document.getElementById('resv').innerHTML=intro+body;
+}
+
 // ================= BUDGET =================
 function renderBudget(){
   const b=state._budget||[]; const rate=state._rate||0.67;
@@ -2943,7 +2988,7 @@ document.addEventListener('change',e=>{
   if(e.target.classList.contains('clcb')){
     state._check=Object.assign({},state._check,{[e.target.dataset.cl]:e.target.checked});save();
     e.target.closest('.clitem').classList.toggle('done',e.target.checked);
-    renderLists();return;}
+    renderLists();if(typeof renderResv==='function')renderResv();return;}
   if(e.target.classList.contains('cb')&&e.target.closest('.item')){
     const it=e.target.closest('.item');const id=it.dataset.id;setv(id,'done',e.target.checked);
     it.classList.toggle('done',e.target.checked);}
@@ -2998,6 +3043,7 @@ function switchTab(t){
   if(t==='today')renderToday();
   if(t==='budget')renderBudget();
   if(t==='lists')renderLists();
+  if(t==='resv')renderResv();
   if(t==='cal')renderCal();
   if(t==='story')renderStory();
   if(t==='stays')renderStays();
@@ -3009,7 +3055,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('clic
 
 // ================= INIT =================
 function renderAll(){
-  renderChips();renderPlan();renderEvents();renderToday();renderLists();renderBudget();renderInfo();updateProgress();updateCountdown();
+  renderChips();renderPlan();renderEvents();renderToday();renderLists();renderResv();renderBudget();renderInfo();updateProgress();updateCountdown();
   // Karte & Kalender werden beim Öffnen des jeweiligen Tabs gerendert (Leaflet braucht sichtbaren Container)
   const act=document.querySelector('nav.tabs button.active');
   if(act&&act.dataset.tab==='map')renderMap();
