@@ -926,7 +926,7 @@ const STAGES=[
   ]},
  {badge:'→',name:'Fahrt: Côte-de-Beaupré',sub:'So 09.08. · Québec → Baie-Saint-Paul · ~95 km · ~1,5 h + Stopps',drive:true,iso:'2026-08-09',
   route:{drive:true,from:'77 rue Saint-Vallier Est Québec',mode:'🚗 Fahrt · ~95 km / ~1,5 h + Stopps',
-   lead:'Genussfahrt Québec → Baie-Saint-Paul durch den „Garde-manger de Québec". WICHTIG: Der Sonntagsmarkt in Baie-Saint-Paul läuft nur bis 15 Uhr – wer ihn mitnehmen will, hält sich unterwegs kurz (Montmorency + evtl. Basilika) und lässt die optionalen Naturstopps (Canyon, Cap-Tourmente) für später aus.'},
+   lead:'Genussfahrt Québec → Baie-Saint-Paul entlang der Côte-de-Beaupré. Feste Highlights heute: die Montmorency-Fälle, die Avenue Royale (älteste Landstraße Nordamerikas) und der Canyon Sainte-Anne. Danach zügig nach Baie-Saint-Paul zum Sonntagsmarkt (nur bis 15 Uhr!) und Käse an der Laiterie – und weil die Unterkunft einen Grill hat, abends Grillabend am Ferienhaus statt Restaurant.'},
   items:[
    I('Montmorency-Fälle','sight','83 m – höher als Niagara! Hängebrücke über der Kante','Chute Montmorency','v','https://www.sepaq.com/destinations/parc-chute-montmorency',{ll:[46.89075,-71.14774],addr:', Boischatel',must:true,time:'~9:30',info:{d:'Mit 83 m rund 30 m höher als die Niagarafälle; eine Hängebrücke führt über die Abbruchkante, eine Seilbahn hinauf, Treppen hinunter.',t:'Bei Sonne Regenbögen im Sprühnebel; spektakulärer Kurzstopp gleich hinter Québec.'}}),
    I('Route de la Nouvelle-France (Avenue Royale)','view','älteste Landstraße Nordamerikas · Steinhöfe','Avenue Royale Château-Richer','v','',{ll:[46.95918,-71.03802],addr:'Avenue Royale, Château-Richer',gem:true,time:'~10:15',noroute:true,info:{d:'Die „Route de la Nouvelle-France" ist die älteste Landstraße Nordamerikas, parallel zur Route 138 – Steinhöfe aus der Franzosenzeit und weite Strom-Aussichten, ruhiger als die Hauptstraße.',t:'Schöne, langsamere Alternative für ein Teilstück.'}}),
@@ -937,13 +937,15 @@ const STAGES=[
    I('Ankunft Baie-Saint-Paul','hotel','Sonntagsmarkt bis 15 Uhr!','Baie-Saint-Paul Québec','v','',{ll:[47.44434,-70.50545],addr:', Baie-Saint-Paul',must:true,time:'~13:30',info:{d:'Ankunft im Künstlerstädtchen Baie-Saint-Paul – am Sonntag läuft bis 15 Uhr der Marché public (Maison Mère) mit Charlevoix-Produzenten.',t:'Erst Auto abstellen, dann direkt zum Markt; der ausführliche Nachmittag steht im Tagesplan „Ankunft Baie-Saint-Paul".'}})],
   flow:[
    {seg:'🚗 Fahrt Québec → Baie-Saint-Paul · Côte-de-Beaupré'},
-   {tr:'🚗 Ab Saint-Roch auf die Route 138 Ost entlang der Côte-de-Beaupré; für ein ruhigeres Teilstück auf die Avenue Royale (Route de la Nouvelle-France) wechseln.'},
-   0,1,2,3,
-   {note:'⏱️ Sonntagsmarkt-Entscheidung: Canyon Sainte-Anne & Cap-Tourmente sind tolle Naturstopps, kosten aber je ~1 h. Wer den Markt in Baie-Saint-Paul (bis 15 Uhr) will, lässt sie heute aus – Natur gibt es in Charlevoix reichlich.'},
-   4,5,
-   {seg:'🏨 Ankunft Baie-Saint-Paul (~13:30)'},
+   {tr:'🚗 Ab Québec auf die Route 138 Ost entlang der Côte-de-Beaupré; für ein ruhigeres, historisches Teilstück auf die Avenue Royale (Route de la Nouvelle-France) wechseln.'},
+   0,1,
+   {note:'⏱️ Optionale Kurzstopps auf der Strecke – nur bei Zeitpuffer: Basilika Sainte-Anne-de-Beaupré und Cidrerie Terre 50.'},
+   2,3,
+   4,
+   {note:'⏱️ Nach dem Canyon Sainte-Anne zügig weiter – der Sonntagsmarkt in Baie-Saint-Paul läuft nur bis 15 Uhr. Die Réserve du Cap-Tourmente (großer Umweg + Wanderung) heben wir uns für einen anderen Tag auf.'},
+   {seg:'🏨 Ankunft Baie-Saint-Paul (~14:00)'},
    6,
-   {home:'Ankunft Baie-Saint-Paul – Auto abstellen (Parken siehe Etappen-Info) und direkt zum Marché public (bis 15 Uhr). Weiter im Tagesplan „Ankunft Baie-Saint-Paul".'}
+   {home:'Ankunft Baie-Saint-Paul – Auto abstellen (Parken siehe Etappen-Info) und direkt zum Marché public (bis 15 Uhr; hier auch Grillgut von lokalen Produzenten). Weiter im Tagesplan „Ankunft Baie-Saint-Paul".'}
   ]},
  {badge:'3',name:'Charlevoix & Tadoussac',sub:'So 09.08.–Di 11.08. · 2 Nächte ⭐',
   hotel:'✅ Gebucht: „VER-1 (haut)", Petite-Rivière-Saint-François (~10 Min von Baie-Saint-Paul) · 2 Nächte.',
@@ -988,7 +990,8 @@ const STAGES=[
      I('À Chacun son Pain','bakery','Bio-Bäckerei · Charlevoix-Getreide','À Chacun son Pain Baie-Saint-Paul','v','https://www.achacunsonpain.ca',{time:'16:45',noroute:true,info:{d:'Bio-Bäckerei mit Mehl aus Charlevoix-Getreide – Sauerteigbrote und Viennoiserie, eine Kultadresse.',t:'Für Frühstück/Proviant der nächsten Tage.'}}),
      I('Le Saint-Pub / MicroBrasserie Charlevoix','beer','Brauereigasthaus seit 1998 · Apéro','Le Saint-Pub Baie-Saint-Paul','v','https://microbrasserie.com',{ll:[47.44295,-70.5076],addr:'2 Rue Racine, Baie-Saint-Paul',time:'17:30',info:{d:'Brauereigasthaus der MicroBrasserie Charlevoix (2 rue Racine) – Bier seit 1998 vor Ort gebraut, dazu regionale Gerichte. Sonntags geöffnet.',t:'Lockerer Apéro; oft ohne Reservierung.'}}),
      I('Le Bercail (Hôtel Le Germain)','food','bodenständige Küche aus eigenem Garten','Le Bercail Hôtel Le Germain Baie-Saint-Paul','c','',{info:{d:'Restaurant im Hôtel Le Germain: bodenständige Küche aus eigenem Garten und Charlevoix-Terroir – verlässlich und gut, auch sonntags.',t:'Gute Wahl für den Ankunftsabend.'}}),
-     I('Faux Bergers','food','Terroir-Überraschungsmenü an der Laiterie','Faux Bergers Baie-Saint-Paul','c','https://fauxbergers.com',{noroute:true,info:{d:'Gefeiertes Terroir-Überraschungsmenü, ab 2026 an der Laiterie Charlevoix (Maison Simard) – Charlevoix-Produkte pur.',t:'Reservierung & Konzept 2026 vorab prüfen.'}})],
+     I('Faux Bergers','food','Terroir-Überraschungsmenü an der Laiterie','Faux Bergers Baie-Saint-Paul','c','https://fauxbergers.com',{noroute:true,info:{d:'Gefeiertes Terroir-Überraschungsmenü, ab 2026 an der Laiterie Charlevoix (Maison Simard) – Charlevoix-Produkte pur.',t:'Reservierung & Konzept 2026 vorab prüfen.'}}),
+     I('Grill-Einkauf: IGA (Rte 138) & Markt','market','Grillgut fürs Ferienhaus · So bis 21 Uhr','IGA Baie-Saint-Paul','v','',{ll:[47.44353,-70.50893],addr:'1020 Boul. Monseigneur-De Laval (Route 138), Baie-Saint-Paul',time:'~14:30',info:{d:'Weil „VER-1" einen Grill hat: Grillfleisch am schönsten direkt am Marché public (regionale Charlevoix-Produzenten – Veau/Agneau, Wurst; nur bis 15 Uhr), sonst im IGA Baie-Saint-Paul an der Route 138 (So 7–21 Uhr, Metzgertheke, Holzkohle, Beilagen, Getränke). Der IGA liegt auf dem Weg zur Unterkunft.',t:'Dedizierte Metzgereien (Ferme La Marre 418-760-8956, Boucherie chez Joe) haben sonntags oft geschlossen – vorher anrufen; der IGA ist die verlässliche Sonntags-Option.'}})],
     flow:[
      {seg:'🛒 Ankunft & Sonntagsmarkt (bis 15 Uhr!)'},
      {about:{t:'Ankunft & Marché public am Ortskern',x:'Baie-Saint-Paul liegt in einem weiten, von Bergen umschlossenen Talkessel dort, wo die Rivière du Gouffre in den Sankt-Lorenz-Strom mündet – eine der ältesten Ortschaften Québecs und seit über hundert Jahren ein Magnet für Maler, die das besondere Licht dieser Bucht suchten. Wer an einem Sonntag ankommt, landet mitten im schönsten Ritual des Ortes: dem Marché public. Von 10 bis 15 Uhr verwandelt sich der Platz am Ortskern in einen summenden Basar aus Charlevoix-Terroir – Käse, Cidre, Wurst, Beeren, Brot, Kunsthandwerk. Es ist weniger Einkauf als geselliger Treffpunkt, an dem Produzenten, Feriengäste und Einheimische denselben Kaffee trinken.\n\n• Der Marché public läuft 2026 vom 14. Juni bis 11. Oktober, jeden Sonntag 10–15 Uhr, direkt am Ortskern (63 rue Ambroise-Fafard) – am 09.08. also in voller Fahrt\n• Bis zu 54 Stände: erst eine Runde ganz durchgehen, dann gezielt zurück zu den besten – die Charlevoix-Cidre- und Käsestände sind oft am schnellsten leer\n• Terrassen und ein Kinderbereich machen ihn zum Verweilmarkt, nicht zum Durchhuschen – Zeit einplanen\n• Parken wird ab spätvormittags eng; früh kommen oder etwas außerhalb parken und die letzten Meter laufen'}},
@@ -999,11 +1002,14 @@ const STAGES=[
      {seg:'🧀 Käse & Bäckerei (kurz mit dem Auto)'},
      3,4,5,
      {note:'🍴 Genuss-Grazing: frisch vom Sonntagsmarkt, dazu Käse „Le Migneron"/„Ciel de Charlevoix" und Sauerteig von À Chacun son Pain – kein Restaurant-Mittag nötig.'},
-     {seg:'🍺 Apéro · Baie-Saint-Paul (ab ~17:30)'},
+     {seg:'🔥 Grill-Einkauf & Check-in (ab ~14:30)'},
+     9,
+     {note:'🔥 Grillabend am Ferienhaus: „VER-1" hat einen Grill – Grillgut am Markt (bis 15 Uhr) oder im IGA (bis 21 Uhr) besorgen, gegen 17:00 einchecken und mit Charlevoix-Fleisch, -Käse und lokalem Bier grillen. Wer lieber ausgeht: Restaurant-Auswahl unten.'},
+     {seg:'🍺 Apéro · am Ferienhaus oder in Baie-Saint-Paul (ab ~17:30)'},
      6,
-     {seg:'🌆 Abend · Auswahl (ab ~19:00)'},
+     {seg:'🌆 Abend · Grillen am Haus oder Restaurant (Auswahl)'},
      {dine:{top:{name:'Le Mouton Noir',addr:'43 rue Sainte-Anne, Baie-Saint-Paul',price:'€€€',why:'Kreative Bistronomie mit Charlevoix-Terroir und Terrasse direkt am Flussufer – die Genuss-Adresse des Ortes.'},value:{name:'Le Saint-Pub (MicroBrasserie Charlevoix)',addr:'25 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€€',why:'Regionale Küche zum Bier aus der eigenen Charlevoix-Brauerei – lokal und deutlich günstiger.'},insider:{name:'Joe Smoked Meat',addr:'54 rue Saint-Jean-Baptiste, Baie-Saint-Paul',price:'€',why:'Kleiner Kult-Laden für Smoked Meat, bei Einheimischen beliebt und günstig (oft nur Bar) – selbst prüfen.'}}},
-     {home:'Unterkunft „VER-1 (haut)" in Petite-Rivière-Saint-François, ~10 Min von Baie-Saint-Paul (Check-in ab 17:00). Tipp: erst Markt & Zentrum, dann gegen 17:00 einchecken, Gepäck abstellen und für Apéro/Dinner zurück nach Baie-Saint-Paul (~10 Min). Wer Bier/Wein trinkt: Fahrer festlegen.'}
+     {home:'Unterkunft „VER-1 (haut)" in Petite-Rivière-Saint-François, ~10 Min von Baie-Saint-Paul (Check-in ab 17:00). Ablauf heute: Markt & Zentrum, Grillgut besorgen (Markt bis 15 Uhr / IGA bis 21 Uhr), gegen 17:00 einchecken und am Grill mit Charlevoix-Produkten den Abend ausklingen lassen. Wer Bier/Wein trinkt: Fahrer festlegen.'}
     ]},
    {iso:'2026-08-10',dt:'Mo 10.08.',title:'Tadoussac · Wal- & Bären-Tag',
     route:{drive:true,from:'1 Chemin du Versant Petite-Rivière-Saint-François Québec',mode:'🚗 Tagesausflug · ~1,5 h + Gratis-Fähre · langer Tag',
